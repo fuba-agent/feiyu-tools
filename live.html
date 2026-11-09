@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live altcoin anomaly scan — funding rates &amp; 24h moves</title>
+<meta name="description" content="Free live screener for altcoin perpetual futures: funding-rate extremes and 24h moves across 800+ USDT contracts, filtered by volume. No signup.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Live altcoin anomaly scan">
+<meta property="og:description" content="Funding extremes and 24h moves across 800+ USDT perpetuals. Free, no signup.">
+<meta property="og:image" content="https://fuba-agent.github.io/feiyu-tools/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{--bg:#0b0d10;--panel:#12151a;--line:#242a33;--text:#e8edf4;--muted:#8b95a5;--accent:#3ddc97}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 20px 70px}
+  h1{font-size:26px;margin:0 0 6px}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:18px}
+  a{color:var(--accent)}
+  .row{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .rank{width:22px;color:#6c7686;font-variant-numeric:tabular-nums}
+  .sym{font-weight:600}
+  .px{color:#9aa4b2;font-weight:400;font-size:13px}
+  .up{color:#3ddc97;font-size:13px}.down{color:#ff7b7b;font-size:13px}
+  .vol{color:#6c7686;font-size:12px}
+  .why{color:#9aa4b2;font-size:13px}
+  .cta{margin-top:30px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;font-size:14px;color:#cfd6e0}
+  .fine{color:#6c7686;font-size:12px;margin-top:26px}
+  button{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer}
+  .top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <h1>Live altcoin anomaly scan</h1>
+    <button id="refresh">Refresh</button>
+  </div>
+  <div class="sub" id="stamp">loading…</div>
+  <div id="list"></div>
+  <div class="cta">
+    This page is free and needs no signup. Get 3 of these by Telegram every morning, or take the full scanner
+    (open interest deltas, 5-minute spikes, coin-vs-market beta).<br><br>
+    <a href="https://t.me/feiyu_radar_bot">Free daily bot @feiyu_radar_bot</a> ·
+    <a href="/">Full tools from $5</a>
+  </div>
+  <div class="fine">Data from Bitget public endpoints. Data only, no buy/sell signals. Crypto derivatives can lose you your entire capital.</div>
+</div>
+<script>
+const MAJORS = new Set(["BTC","ETH","BNB","SOL","XRP","DOGE","ADA","TRX","AVAX","LINK","DOT","MATIC","TON","SHIB","LTC","BCH","UNI","XLM","ETC","APT","FIL","ATOM","ARB","OP","NEAR","INJ","SUI","SEI","PEPE","WIF"]);
+const BASE = "https://api.bitget.com/api/v2/mix/market";
+
+async function j(url) {
+  const r = await fetch(url, { headers: { "Accept": "application/json" } });
+  if (!r.ok) throw new Error("http " + r.status);
+  return r.json();
+}
+
+async function scan() {
+  const [c, t] = await Promise.all([
+    j(BASE + "/contracts?productType=USDT-FUTURES"),
+    j(BASE + "/tickers?productType=USDT-FUTURES"),
+  ]);
+  const meta = new Map();
+  for (const x of c.data || []) meta.set(x.symbol, { rwa: String(x.isRwa || "").toUpperCase() === "YES", iv: Number(x.fundInterval || 8) });
+  const rows = [];
+  for (const x of t.data || []) {
+    const sym = String(x.symbol || "");
+    if (!sym.endsWith("USDT")) continue;
+    const base = sym.slice(0, -4), m = meta.get(sym);
+    if (!m || m.rwa || MAJORS.has(base)) continue;
+    const price = Number(x.lastPr || 0), vol = Number(x.usdtVolume || 0);
+    const chg = Number(x.change24h || 0) * 100, rate = Number(x.fundingRate || 0);
+    if (price <= 0 || vol < 3e6) continue;
+    const why = [];
+    if (Math.abs(rate) >= 0.0005) {
+      const ann = rate * (24 / m.iv) * 365 * 100;
+      why.push(`funding ${(rate * 100).toFixed(3)}%/${m.iv}h — ${rate > 0 ? "longs" : "shorts"} paying (${ann >= 0 ? "+" : ""}${ann.toFixed(0)}%/yr)`);
+    }
+    if (Math.abs(chg) >= 15) why.push(`24h move ${chg >= 0 ? "+" : ""}${chg.toFixed(1)}%`);
+    if (!why.length) continue;
+    rows.push({ base, price, vol, chg, why, score: Math.abs(rate) * 10000 + Math.abs(chg) });
+  }
+  rows.sort((a, b) => b.score - a.score);
+  return rows.slice(0, 10);
+}
+
+function fmtPrice(p) {
+  if (p >= 100) return p.toFixed(2);
+  if (p >= 1) return p.toFixed(3);
+  return p.toPrecision(4);
+}
+
+async function render() {
+  const list = document.getElementById("list");
+  const stamp = document.getElementById("stamp");
+  try {
+    const rows = await scan();
+    stamp.textContent = "last updated " + new Date().toLocaleString("en-GB", { hour12: false }) + " · Bitget USDT perpetuals · majors and tokenised stocks excluded";
+    list.innerHTML = rows.length ? rows.map((r, i) => `
+      <div class="row">
+        <div class="rank">${i + 1}</div>
+        <div class="main">
+          <div class="sym">${r.base} <span class="px">${fmtPrice(r.price)}</span>
+            <span class="${r.chg >= 0 ? "up" : "down"}">${r.chg >= 0 ? "+" : ""}${r.chg.toFixed(1)}%</span>
+            <span class="vol">$${(r.vol / 1e6).toFixed(0)}M</span></div>
+          ${r.why.map(w => `<div class="why">· ${w}</div>`).join("")}
+        </div>
+      </div>`).join("") : '<div class="why">No anomalies right now. Quiet market.</div>';
+  } catch (e) {
+    stamp.textContent = "could not load data — " + e.message;
+  }
+}
+document.getElementById("refresh").addEventListener("click", render);
+render();
+setInterval(render, 5 * 60 * 1000);
+</script>
+</body>
+</html>
