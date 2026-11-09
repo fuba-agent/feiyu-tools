@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to read funding rates and open interest (without fooling yourself)</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to read funding rates and open interest">
+<meta property="og:description" content="A practical guide to funding rates, open interest and market beta for crypto perpetual futures.">
+<meta property="og:image" content="https://172.245.28.157:8443/static/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="description" content="A practical guide to funding rates, open interest and market beta for crypto perpetual futures traders.">
+<style>
+  :root{--bg:#0b0d10;--panel:#12151a;--line:#242a33;--text:#e8edf4;--muted:#8b95a5;--accent:#3ddc97;--warn:#ffb547}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.7}
+  .wrap{max-width:720px;margin:0 auto;padding:36px 22px 80px}
+  a{color:var(--accent)}
+  h1{font-size:34px;line-height:1.2;margin:0 0 10px;letter-spacing:-.02em}
+  h2{font-size:21px;margin:34px 0 10px}
+  p,li{color:#cfd6e0}
+  .meta{color:var(--muted);font-size:13px;margin-bottom:26px}
+  table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--panel);font-weight:600}
+  blockquote{border-left:3px solid var(--accent);margin:18px 0;padding:6px 0 6px 16px;color:#cfd6e0}
+  .cta{margin-top:44px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .cta p{margin:6px 0 14px;color:var(--muted);font-size:14px}
+  .btn{display:inline-block;background:var(--accent);color:#06251a;font-weight:700;text-decoration:none;padding:10px 16px;border-radius:10px}
+  code{background:#161a20;padding:1px 5px;border-radius:4px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta">Feiyu Tools · 2026-11-09 · 6 min read</div>
+  <h1>How to read funding rates and open interest (without fooling yourself)</h1>
+  <p>Most altcoin traders look at price and nothing else. Price tells you what happened; funding and open interest
+     tell you <em>who is behind it</em>. Here is the short version I use on my own screen.</p>
+
+  <h2>1. Funding rate: the crowd pays the patient side</h2>
+  <p>Perpetual futures have no expiry date, so exchanges use a periodic payment between longs and shorts to keep the
+     contract near spot. Positive funding means longs pay shorts. Negative means shorts pay longs.</p>
+  <p>That single number answers a question price cannot: <b>which side is crowded?</b></p>
+  <table>
+    <tr><th>Funding (per 8h)</th><th>Reading</th><th>What it tends to precede</th></tr>
+    <tr><td>+0.05% or more</td><td>Longs crowded and paying</td><td>Stalling price gets sold; late longs become exit liquidity</td></tr>
+    <tr><td>+0.01% to +0.05%</td><td>Mild long bias</td><td>Nothing on its own</td></tr>
+    <tr><td>-0.01% to -0.05%</td><td>Mild short bias</td><td>Nothing on its own</td></tr>
+    <tr><td>-0.05% or lower</td><td>Shorts crowded and paying</td><td>Bounces can squeeze violently; shorting here is late</td></tr>
+  </table>
+  <p>Two practical details people miss. First, funding intervals differ — many majors settle every 8 hours, but some
+     contracts settle every 1 or 4 hours, so <b>compare the daily cost, not the per-settlement number</b>. Second, a hot
+     funding rate is a warning about positioning, not a signal to enter. If you short purely because funding is
+     positive, you will get stopped out by the squeeze that often comes first.</p>
+
+  <h2>2. Price + open interest: real money or closed positions</h2>
+  <p>Open interest is the total number of open contracts. Price tells you the direction; OI tells you whether new
+     positions were created or old ones were closed.</p>
+  <table>
+    <tr><th>Price</th><th>Open interest</th><th>Reading</th></tr>
+    <tr><td>Up</td><td>Up</td><td>New longs entering — the move has fuel, but chasing is late</td></tr>
+    <tr><td>Up</td><td>Down</td><td>Short covering — mechanical, tends to fade</td></tr>
+    <tr><td>Down</td><td>Up</td><td>New shorts entering — the move can extend</td></tr>
+    <tr><td>Down</td><td>Down</td><td>Longs stopping out — selling may be near exhaustion</td></tr>
+  </table>
+  <p>This is the difference between a move that keeps going and one that snaps back the moment the last short is
+     covered. A 5-minute spike with flat OI is usually noise; the same spike with OI jumping is someone with size.</p>
+
+  <h2>3. Beta vs own weakness</h2>
+  <p>Compare every coin to ETH over the same window. If ETH is flat and the coin is down 5%, that is the coin's own
+     problem — an unlock, a supply increase, a delisting notice, a project issue. If ETH is down 5% and the coin is
+     down 5%, that is beta, and it tells you nothing about the coin.</p>
+  <blockquote>Beta is noise. Own weakness is information.</blockquote>
+  <p>This one distinction filters out most of the fake "signals" in a red market. When everything is down, most of what
+     you see is the market, not the coin.</p>
+
+  <h2>4. What this does not do</h2>
+  <p>None of this predicts price. It describes the balance of positions and tells you when the crowd is on the wrong
+     side of its own trade. You still need an entry, a stop, and a size that lets you be wrong without drama.</p>
+
+  <div class="cta">
+    <h2 style="margin-top:0">Two tools built on these three ideas</h2>
+    <p>The <b>Altcoin Anomaly Radar</b> scans 800+ USDT perpetuals for funding extremes, 24h moves, 5-minute spikes and
+       OI jumps, with a plain-English read on each hit. The <b>Trade Review Journal</b> turns your trade log into win
+       rate, R-multiples and drawdown automatically.</p>
+    <a class="btn" href="/">See the tools →</a>
+  </div>
+</div>
+</body>
+</html>
