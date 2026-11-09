@@ -1,0 +1,33 @@
+[
+  {
+    "id": "cheatsheet",
+    "name": "Anomaly Cheat Sheet",
+    "tag": "Quick reference",
+    "short": "Two pages: how to read funding rates, the price/OI matrix, and 7 rules that survive contact with the market.",
+    "price": 5,
+    "image": "cheatsheet.png"
+  },
+  {
+    "id": "radar-en",
+    "name": "Altcoin Anomaly Radar",
+    "tag": "Trading tool",
+    "short": "Scans every USDT perpetual on Bitget, flags funding extremes, 24h moves, 5-minute spikes and OI jumps — with a plain-English read on each hit.",
+    "price": 19,
+    "image": "radar.png"
+  },
+  {
+    "id": "journal-en",
+    "name": "Trade Review Journal",
+    "tag": "Excel template",
+    "short": "Log 10 fields per trade. It computes win rate, R-multiples, payoff ratio, max drawdown and draws your equity curve automatically.",
+    "price": 12,
+    "image": "dashboard.png"
+  },
+  {
+    "id": "bundle-en",
+    "name": "Both tools",
+    "tag": "Bundle",
+    "short": "The radar and the journal together — $6 cheaper than buying them separately.",
+    "price": 25
+  }
+]
