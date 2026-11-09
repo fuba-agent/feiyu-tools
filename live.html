@@ -71,6 +71,14 @@
     <a href="https://t.me/feiyu_radar_bot">Free daily bot @feiyu_radar_bot</a> ·
     <a href="/">Full tools from $5</a>
   </div>
+  <div id="sharebar" style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;font-size:13px">
+    <span style="color:#6c7686">Share this scan:</span>
+    <a id="sx" href="#" target="_blank" rel="noopener">X</a>
+    <a id="sr" href="#" target="_blank" rel="noopener">Reddit</a>
+    <a id="sf" href="#" target="_blank" rel="noopener">Facebook</a>
+    <a id="st" href="#" target="_blank" rel="noopener">Telegram</a>
+  </div>
+
   <div class="fine">Data from Bitget public endpoints. Data only, no buy/sell signals. Crypto derivatives can lose you your entire capital.</div>
 </div>
 <script>
@@ -148,6 +156,16 @@ document.getElementById("share").addEventListener("click", () => {
 });
 render();
 setInterval(render, 5 * 60 * 1000);
+
+(function () {
+  const url = location.href.split("?")[0];
+  const text = "Free altcoin screener — funding extremes and 24h movers across 800+ USDT perpetuals, refreshed every 5 minutes.";
+  const e = encodeURIComponent;
+  document.getElementById("sx").href = "https://twitter.com/intent/tweet?text=" + e(text) + "&url=" + e(url);
+  document.getElementById("sr").href = "https://www.reddit.com/submit?url=" + e(url) + "&title=" + e("Free altcoin screener (funding rates + 24h movers)");
+  document.getElementById("sf").href = "https://www.facebook.com/sharer/sharer.php?u=" + e(url);
+  document.getElementById("st").href = "https://t.me/share/url?url=" + e(url) + "&text=" + e(text);
+})();
 </script>
 </body>
 </html>
