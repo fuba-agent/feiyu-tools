@@ -65,6 +65,8 @@
   .chip{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);font-size:13px}
   .chip.on{background:rgba(61,220,151,.12);border-color:var(--accent);color:var(--accent)}
   .paygrid{display:grid;grid-template-columns:190px 1fr;gap:22px;align-items:start;margin-top:6px}
+  .paygrid>*{min-width:0}
+  .qr img{max-width:100%;height:auto}
   @media(max-width:700px){
     .paygrid{grid-template-columns:1fr}
     .paybox{padding:16px}
