@@ -35,7 +35,7 @@
 <div class="wrap">
   <div class="top">
     <h1>Live altcoin anomaly scan</h1>
-    <button id="refresh">Refresh</button>
+    <div style="display:flex;gap:8px"><button id="share">Share</button><button id="refresh">Refresh</button></div>
   </div>
   <div class="sub" id="stamp">loading…</div>
   <div id="list"></div>
@@ -113,6 +113,13 @@ async function render() {
   }
 }
 document.getElementById("refresh").addEventListener("click", render);
+document.getElementById("share").addEventListener("click", () => {
+  const url = location.href.split("#")[0];
+  const text = "Live altcoin anomaly scan — funding extremes and 24h moves, refreshed every 5 minutes.";
+  const tg = "https://t.me/share/url?url=" + encodeURIComponent(url) + "&text=" + encodeURIComponent(text);
+  if (navigator.share) { navigator.share({ title: "Live altcoin anomaly scan", text, url }).catch(() => window.open(tg, "_blank")); }
+  else window.open(tg, "_blank");
+});
 render();
 setInterval(render, 5 * 60 * 1000);
 </script>
