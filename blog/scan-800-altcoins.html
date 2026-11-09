@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How I scan 800+ altcoin perpetuals in 30 seconds (Python, no API key)</title>
+<meta name="description" content="A walkthrough of the data pipeline behind a crypto perpetual scanner: what to fetch, how to filter, and why most scanners are useless.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How I scan 800+ altcoin perpetuals in 30 seconds">
+<meta property="og:description" content="What to fetch, what to filter, and why most screeners are noise.">
+<meta property="og:image" content="https://172.245.28.157:8443/static/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{--bg:#0b0d10;--panel:#12151a;--line:#242a33;--text:#e8edf4;--muted:#8b95a5;--accent:#3ddc97}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.7}
+  .wrap{max-width:720px;margin:0 auto;padding:36px 22px 80px}
+  a{color:var(--accent)}
+  h1{font-size:32px;line-height:1.2;margin:0 0 10px;letter-spacing:-.02em}
+  h2{font-size:20px;margin:32px 0 10px}
+  p,li{color:#cfd6e0}
+  .meta{color:var(--muted);font-size:13px;margin-bottom:24px}
+  pre{background:#11161c;border:1px solid var(--line);border-radius:10px;padding:14px;overflow:auto;font-size:13px}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  blockquote{border-left:3px solid var(--accent);margin:18px 0;padding:6px 0 6px 16px;color:#cfd6e0}
+  .cta{margin-top:40px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .btn{display:inline-block;background:var(--accent);color:#06251a;font-weight:700;text-decoration:none;padding:10px 16px;border-radius:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta">Feiyu Tools · 2026-11-09 · 5 min read</div>
+  <h1>How I scan 800+ altcoin perpetuals in 30 seconds</h1>
+  <p>Every screener I tried had the same problem: it was either a paid dashboard with a fixed watchlist, or a spreadsheet
+     I had to maintain. Neither answers the question I actually have at 9am — <b>what changed overnight that I should look at?</b></p>
+
+  <h2>The data is free — the filtering is the product</h2>
+  <p>Every major exchange exposes public market endpoints. Bitget's USDT-perpetual universe is around 800 contracts,
+     and one call returns you all of them:</p>
+  <pre><code>GET https://api.bitget.com/api/v2/mix/market/tickers?productType=USDT-FUTURES</code></pre>
+  <p>Each row has what you need: last price, 24h change, quote volume, funding rate and open interest
+     (as <code>holdingAmount</code>). No key, no account, ~200KB of JSON.</p>
+  <p>So the raw data is not the moat. <b>The moat is the filter.</b> A screener that shows you 800 coins is the same as
+     no screener.</p>
+
+  <h2>Three filters that remove 99% of the noise</h2>
+  <p><b>1. Volume floor.</b> Anything under a few million dollars of 24h volume has a fake-looking order book;
+     a $5k order moves it 20%. Skip it before you look at any signal.</p>
+  <p><b>2. Move and funding thresholds, not rankings.</b> "Top gainers" is a popularity contest. A coin is interesting when
+     its funding is far from normal (the crowd is crowded) or its 24h move is unusual (something happened), not when it is
+     first in a list sorted by the same number everyone else is looking at.</p>
+  <p><b>3. Market beta.</b> Compare each coin's 24h move to ETH's. If ETH is down 5% and the coin is down 5%,
+     that is the market, not the coin. If ETH is flat and the coin is down 5%, that is the coin's own problem.</p>
+  <blockquote>Filtering by "what happened to this coin specifically" is the difference between a screener and a signal.</blockquote>
+
+  <h2>The 30-second part</h2>
+  <p>The whole scan is: fetch contracts (for funding intervals and to skip tokenised stocks), fetch tickers,
+     loop once, sort by a score, print ten rows. No database, no cron, no framework — 150 lines of standard library Python.</p>
+  <pre><code>python radar_lite.py --top 10</code></pre>
+  <p>The free lite version is on GitHub and prints funding extremes plus 24h moves:
+     <a href="https://github.com/fuba-agent/altcoin-anomaly-radar">fuba-agent/altcoin-anomaly-radar</a>.</p>
+
+  <h2>What the lite version doesn't do</h2>
+  <p>Open interest deltas (is the move backed by new money?), 5-minute spikes, and the coin-vs-ETH comparison need
+     either a second snapshot or a per-row candle fetch — which is where a single script becomes a small tool.
+     That's the paid version.</p>
+
+  <div class="cta">
+    <p style="margin-top:0">The full scanner and the trade journal are here — pay in BNB or SOL, files delivered on-chain confirmation.</p>
+    <a class="btn" href="/">See the tools →</a>
+  </div>
+</div>
+</body>
+</html>
