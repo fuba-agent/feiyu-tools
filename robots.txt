@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fuba-agent.github.io/feiyu-tools/sitemap.xml
