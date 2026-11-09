@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your trade journal is lying to you (and how to fix it)</title>
+<meta name="description" content="Five ways a trade log quietly misleads you, and the ten fields that make it honest.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Your trade journal is lying to you">
+<meta property="og:description" content="Five ways a trade log quietly misleads you, and the ten fields that make it honest.">
+<meta property="og:image" content="https://fuba-agent.github.io/feiyu-tools/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{--bg:#0b0d10;--panel:#12151a;--line:#242a33;--text:#e8edf4;--muted:#8b95a5;--accent:#3ddc97}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.7}
+  .wrap{max-width:720px;margin:0 auto;padding:36px 22px 80px}
+  a{color:var(--accent)}
+  h1{font-size:32px;line-height:1.2;margin:0 0 10px;letter-spacing:-.02em}
+  h2{font-size:20px;margin:32px 0 10px}
+  p,li{color:#cfd6e0}
+  .meta{color:var(--muted);font-size:13px;margin-bottom:24px}
+  blockquote{border-left:3px solid var(--accent);margin:18px 0;padding:6px 0 6px 16px;color:#cfd6e0}
+  table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--panel)}
+  .cta{margin-top:40px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .btn{display:inline-block;background:var(--accent);color:#06251a;font-weight:700;text-decoration:none;padding:10px 16px;border-radius:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta">Feiyu Tools · 2026-11-09 · 5 min read</div>
+  <h1>Your trade journal is lying to you</h1>
+  <p>Most people who keep a trade journal keep a diary. A diary records what happened and how it felt. A journal is
+     supposed to answer a much narrower question: <b>which of my decisions actually make money?</b> Those are different
+     jobs, and a diary is very good at hiding the answer.</p>
+
+  <h2>Lie 1: the sample is too small to mean anything</h2>
+  <p>Ten trades tell you almost nothing. With a 50% win rate, the chance of seeing 7 wins in 10 trades is roughly 12% —
+     common enough that a normal week looks like an edge. The usual failure mode is that people make a change after
+     five trades, so they never accumulate enough data for any single setup to be judged.</p>
+  <p>Practical minimum: 30 trades per setup before you believe anything about it, and 100 before you size up on it.</p>
+
+  <h2>Lie 2: dollars hide the risk you took</h2>
+  <p>"+$80" sounds like a good trade. If it was a 25x position where you risked $100 and got lucky, it is not a good
+     trade — it is a bad trade that worked. Measure in <b>R</b>: profit divided by the amount you put at risk.
+     A +0.4R win that came from a 3R-sized gamble is a failure, and the journal has to say so.</p>
+  <blockquote>If your journal records dollars and not risk, it is measuring your luck, not your skill.</blockquote>
+
+  <h2>Lie 3: the exit that never happened</h2>
+  <p>Most logs record the result of the trade you actually took. They do not record the stop you moved, the target you
+     abandoned, or the position you closed early because you were bored. Those are the decisions that need auditing —
+     they are where the money leaks. Log at least one field for
+     <b>"did I follow my plan: yes / no / partially"</b>, and track the ratio over time. It is usually uglier than the
+     P&amp;L suggests.</p>
+
+  <h2>Lie 4: mixing setups into one number</h2>
+  <p>A single win rate across "breakout retests", "funding-rate fades" and "someone on Telegram said so" is an average
+     across unrelated populations. One setup is +2R per trade and another is -0.8R, and together they look like a
+     mediocre system. Tag every trade with the setup name, then evaluate each tag separately.</p>
+
+  <h2>Lie 5: no drawdown, no truth</h2>
+  <p>Win rate and average win are comfortable numbers. Drawdown is the one that decides whether you survive to use
+     them. A system with a 70% win rate and a 40% drawdown will end you. Track the equity curve, the longest losing
+     streak, and the peak-to-trough number — and look at them honestly before increasing size.</p>
+
+  <h2>The ten fields that make a journal honest</h2>
+  <table>
+    <tr><th>Field</th><th>Why it matters</th></tr>
+    <tr><td>Date / pair / direction</td><td>Context and filtering</td></tr>
+    <tr><td>Setup tag</td><td>So you can evaluate setups separately</td></tr>
+    <tr><td>Entry, stop, target</td><td>Risk is defined before the trade</td></tr>
+    <tr><td>Size</td><td>To compute R and exposure</td></tr>
+    <tr><td>Risk in $ and in R</td><td>The denominator of every meaningful stat</td></tr>
+    <tr><td>Exit price and result in R</td><td>Skill measure, not luck measure</td></tr>
+    <tr><td>Followed the plan? (Y/N/partial)</td><td>The only field that catches self-sabotage</td></tr>
+    <tr><td>One-line reason for the entry</td><td>Lets you find the recurring mistake</td></tr>
+    <tr><td>Emotional state</td><td>Patterns you cannot see from P&amp;L</td></tr>
+    <tr><td>Screenshot or note</td><td>So you can re-read the chart, not your memory of it</td></tr>
+  </table>
+
+  <div class="cta">
+    <p style="margin-top:0">I built an Excel template that does all of the above automatically — win rate, R-multiples,
+       payoff ratio, max drawdown, equity curve and per-setup stats. It is $12, paid in BNB or SOL, delivered on-chain.</p>
+    <a class="btn" href="/">See the journal →</a>
+  </div>
+</div>
+</body>
+</html>
