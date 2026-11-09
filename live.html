@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Live altcoin anomaly scan — funding rates &amp; 24h moves</title>
-<meta name="description" content="Free live screener for altcoin perpetual futures: funding-rate extremes and 24h moves across 800+ USDT contracts, filtered by volume. No signup.">
+<title>Free altcoin screener — funding rates &amp; 24h movers, no signup</title>
+<meta name="description" content="Free altcoin screener for perpetual futures: funding-rate extremes, 24h movers and low-liquidity filtering across 800+ USDT contracts. No signup, no API key, refreshes every 5 minutes.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Live altcoin anomaly scan">
 <meta property="og:description" content="Funding extremes and 24h moves across 800+ USDT perpetuals. Free, no signup.">
@@ -30,15 +30,41 @@
   button{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer}
   .top{display:flex;justify-content:space-between;align-items:center;gap:12px}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What does this altcoin screener screen for?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Funding-rate extremes and unusual 24-hour moves across the Bitget USDT perpetual universe. Contracts under $3M of 24h volume, majors and tokenised stocks are filtered out."}},
+    {"@type": "Question", "name": "Is the screener free?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes. It runs in the browser against public exchange endpoints, with no account or API key."}},
+    {"@type": "Question", "name": "Is it trading advice?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. It shows positioning and move data only, not buy or sell signals."}},
+    {"@type": "Question", "name": "How often does it update?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Every five minutes automatically, or immediately when you press Refresh."}}
+  ]
+}
+</script>
 </head>
 <body>
 <div class="wrap">
   <div class="top">
-    <h1>Live altcoin anomaly scan</h1>
+    <h1>Free altcoin screener</h1>
     <div style="display:flex;gap:8px"><button id="share">Share</button><button id="refresh">Refresh</button></div>
   </div>
   <div class="sub" id="stamp">loading…</div>
   <div id="list"></div>
+  <section style="margin-top:34px">
+    <h2 style="font-size:19px;margin:0 0 10px">Questions people ask</h2>
+    <div class="faq">
+      <p><b>What does this screen for?</b><br>Funding-rate extremes (crowded longs or shorts) and unusual 24-hour moves across the Bitget USDT perpetual universe. Contracts with less than $3M of 24h volume, majors and tokenised stocks are filtered out.</p>
+      <p><b>Is it really free?</b><br>Yes. It runs entirely in your browser against public exchange endpoints — no account, no API key, no server of ours in the middle.</p>
+      <p><b>Is this trading advice?</b><br>No. It is data: who is crowded, who is paying, what moved. Deciding what to do with it is your job.</p>
+      <p><b>How often does it update?</b><br>Every 5 minutes automatically, or immediately if you press Refresh.</p>
+    </div>
+  </section>
+
   <div class="cta">
     This page is free and needs no signup. Get 3 of these by Telegram every morning, or take the full scanner
     (open interest deltas, 5-minute spikes, coin-vs-market beta).<br><br>
