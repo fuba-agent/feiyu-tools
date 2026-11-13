@@ -9,11 +9,11 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Feiyu Tools — stop scrolling 800 charts">
 <meta property="og:description" content="Anomaly scanner for USDT perpetuals + a trade journal that does the math. From $5.">
-<meta property="og:image" content="https://172.245.28.157:8443/static/img/og-cover.png">
+<meta property="og:image" content="https://5.83.145.155:8443/static/img/og-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Feiyu Tools — stop scrolling 800 charts">
 <meta name="twitter:description" content="Anomaly scanner for USDT perpetuals + a trade journal that does the math. From $5.">
-<meta name="twitter:image" content="https://172.245.28.157:8443/static/img/og-cover.png">
+<meta name="twitter:image" content="https://5.83.145.155:8443/static/img/og-cover.png">
 
 <style>
   :root{
@@ -116,7 +116,8 @@
 </head>
 <body>
 <div id="promoBar" style="display:none;background:linear-gradient(90deg,#0f3d2e,#12303f);border-bottom:1px solid #24503f;color:#d6ffe9;font-size:14px;text-align:center;padding:9px 14px">
-  Launch week: the Cheat Sheet is <b>$2</b> with code <b>LAUNCH</b> — <a href="?buy=cheatsheet&code=LAUNCH" style="color:#3ddc97;font-weight:600">get it now →</a>
+  <b id="promoCount">Fresh scan</b> — every anomaly the scanner flags is logged in public, updated daily.
+  <a href="/live" style="color:#3ddc97;font-weight:600">See today's list →</a>
 </div>
 
 <div class="wrap">
@@ -208,7 +209,7 @@
       </p>
 
       <p style="color:var(--muted);font-size:14px;margin:0 0 10px">
-        I am a discretionary crypto trader who codes. If you want the method behind the scanner, I wrote it up: <a href="/blog/funding-rates.html">how to read funding rates and open interest</a>, and how the scanner itself works: <a href="/blog/scan-800-altcoins.html">scanning 800+ perpetuals in 30 seconds</a>, and why most trade journals mislead you: <a href="/blog/trade-journal-lies.html">your trade journal is lying to you</a>. The scanner is what I use every day to cut 800+ contracts
+        I am a discretionary crypto trader who codes. If you want the method behind the scanner, I wrote it up: <a href="/blog/funding-rates.html">how to read funding rates and open interest</a>, what a squeeze looks like from the inside: <a href="/blog/altcoin-squeeze-anatomy.html">three days of INIT</a>, how the scanner itself works: <a href="/blog/scan-800-altcoins.html">scanning 800+ perpetuals in 30 seconds</a>, and why most trade journals mislead you: <a href="/blog/trade-journal-lies.html">your trade journal is lying to you</a>. The scanner is what I use every day to cut 800+ contracts
         down to a handful worth looking at; the journal is what I use to find out why my equity curve looks the way it does.
         They are not "signals" and they do not predict anything — they just make the data honest.
       </p>
@@ -235,7 +236,7 @@
 
 <script>
   // 在 GitHub Pages 上托管时，接口与静态资源仍指向真实店铺
-  const API_BASE = location.hostname.endsWith("github.io") ? "https://172.245.28.157:8443" : "";
+  const API_BASE = location.hostname.endsWith("github.io") ? "https://5.83.145.155:8443" : "";
 
 const state = { product:null, chain:null, quote:null };
 const CHAINS = [
@@ -269,7 +270,7 @@ async function loadProducts(){
     const card = document.createElement("div");
     card.className = "card" + (p.id === "bundle-en" ? " wide" : "");
     card.innerHTML = `
-      <img src="${API_BASE}/static/img/${p.image || ""}" alt="">
+      ${p.image ? `<img src="${API_BASE}/static/img/${p.image}" alt="">` : ""}
       <div class="body">
         <div class="tag">${p.tag}</div>
         <h3>${p.name}</h3>
@@ -279,7 +280,6 @@ async function loadProducts(){
           <button class="btn" data-id="${p.id}">Buy</button>
         </div>
       </div>`;
-    if(!p.image) card.querySelector("img").remove();
     card.querySelector("button").onclick = ()=> startPay(p);
     grid.appendChild(card);
   }
@@ -381,6 +381,13 @@ loadProducts().then(()=>{
     if (!new URLSearchParams(location.search).has("code")) {
       const bar = document.getElementById("promoBar");
       if (bar) bar.style.display = "block";
+      fetch(API_BASE + "/static/history.json").then(r=>r.json()).then(h=>{
+        if (!Array.isArray(h) || !h.length) return;
+        const d = h.reduce((a,b)=> (String(b.date||"") > String(a.date||"") ? b : a));
+        if (!d || !d.items) return;
+        const c = document.getElementById("promoCount");
+        if (c) c.textContent = `${d.items.length} anomalies flagged on ${d.date}`;
+      }).catch(()=>{});
     }
   } catch (e) {}
 </script>
