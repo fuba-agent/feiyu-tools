@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anatomy of an altcoin squeeze: three days of INIT</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Anatomy of an altcoin squeeze: three days of INIT">
+<meta property="og:description" content="A real case study from the scanner: what -0.566% funding looked like before +68.9%, and what it looked like before -44%.">
+<meta property="og:image" content="https://5.83.145.155:8443/static/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="description" content="A real case study from my scanner: INIT ran +68.9% on deeply negative funding, then fell 44% two days later. What the funding and open interest actually said.">
+<style>
+  :root{--bg:#0b0d10;--panel:#12151a;--line:#242a33;--text:#e8edf4;--muted:#8b95a5;--accent:#3ddc97;--warn:#ffb547}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.7}
+  .wrap{max-width:720px;margin:0 auto;padding:36px 22px 80px}
+  a{color:var(--accent)}
+  h1{font-size:34px;line-height:1.2;margin:0 0 10px;letter-spacing:-.02em}
+  h2{font-size:21px;margin:34px 0 10px}
+  p,li{color:#cfd6e0}
+  .meta{color:var(--muted);font-size:13px;margin-bottom:26px}
+  table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--panel);font-weight:600}
+  td:first-child{white-space:nowrap}
+  blockquote{border-left:3px solid var(--accent);margin:18px 0;padding:6px 0 6px 16px;color:#cfd6e0}
+  .cta{margin-top:44px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .cta p{margin:6px 0 14px;color:var(--muted);font-size:14px}
+  .btn{display:inline-block;background:var(--accent);color:#06251a;font-weight:700;text-decoration:none;padding:10px 16px;border-radius:10px}
+  code{background:#161a20;padding:1px 5px;border-radius:4px;font-size:13px}
+  .neg{color:#ff7b7b}.pos{color:#3ddc97}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta">Feiyu Tools · 2026-11-13 · 7 min read · every number below is from the scanner's own log</div>
+  <h1>Anatomy of an altcoin squeeze: three days of INIT</h1>
+  <p>On 10 November, INIT printed <b>+68.9%</b> in 24 hours while its funding sat at
+     <b class="neg">-0.566% per 4 hours</b> — roughly <b>-1,240% annualised</b>. Two days later it was
+     <b class="neg">-44%</b>. The same contract, the same crowd, two very different conclusions.
+     This is what a squeeze actually looks like from the inside, using the data the scanner logged that week.</p>
+
+  <h2>1. What a squeeze is, physically</h2>
+  <p>Forget the charts for a second. A squeeze is a <b>liquidation queue</b>. Shorts hold borrowed exposure with
+     maintenance margin. When price rises, their equity falls. When equity falls below maintenance, the exchange
+     closes them at market — that is a market buy. That buy pushes price higher, which pushes the next short below
+     maintenance, and the queue drains itself in a chain.</p>
+  <p>Three ingredients make that chain violent:</p>
+  <ul>
+    <li><b>Crowded positioning.</b> Too many shorts, visible as persistently negative funding.</li>
+    <li><b>Thin liquidity.</b> Small caps move on less size, so each liquidation covers more ground.</li>
+    <li><b>A catalyst.</b> A listing, a partnership rumour, a large spot buyer, or simply someone deciding to push
+        the queue because they can see it too.</li>
+  </ul>
+  <p>Funding is the only one of the three that is printed on a schedule. That is why it is the first thing I check
+     every morning — see <a href="/blog/funding-rates.html">how to read funding rates and open interest</a> for the
+     basic table.</p>
+
+  <h2>2. The week, as the scanner logged it</h2>
+  <table>
+    <tr><th>Date</th><th>Crowded side</th><th>Funding</th><th>24h move</th><th>Reading</th></tr>
+    <tr><td>11-09</td><td>PIEVERSE</td><td class="pos">+0.079% / 4h</td><td>+39.4%</td><td>Longs paying, longs getting paid — momentum, not squeeze</td></tr>
+    <tr><td>11-10</td><td>INIT</td><td class="neg">-0.566% / 4h</td><td>+68.9%</td><td>Shorts crowded and bleeding — the queue starts draining</td></tr>
+    <tr><td>11-11</td><td>ONE</td><td class="neg">-0.276% / 4h</td><td>+27.9%</td><td>Same structure, smaller size</td></tr>
+    <tr><td>11-12</td><td>JCT</td><td class="pos">+0.056% / 4h</td><td>-47.0%</td><td>Opposite: longs crowded, then dumped</td></tr>
+    <tr><td>11-13</td><td>BARD</td><td class="neg">-1.999% / 4h</td><td>+59.3%</td><td>Extreme: shorts paying ~4,400% a year to stay wrong</td></tr>
+  </table>
+  <p>Read the first column closely. On the days the crowd was short and paying, price went <em>up</em>. On the day
+     the crowd was long and paying (JCT, 11-12), price went <em>down 47%</em>. Funding did not predict the direction
+     of the next candle — it described <b>which side had no room to be wrong</b>.</p>
+
+  <h2>3. The trap nobody warns you about</h2>
+  <p>The obvious mistake is to read extreme negative funding as "shorts are trapped, buy." That is how you end up
+     long the top of the squeeze instead of short the start of it.</p>
+  <p>This is what happened to INIT after the first squeeze:</p>
+  <table>
+    <tr><th>Window</th><th>Funding at the time</th><th>Move</th><th>What the crowd learned</th></tr>
+    <tr><td>11-10</td><td class="neg">-0.566% / 4h</td><td>+68.9%</td><td>Shorts were right to be scared, not right about direction forever</td></tr>
+    <tr><td>11-12</td><td>-0.053% / 1h</td><td>-44.0%</td><td>Funding had normalised — the queue was empty, price could fall again</td></tr>
+    <tr><td>11-13</td><td>-0.133% / 1h</td><td>-15.8%</td><td>Still no squeeze fuel; just drift</td></tr>
+  </table>
+  <blockquote>Extreme funding means "this side is about to be punished." It does not mean "the other side is about to
+     win."</blockquote>
+  <p>The tradable event is not the extreme reading itself. It is the <b>exhaustion</b> of the extreme: funding back
+     toward neutral, open interest down, and price no longer making new highs on the squeeze. That is when the
+     crowd that got liquidated is gone and the move has nothing left behind it.</p>
+
+  <h2>4. The checklist I actually use</h2>
+  <p>Before I short any small-cap perp, four boxes have to be ticked. If one is missing, I wait.</p>
+  <ol>
+    <li><b>Funding is not deeply negative.</b> If shorts are paying more than roughly 0.1% per 4 hours, I do not
+        open a new short — I am joining the queue that is about to be drained, not fading a move that already
+        happened.</li>
+    <li><b>Open interest is falling or flat, not rising.</b> Rising OI into a rally means new longs are still
+        arriving; falling OI means the move is being paid for by closing positions, which fades.</li>
+    <li><b>The coin is underperforming its market.</b> Compare to ETH over the same window. Beta is noise; own
+        weakness is information.</li>
+    <li><b>Liquidity is deep enough to exit.</b> A $2M volume coin with a 30% spread will not let you out at your
+        stop. Size for the exit, not the entry.</li>
+  </ol>
+  <p>And when I am already short and wrong, I leave on structure, not on hope: a run of consecutive strong
+     15-minute candles on a squeeze is the market handing out liquidation tickets, and I do not want one.</p>
+
+  <h2>5. The honest limits</h2>
+  <p>Everything above describes positioning, not price. It tells you when one side is fragile. It does not tell you
+     the day, the hour, or the trigger. Anyone who claims otherwise is selling certainty they do not have.</p>
+  <p>What it does do is keep you out of the worst trade available on any given day: being the crowded side with no
+     room left. In a market where the crowd is usually wrong, that is most of the edge.</p>
+
+  <div class="cta">
+    <h2 style="margin:0 0 6px;font-size:19px">See the scan before you decide</h2>
+    <p>The scanner logs every flag it finds, every day, in public. Look at the last week of data first — it costs
+       nothing and it shows you exactly what these readings look like in practice.</p>
+    <a class="btn" href="/live">Today's free anomaly list →</a>
+    <p style="margin-top:14px">Want the full version that also tracks open interest, 5-minute spikes and coin-vs-market
+       beta, plus the written rules? The <a href="/">radar and journal start at $5</a>.</p>
+  </div>
+
+  <p style="margin-top:30px;color:var(--muted);font-size:13px">Nothing here is financial advice. These are
+     observations from my own trading log. Crypto derivatives can lose you your entire capital.</p>
+  <p style="color:var(--muted);font-size:13px">Related: <a href="/blog/funding-rates.html">reading funding and open
+     interest</a> · <a href="/blog/scan-800-altcoins.html">how the scanner works</a> ·
+     <a href="/blog/trade-journal-lies.html">why trade journals lie</a></p>
+</div>
+</body>
+</html>
