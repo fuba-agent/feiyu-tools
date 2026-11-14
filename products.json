@@ -4,30 +4,73 @@
     "name": "Anomaly Cheat Sheet",
     "tag": "Quick reference",
     "short": "Two pages: how to read funding rates, the price/OI matrix, and 7 rules that survive contact with the market.",
+    "long": "The two-page version of everything I check before shorting an altcoin: how funding is actually paid, what a positive vs negative print means for the crowd, how price and open interest move together, and the seven rules I apply when a chart looks 'obvious'.",
     "price": 5,
-    "image": "cheatsheet.png"
+    "image": "cheatsheet.png",
+    "includes": [
+      "2-page PDF, print-friendly (A4 + US Letter)",
+      "Funding-rate table with the thresholds I actually use",
+      "Price/OI matrix — four quadrants in plain English",
+      "7 entry and exit rules, each with the reason behind it",
+      "One-page checklist for a second monitor"
+    ],
+    "specs": [["Format", "PDF, 2 pages"], ["Works on", "any device"], ["Updates", "free re-download 12 months"]],
+    "forWho": "Traders who already place perpetual futures trades and want a reference sheet that fits on one screen.",
+    "notFor": "Complete beginners — the sheet assumes you know what funding is and how a perp differs from spot."
   },
   {
     "id": "radar-en",
     "name": "Altcoin Anomaly Radar",
     "tag": "Trading tool",
     "short": "Scans every USDT perpetual on Bitget, flags funding extremes, 24h moves, 5-minute spikes and OI jumps — with a plain-English read on each hit.",
+    "long": "Scans every USDT perpetual on Bitget — around 800 contracts — and returns a short list of anomalies instead of a wall of charts: funding extremes, 24-hour moves, 5-minute spikes and open-interest jumps. Every hit comes with a one-line reason it was flagged, so you can dismiss it in two seconds or dig in.",
     "price": 19,
-    "image": "radar.png"
+    "image": "radar.png",
+    "includes": [
+      "Python scanner + one-click launcher",
+      "config file for thresholds and your watchlist",
+      "CSV/JSON export that drops into the journal",
+      "Written guide: how to read the output",
+      "Free updates for 12 months"
+    ],
+    "specs": [["Runs on", "Python 3.10+, no API key"], ["OS", "Windows / macOS / Linux"], ["Refresh", "every 5 minutes"], ["Pairs", "~800 USDT perps"]],
+    "forWho": "Anyone watching more than 30 altcoin perps and tired of scrolling.",
+    "notFor": "People looking for buy/sell signals or auto-trading — the radar only ranks what looks unusual."
   },
   {
     "id": "journal-en",
     "name": "Trade Review Journal",
     "tag": "Excel template",
     "short": "Log 10 fields per trade. It computes win rate, R-multiples, payoff ratio, max drawdown and draws your equity curve automatically.",
+    "long": "A trade log that does the arithmetic you keep putting off. Ten fields per trade, and the workbook computes win rate, R-multiples, payoff ratio, max drawdown and an equity curve — then breaks the results down by setup and by mistake type, so patterns show up before they cost you again.",
     "price": 12,
-    "image": "dashboard.png"
+    "image": "dashboard.png",
+    "includes": [
+      "Excel workbook (.xlsx) with formulas pre-built",
+      "10-field trade log with dropdowns",
+      "Dashboard: win rate, R, payoff, drawdown, equity curve",
+      "Mistake-tag column with pivot summary",
+      "Sample data sheet you can delete"
+    ],
+    "specs": [["Format", "Excel 2016+ / Google Sheets"], ["Macros", "none — nothing to enable"], ["Trades", "up to 2,000 rows"]],
+    "forWho": "Discretionary traders taking more than ~10 trades a month who want to know which setups actually pay.",
+    "notFor": "Fully automated systems that already export their own statistics."
   },
   {
     "id": "bundle-en",
     "name": "Both tools",
     "tag": "Bundle",
     "short": "The radar and the journal together — $6 cheaper than buying them separately.",
-    "price": 25
+    "long": "Radar plus journal, $6 cheaper than buying them separately. The scanner narrows 800 contracts down to a handful; the journal tells you whether your execution on that handful is actually working. They share one export format, so the loop is: scan, trade, log, review.",
+    "price": 25,
+    "includes": [
+      "Altcoin Anomaly Radar (zip)",
+      "Trade Review Journal (workbook)",
+      "Shared CSV export so radar output drops straight into the journal",
+      "Both guides"
+    ],
+    "specs": [["Delivers", "both files above"], ["Saving", "$6 vs separate"], ["Updates", "12 months, both"]],
+    "forWho": "Traders who want the filter and the feedback loop in one purchase.",
+    "notFor": "Anyone who only wants the reference sheet — buy the $5 PDF instead."
   }
 ]
