@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funding is not free money: what a −1% print costs a short</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Funding is not free money: what a −1% print costs a short">
+<meta property="og:description" content="Real prints from this morning's scan, converted into what they actually charge a position per day.">
+<meta property="og:image" content="https://5.83.145.155:8443/static/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="What extreme negative funding actually costs a short position, in dollars per day, using real prints from the scanner.">
+<link rel="icon" type="image/png" href="/static/img/bot-avatar.png">
+<style>
+  :root{--bg:#0b0d10;--panel:#12151a;--line:#242a33;--text:#e8edf4;--muted:#8b95a5;--accent:#3ddc97;--warn:#ffb547}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.7}
+  .wrap{max-width:720px;margin:0 auto;padding:36px 22px 80px}
+  a{color:var(--accent)}
+  h1{font-size:34px;line-height:1.2;margin:0 0 10px;letter-spacing:-.02em}
+  h2{font-size:21px;margin:34px 0 10px}
+  p,li{color:#cfd6e0}
+  .meta{color:var(--muted);font-size:13px;margin-bottom:26px}
+  table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--panel);font-weight:600}
+  td:first-child{white-space:nowrap}
+  blockquote{border-left:3px solid var(--accent);margin:18px 0;padding:6px 0 6px 16px;color:#cfd6e0}
+  .cta{margin-top:44px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .cta p{margin:6px 0 14px;color:var(--muted);font-size:14px}
+  .btn{display:inline-block;background:var(--accent);color:#06251a;font-weight:700;text-decoration:none;padding:10px 16px;border-radius:10px}
+  code{background:#161a20;padding:1px 5px;border-radius:4px;font-size:13px}
+  .fine{color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="meta">Feiyu Tools · 2026-11-14 · 5 min read · every number below comes from the scanner's own log</div>
+  <h1>Funding is not free money: what a −1% print costs a short</h1>
+
+  <p>This morning the scanner flagged six contracts with negative funding. The most extreme was
+     <b>BERA at −1.112% per 4 hours</b>, which the scanner printed as <b>−2436% annualised</b>.
+     The number looks like a gift if you are short. It is not. Converted into what it actually charges
+     a position, it is one of the most expensive trades on the board.</p>
+
+  <h2>1. The conversion everyone skips</h2>
+  <p>Funding is quoted per period — usually 4 hours, sometimes 1 hour. To turn it into a daily cost,
+     multiply by the number of periods in a day. To annualise, multiply by that many again and by 365.</p>
+  <p>So a −1.112% / 4h print costs a short:</p>
+  <ul>
+    <li>1.112% × 6 periods = <b>6.67% per day</b></li>
+    <li>6.67% × 365 = <b>2436% per year</b></li>
+  </ul>
+  <p>On a $1,000 short, that is about <b>$66.72 a day</b> paid to the other side — before you have made
+     or lost a cent on price.</p>
+
+  <h2>2. This morning's board, in dollars</h2>
+  <table>
+    <tr><th>Contract</th><th>Funding</th><th>Per day</th><th>Cost on $1k short</th><th>Move needed to break even</th></tr>
+    <tr><td>BERA</td><td>−1.112% / 4h</td><td>6.67%</td><td>$66.72</td><td>−6.7% within 24h</td></tr>
+    <tr><td>BARD</td><td>−0.794% / 4h</td><td>4.76%</td><td>$47.64</td><td>−4.8%</td></tr>
+    <tr><td>BTW</td><td>−0.476% / 4h</td><td>2.86%</td><td>$28.56</td><td>−2.9%</td></tr>
+    <tr><td>INIT</td><td>−0.107% / 1h</td><td>2.57%</td><td>$25.68</td><td>−2.6%</td></tr>
+    <tr><td>AKE</td><td>−0.135% / 4h</td><td>0.81%</td><td>$8.10</td><td>−0.8%</td></tr>
+    <tr><td>ERA</td><td>−0.092% / 4h</td><td>0.55%</td><td>$5.52</td><td>−0.6%</td></tr>
+  </table>
+  <p>The last column is the useful one. It is your <b>time budget</b>: how far the price has to fall
+     inside 24 hours just to pay for the carry. On BERA you need a 6.7% drop in a day before the short
+     is even flat. That is not a trade — that is a countdown.</p>
+
+  <h2>3. Why the crowd still does it</h2>
+  <p>Because when these prints appear, price often does move fast. AKE was up 256% on the day.
+     A short that catches 10% of that pays the funding many times over. The mistake is not taking the
+     trade; it is <b>staying in it after the move has happened</b>, when the only thing left is the carry.</p>
+  <p>This is the same mechanism behind the squeeze I wrote about in
+     <a href="/blog/altcoin-squeeze-anatomy.html">three days of INIT</a>: shorts crowd in, funding goes
+     deeply negative, shorts pay longs every few hours, and the first leg up forces the weakest shorts to
+     buy back — which is the second leg up. The funding print is not the signal. It is the receipt for
+     who is already trapped.</p>
+
+  <h2>4. What I actually do with a print like this</h2>
+  <ul>
+    <li><b>Compute the daily carry first.</b> If it is above ~2% per day, the trade must work within hours, not days.</li>
+    <li><b>Check whether price already moved.</b> The scanner shows the 24h move next to the funding — a
+        −1% print after a +40% day is a different object from a −1% print on a flat chart.</li>
+    <li><b>Size for the carry, not for the stop.</b> A position that can bleed 6% a day needs to be small
+        enough that two wrong days do not end the month.</li>
+    <li><b>Exit on the funding normalising.</b> When the print comes back toward neutral, the crowd has
+        thinned out and the carry no longer pays you for the risk.</li>
+  </ul>
+
+  <blockquote>
+    Extreme funding is not a direction. It is a price for waiting. The scanner flags it because it changes
+    the cost structure of a position — not because it knows where the price goes next.
+  </blockquote>
+
+  <div class="cta">
+    <h2 style="margin:0 0 4px;font-size:18px">Want the thresholds on one page?</h2>
+    <p>The cheat sheet has the same funding table, the price/OI matrix and the seven rules I apply —
+       $5, delivered as a PDF.</p>
+    <a class="btn" href="/">See the tools →</a>
+  </div>
+
+  <p class="fine" style="margin-top:30px">Nothing here is financial advice. Crypto derivatives can lose you
+     your entire capital. The numbers above come from the scanner's public log for 2026-11-14 and will be
+     different tomorrow.</p>
+</div>
+</body>
+</html>
