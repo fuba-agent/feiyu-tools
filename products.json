@@ -14,7 +14,20 @@
       "7 entry and exit rules, each with the reason behind it",
       "One-page checklist for a second monitor"
     ],
-    "specs": [["Format", "PDF, 2 pages"], ["Works on", "any device"], ["Updates", "free re-download 12 months"]],
+    "specs": [
+      [
+        "Format",
+        "PDF, 2 pages"
+      ],
+      [
+        "Works on",
+        "any device"
+      ],
+      [
+        "Updates",
+        "free re-download 12 months"
+      ]
+    ],
     "forWho": "Traders who already place perpetual futures trades and want a reference sheet that fits on one screen.",
     "notFor": "Complete beginners — the sheet assumes you know what funding is and how a perp differs from spot."
   },
@@ -33,7 +46,24 @@
       "Written guide: how to read the output",
       "Free updates for 12 months"
     ],
-    "specs": [["Runs on", "Python 3.10+, no API key"], ["OS", "Windows / macOS / Linux"], ["Refresh", "every 5 minutes"], ["Pairs", "~800 USDT perps"]],
+    "specs": [
+      [
+        "Runs on",
+        "Python 3.10+, no API key"
+      ],
+      [
+        "OS",
+        "Windows / macOS / Linux"
+      ],
+      [
+        "Refresh",
+        "every 5 minutes"
+      ],
+      [
+        "Pairs",
+        "~800 USDT perps"
+      ]
+    ],
     "forWho": "Anyone watching more than 30 altcoin perps and tired of scrolling.",
     "notFor": "People looking for buy/sell signals or auto-trading — the radar only ranks what looks unusual."
   },
@@ -52,7 +82,20 @@
       "Mistake-tag column with pivot summary",
       "Sample data sheet you can delete"
     ],
-    "specs": [["Format", "Excel 2016+ / Google Sheets"], ["Macros", "none — nothing to enable"], ["Trades", "up to 2,000 rows"]],
+    "specs": [
+      [
+        "Format",
+        "Excel 2016+ / Google Sheets"
+      ],
+      [
+        "Macros",
+        "none — nothing to enable"
+      ],
+      [
+        "Trades",
+        "up to 2,000 rows"
+      ]
+    ],
     "forWho": "Discretionary traders taking more than ~10 trades a month who want to know which setups actually pay.",
     "notFor": "Fully automated systems that already export their own statistics."
   },
@@ -63,13 +106,27 @@
     "short": "The radar and the journal together — $6 cheaper than buying them separately.",
     "long": "Radar plus journal, $6 cheaper than buying them separately. The scanner narrows 800 contracts down to a handful; the journal tells you whether your execution on that handful is actually working. They share one export format, so the loop is: scan, trade, log, review.",
     "price": 25,
+    "image": "bundle.png",
     "includes": [
       "Altcoin Anomaly Radar (zip)",
       "Trade Review Journal (workbook)",
       "Shared CSV export so radar output drops straight into the journal",
       "Both guides"
     ],
-    "specs": [["Delivers", "both files above"], ["Saving", "$6 vs separate"], ["Updates", "12 months, both"]],
+    "specs": [
+      [
+        "Delivers",
+        "both files above"
+      ],
+      [
+        "Saving",
+        "$6 vs separate"
+      ],
+      [
+        "Updates",
+        "12 months, both"
+      ]
+    ],
     "forWho": "Traders who want the filter and the feedback loop in one purchase.",
     "notFor": "Anyone who only wants the reference sheet — buy the $5 PDF instead."
   }
