@@ -150,7 +150,7 @@
 </script>
 <link rel="stylesheet" href="/static/assets/site.css?v=20261117h">
 <script src="/static/assets/i18n.js?v=20261117h" defer></script>
-<link rel="stylesheet" href="/static/assets/site-v4.css?v=20261116d">
+<link rel="stylesheet" href="/static/assets/site-v4.css?v=20261116f">
 
 <!-- hreflang: same page per locale -->
 <link rel="alternate" hreflang="en" href="https://feiyu.tailf83eec.ts.net/index.html?lang=en">
@@ -204,6 +204,13 @@
     </video>
     <div style="color:var(--muted);font-size:13px;margin-top:8px">24-second look at what the scanner sees (real data)</div>
   </div>
+
+  <section class="statstrip" id="statStrip" style="display:none">
+    <div class="si"><span class="sk">Flagged today</span><b id="stToday">—</b></div>
+    <div class="si"><span class="sk">Last 7 scans</span><b id="stWeek">—</b></div>
+    <div class="si"><span class="sk">Scan history</span><b id="stDays">—</b></div>
+    <div class="si"><span class="sk">Payment</span><b>On-chain</b></div>
+  </section>
 
   <section class="today" id="todayBlock" style="display:none">
     <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px">
@@ -593,6 +600,11 @@ async function loadToday(){
     }).join("");
     el("todayBody").innerHTML = rows;
     el("todayMeta").textContent = `${d.items.length} contracts flagged on ${d.date}, ranked by signal strength`;
+    const week = h.slice(-7).reduce((n,x)=> n + ((x.items||[]).length), 0);
+    el("stToday").textContent = d.items.length;
+    el("stWeek").textContent = week;
+    el("stDays").textContent = h.length + " days";
+    el("statStrip").style.display = "flex";
     el("todayBlock").style.display = "block";
   }catch(e){}
 }
