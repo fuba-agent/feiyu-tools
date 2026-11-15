@@ -119,6 +119,8 @@
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0 0}
   .freegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0}
   @media(max-width:900px){.freegrid{grid-template-columns:1fr}}
+  .freegrid.two{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:900px){.freegrid.two{grid-template-columns:1fr}}
   .step{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
   .step b{display:block;font-size:12px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
   .step p{margin:0;color:var(--muted);font-size:13.5px}
@@ -159,7 +161,8 @@
 <a href="/">Home</a>
 <a href="/tools.html">Free calculators</a>
 <a href="/live.html">Live scan</a>
-<a href="/blog/funding-rates.html">Notes</a>
+<a href="/trading.html">Open ledger</a>
+<a href="/notes.html">Notes</a>
 <a href="/about.html">About</a>
 <a href="https://t.me/feiyu_radar_bot" target="_blank">Free bot</a>
 </nav>
@@ -293,6 +296,34 @@
     </div>
   </section>
 
+  <section style="margin:36px 0 6px">
+    <h2 style="margin:0 0 6px;font-size:22px">Nothing to hide behind a screenshot</h2>
+    <p style="color:var(--muted);font-size:14.5px;margin:0 0 18px">
+      Two pages most tool sellers never publish: the demo account I actually trade from, updated every ten minutes,
+      and the rules I trade by &mdash; each one carrying the loss that produced it.
+    </p>
+    <div class="freegrid two">
+      <a class="card" href="/trading.html" style="text-decoration:none;color:inherit;padding:18px 20px">
+        <div class="tag">Open ledger</div>
+        <h3 style="margin:6px 0 8px;font-size:17px">My book, in public</h3>
+        <p style="color:var(--muted);font-size:13.5px;margin:0">
+          Equity, open positions, P&amp;L per day and every closed trade from a Binance futures demo account.
+          Raw exchange data &mdash; if a week is red, the page stays red.
+        </p>
+        <div style="color:var(--accent);font-size:13px;margin-top:12px">Open the ledger &rarr;</div>
+      </a>
+      <a class="card" href="/notes.html" style="text-decoration:none;color:inherit;padding:18px 20px">
+        <div class="tag">Field notes</div>
+        <h3 style="margin:6px 0 8px;font-size:17px">Every rule here cost me money</h3>
+        <p style="color:var(--muted);font-size:13.5px;margin:0">
+          Twelve rules, twelve receipts &mdash; what I was thinking before the mistake, what it cost in USDT, and what
+          changed. Plus a dated log of what I am studying.
+        </p>
+        <div style="color:var(--accent);font-size:13px;margin-top:12px">Read the notes &rarr;</div>
+      </a>
+    </div>
+  </section>
+
   <section class="pay" style="margin-top:-30px">
     <div class="paybox on" style="display:block;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px">
       <p style="color:var(--muted);font-size:14px;margin:0 0 10px">
@@ -318,7 +349,7 @@
         <a href="https://github.com/fuba-agent/altcoin-anomaly-radar" target="_blank" rel="noopener">github.com/fuba-agent/altcoin-anomaly-radar</a>
       </p>
 
-      <h2 style="margin:28px 0 12px;font-size:20px">Notes from the screen</h2>
+      <h2 style="margin:28px 0 12px;font-size:20px"><span id="notes"></span>Notes from the screen</h2>
       <div style="display:grid;gap:0;font-size:14px">
         <a href="/blog/funding-cost.html" style="display:block;text-decoration:none;color:var(--text);border-bottom:1px solid #1b2028;padding:10px 0">
           <b>Funding is not free money: what a −1% print costs a short</b>
