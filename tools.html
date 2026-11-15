@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free trading calculators — Feiyu Tools</title>
+<link rel="icon" type="image/png" href="/static/img/bot-avatar.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Crypto Position, Funding and R:R Calculators","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Three free calculators for perpetual futures traders: convert a funding rate into an annualised cost, estimate liquidation price and position size from leverage, and compute risk/reward after fees."}
+</script>
+<style>
+:root{--bg:#0b0d10;--panel:#12151a;--line:#242a33;--text:#e8edf4;--muted:#8b95a5;--accent:#3ddc97;--warn:#ffb547}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.7}
+.wrap{max-width:1060px;margin:0 auto;padding:24px 20px 80px}
+a{color:var(--accent)}
+h1{font-size:34px;line-height:1.2;margin:0 0 10px;letter-spacing:-.02em}
+h2{font-size:21px;margin:32px 0 8px}
+p,li{color:#cfd6e0}
+.meta{color:var(--muted);font-size:13px;margin-bottom:20px}
+.table{border-collapse:collapse;width:100%;margin:12px 0;font-size:14px}
+.th,.td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.th{background:var(--panel);font-weight:600}
+.td:first-child{white-space:nowrap}
+.blockquote{border-left:3px solid var(--accent);margin:16px 0;padding:4px 0 4px 12px;color:#cfd6e0}
+.cta{margin-top:32px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px}
+.cta p{margin:6px 0 14px;color:var(--muted);font-size:14px}
+.btn{display:inline-block;background:var(--accent);color:#06251a;font-weight:700;text-decoration:none;padding:10px 16px;border-radius:10px}
+.code{background:#161a20;padding:1px 5px;border-radius:4px;font-size:13px;font-family:ui-monospace,Menlo,monospace}
+.fine{color:var(--muted);font-size:13px}
+.calculator{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:22px 0}
+.calculator h2{margin:0 0 14px;font-size:19px}
+.calculator form{display:block;margin:0}
+.calculator form .code{display:block;font-size:12.5px;color:var(--muted);background:none;padding:0;margin:12px 0 5px;font-family:inherit;border-radius:0}
+.calculator input,.calculator select{display:block;background:#171b22;border:1px solid var(--line);color:var(--text);border-radius:9px;padding:9px 11px;font-size:14px;font-family:inherit;width:100%;max-width:320px}
+.calculator input:focus,.calculator select:focus{outline:none;border-color:var(--accent)}
+.calculator .out{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.calculator .out p{margin:5px 0;font-size:14.5px}
+.howto{margin:16px 0 0;color:var(--muted);font-size:13.8px;line-height:1.6}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line);margin-left:8px}
+@media(max-width:700px){.calculator form{grid-template-columns:1fr}}
+
+header{display:block;padding:0 0 6px}
+.brand{font-weight:800;letter-spacing:.14em;font-size:13px;color:var(--text);margin-bottom:18px}
+.topnav{display:flex;flex-wrap:wrap;gap:18px;font-size:13px;margin-bottom:34px}
+.topnav a{color:var(--muted);text-decoration:none}
+.topnav a:hover{color:var(--accent)}
+h1{font-size:34px;line-height:1.15;margin:0 0 12px;letter-spacing:-.02em}
+.lede{color:var(--muted);font-size:15px;max-width:640px;margin:0 0 26px}
+@media(max-width:520px){h1{font-size:26px}.topnav{gap:12px;font-size:12px;margin-bottom:24px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+<div class="brand">FEIYU&middot;TOOLS</div>
+<nav class="topnav">
+<a href="/">Home</a>
+<a href="/tools.html">Free calculators</a>
+<a href="/live.html">Live scan</a>
+<a href="/trading.html">Open ledger</a>
+<a href="/notes.html">Notes</a>
+<a href="/about.html">About</a>
+<a href="https://t.me/feiyu_radar_bot" target="_blank">Free bot</a>
+</nav>
+<h1>Free trading calculators</h1>
+<p class="lede">Three pieces of arithmetic I do before every position &mdash; funding cost, liquidation distance, and whether a trade is worth taking after fees. No sign-up, no email, nothing stored.</p>
+</header>
+
+<section id="calc-funding" class="calculator">
+<h2>1. Funding rate → annualised cost</h2>
+<form name="funding">
+  <div class="code">Funding rate (%): </div><input type="number" name="rate" step="0.0001" min="-100" value="-1.112" required>
+  <div class="code">Settlement interval: </div>
+  <select name="interval" >
+    <option value="1">1h</option>
+    <option value="4" selected>4h</option>
+    <option value="8">8h</option>
+  </select>
+  <div class="code">Direction: </div>
+  <select name="dir" >
+    <option value="long">long</option>
+    <option value="short">short</option>
+  </select>
+  <div class="code">Nominal value (USD): </div><input type="number" name="nominal" step="10" value="1000" min="1" required>
+</form>
+<div id="funding-output"></div>
+<p class="howto"><b>How to use this.</b> Copy the funding rate straight from the exchange's contract details — it is quoted per settlement, usually every 8 hours on Binance or 4 hours on most altcoin pairs, so check the interval before you trust the yearly number. Multiply the per-cycle cost by how many cycles you expect to hold. A position held for six hours pays once, not six times. Negative rates mean shorts pay longs; if the sign flips against your direction, the same number becomes income instead of cost. Before entering any altcoin trade, run the annualised figure against your expected holding period — anything above 100% annualised is a crowded trade, and crowded trades exit through a narrow door.</p>
+</section>
+
+<section id="calc-position" class="calculator">
+<h2>2. Position size & liquidation price</h2>
+<form name="position">
+  <div class="code">Entry price: </div><input type="number" name="entry" step="0.01" value="100" required>
+  <div class="code">Leverage: </div><input type="number" name="lev" step="1" min="1" max="100" value="10" required>
+  <div class="code">Direction: </div>
+  <select name="dir" >
+    <option value="long">long</option>
+    <option value="short">short</option>
+  </select>
+  <div class="code">Margin (USD): </div><input type="number" name="margin" step="10" value="100" min="1" required>
+</form>
+<div id="position-output"></div>
+<p class="howto"><b>How to use this.</b> Enter the price you actually filled at, not the price you wish you had. The liquidation estimate is deliberately conservative — it ignores maintenance margin tiers and funding, so treat it as the earliest point you could be forced out. The practical number is not liquidation, it is where you plan to exit: if your stop sits more than a third of the way to the liquidation price, the position is too large for this market's volatility. For altcoins, halve the leverage you would use on a major pair. The quantity field is the amount of the coin you are actually carrying, which is what you paste into the exchange order form when you want to close a specific fraction of the position.</p>
+</section>
+
+<section id="calc-rr" class="calculator">
+<h2>3. Risk / reward with fees</h2>
+<form name="rr">
+  <div class="code">Entry price: </div><input type="number" name="entry" step="0.01" value="50" required>
+  <div class="code">Stop loss: </div><input type="number" name="sl" step="0.01" value="45" required>
+  <div class="code">Target price: </div><input type="number" name="tp" step="0.01" value="60" required>
+  <div class="code">Position nominal (USD): </div><input type="number" name="nominal" step="10" value="1000" min="1" required>
+  <div class="code">Fee rate bilateral (%): </div><input type="number" name="fee" step="0.01" value="0.06" min="0" required>
+</form>
+<div id="rr-output"></div>
+<p class="howto"><b>How to use this.</b> Put the entry, the stop, and the target where you genuinely expect to exit — not where the chart looks prettiest. The raw ratio is the number most traders quote; the two lines underneath are the ones that matter, because fees are charged on both entry and exit and they quietly eat every trade that barely works. A setup that shows 1.8:1 raw is often 1.5:1 after fees, and at a 40% hit rate 1.5:1 barely breaks even. The breakeven price tells you how far price must travel just to undo the round trip. If your target is inside that band, you are not trading a setup, you are paying the exchange for entertainment.</p>
+</section>
+
+<section class="cta">
+<h2 style="margin-top:0">Want the whole board, not one number?</h2>
+<p>These calculators price a single trade. The Radar scans 800+ USDT perpetual contracts every morning and shows you which ones are behaving abnormally right now — funding far from normal, a 24-hour move that does not match the rest of the market, open interest jumping while price sits still. It shows you what changed, not which way to trade.</p>
+<a class="btn" href="/live.html">See today's anomaly list</a>
+<a class="btn ghost" href="https://t.me/feiyu_radar_bot">Free Telegram bot</a>
+<p class="fine" style="margin-top:12px">The full scanner is $19, paid in BNB or SOL, delivered as files the moment the chain confirms. <a href="/">See what is inside</a>.</p>
+</section>
+
+</div>
+
+<!-- Calculator 1: Funding rate → annualised cost -->
+<script>
+(function(){
+  const form = document.forms.funding;
+  function update(){
+    const rate = parseFloat(form.rate.value) || 0;
+    const interval = parseInt(form.interval.value) || 4;
+    const dir = form.dir.value || 'long';
+    const nominal = parseFloat(form.nominal.value) || 1000;
+    const periodsPerDay = 24 / interval;
+    const costPerCycle = nominal * rate / 100;
+    const costPerDay = costPerCycle * periodsPerDay;
+    const costPerMonth = costPerDay * 30;
+    const annualRate = rate * periodsPerDay * 365;
+    let label = '';
+    if((rate > 0 && dir === 'long') || (rate < 0 && dir === 'short')) {
+      label = 'you pay money';
+    } else {
+      label = 'you receive money';
+    }
+    const signCls = label.includes('pay') ? 'warn' : 'accent';
+    const labelHtml = `<span class="code ${signCls}">${label}</span>`;
+    const html = `<p>Cost per cycle: <strong>${costPerCycle.toFixed(2)}</strong> USD</p>
+<p>Cost per day: <strong>${costPerDay.toFixed(2)}</strong> USD</p>
+<p>Cost per month: <strong>${costPerMonth.toFixed(2)}</strong> USD</p>
+<p>Annualised funding rate: <strong>${annualRate.toFixed(2)}%</strong></p>
+${labelHtml}`;
+    document.getElementById('funding-output').innerHTML = html;
+  }
+  form.rate.addEventListener('input', update);
+  form.interval.addEventListener('change', update);
+  form.dir.addEventListener('change', update);
+  update();
+})();
+</script>
+
+<!-- Calculator 2: Position size & liquidation price -->
+<script>
+(function(){
+  const form = document.forms.position;
+  function update(){
+    const entry = parseFloat(form.entry.value) || 100;
+    const lev = parseFloat(form.lev.value) || 10;
+    const dir = form.dir.value || 'long';
+    const margin = parseFloat(form.margin.value) || 100;
+    const nominal = margin * lev;
+    const qty = nominal / entry;
+    let liqHtml = '';
+    if(dir === 'long'){
+      const liqPrice = entry * (1 - 1/lev + 0.004);
+      const riskPct = (entry - liqPrice) / entry * 100;
+      liqHtml = `<p>Position nominal: <strong>${nominal.toFixed(2)}</strong> USD</p>
+<p>Coin quantity: <strong>${qty.toFixed(6)}</strong></p>
+<p>Liquidation price (approx): <strong class="warn">${liqPrice.toFixed(2)}</strong></p>
+<p>Estimated move to liquidation: <strong>${riskPct.toFixed(2)}%</strong> against your entry</p>
+<p class="fine">Formula: entry × (1 − 1/lev + 0.004), approximate, does not include fees or maintenance margin.</p>`;
+    } else {
+      const liqPrice = entry * (1 + 1/lev - 0.004);
+      const riskPct = (liqPrice - entry) / entry * 100;
+      liqHtml = `<p>Position nominal: <strong>${nominal.toFixed(2)}</strong> USD</p>
+<p>Coin quantity: <strong>${qty.toFixed(6)}</strong></p>
+<p>Liquidation price (approx): <strong class="warn">${liqPrice.toFixed(2)}</strong></p>
+<p>Estimated move to liquidation: <strong>${riskPct.toFixed(2)}%</strong> against your entry</p>
+<p class="fine">Formula: entry × (1 + 1/lev − 0.004), approximate, does not include fees or maintenance margin.</p>`;
+    }
+    document.getElementById('position-output').innerHTML = liqHtml;
+  }
+  form.entry.addEventListener('input', update);
+  form.lev.addEventListener('input', update);
+  form.dir.addEventListener('change', update);
+  update();
+})();
+</script>
+
+<!-- Calculator 3: Risk / reward with fees -->
+<script>
+(function(){
+  const form = document.forms.rr;
+  function update(){
+    const entry = parseFloat(form.entry.value) || 50;
+    const sl = parseFloat(form.sl.value) || 45;
+    const tp = parseFloat(form.tp.value) || 60;
+    const nominal = parseFloat(form.nominal.value) || 1000;
+    const feeRate = parseFloat(form.fee.value) || 0.06;
+    const feeUSD = nominal * feeRate / 100;
+    let isLong = entry < tp ? 'long' : 'short'; // determine direction from price spread
+    if(tp > entry && sl < entry) isLong = 'long';
+    else if(tp < entry && sl > entry) isLong = 'short';
+    else isLong = 'long';
+    
+    let rrRaw, riskUsd, rewardUsd, breakeven;
+    if(isLong === 'long'){
+      const rawRisk = entry - sl;
+      const rawReward = tp - entry;
+      rrRaw = rawReward / rawRisk;
+      riskUsd = nominal * rawRisk / entry;
+      rewardUsd = nominal * rawReward / entry;
+      const netRisk = riskUsd + feeUSD;
+      const netReward = rewardUsd - feeUSD;
+      breakeven = entry + feeUSD * entry / nominal;
+      let label = '';
+      if(netReward > 0) label = 'you receive money';
+      else label = 'you pay money';
+      const signCls = label.includes('pay') ? 'warn' : 'accent';
+      const html = `<p>R:R ratio (raw): <strong>${rrRaw.toFixed(2)}:1</strong></p>
+<p>Loss to stop (incl. fees): <strong class="warn">${netRisk.toFixed(2)}</strong> USD</p>
+<p>Profit to target (incl. fees): <strong class="${signCls}">${netReward.toFixed(2)}</strong> USD</p>
+<p>Breakeven price: <strong>${breakeven.toFixed(2)}</strong></p>`;
+      document.getElementById('rr-output').innerHTML = html;
+    } else {
+      const rawRisk = sl - entry;
+      const rawReward = entry - tp;
+      rrRaw = rawReward / rawRisk;
+      riskUsd = nominal * rawRisk / entry;
+      rewardUsd = nominal * rawReward / entry;
+      const netRisk = riskUsd + feeUSD;
+      const netReward = rewardUsd - feeUSD;
+      breakeven = entry - feeUSD * entry / nominal;
+      let label = '';
+      if(netReward > 0) label = 'you receive money';
+      else label = 'you pay money';
+      const signCls = label.includes('pay') ? 'warn' : 'accent';
+      const html = `<p>R:R ratio (raw): <strong>${rrRaw.toFixed(2)}:1</strong></p>
+<p>Loss to stop (incl. fees): <strong class="warn">${netRisk.toFixed(2)}</strong> USD</p>
+<p>Profit to target (incl. fees): <strong class="${signCls}">${netReward.toFixed(2)}</strong> USD</p>
+<p>Breakeven price: <strong>${breakeven.toFixed(2)}</strong></p>`;
+      document.getElementById('rr-output').innerHTML = html;
+    }
+  }
+  form.entry.addEventListener('input', update);
+  form.sl.addEventListener('input', update);
+  form.tp.addEventListener('input', update);
+  form.nominal.addEventListener('input', update);
+  form.fee.addEventListener('input', update);
+  update();
+})();
+</script>
+
+<footer class="fine">
+  Free trading calculators — Feiyu Tools · <a href="/">Home</a> · Blog · <a href="https://t.me/feiyu_radar_bot" target="_blank">@feiyu_radar_bot</a>
+</footer>
+
+<link rel="stylesheet" href="/static/assets/chat.css?v=20261116a">
+<script src="/static/assets/chat.js?v=20261116a" defer></script>
+</body>
+</html>
