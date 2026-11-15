@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Feiyu Tools</title>
+<meta name="description" content="Who builds Feiyu Tools: a discretionary crypto trader who codes. Why the scanner exists, how the journal is used, what is free and what costs money.">
+<meta property="og:title" content="About Feiyu Tools">
+<meta property="og:description" content="A discretionary trader's own tools, sold as files. No account, no signals, no subscription.">
+<link rel="icon" type="image/png" href="/static/img/bot-avatar.png">
+<style>
+  :root{
+    --bg:#0b0d10; --panel:#12151a; --panel2:#171b22; --line:#242a33;
+    --text:#e8edf4; --muted:#8b95a5; --accent:#3ddc97; --accent2:#ffb547;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px}
+  header{padding:24px 0 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .brand{font-weight:700;letter-spacing:.02em}
+  .brand span{color:var(--accent)}
+  nav{display:flex;gap:18px;font-size:14px}
+  nav a{color:var(--muted)}
+  nav a:hover{color:var(--text);text-decoration:none}
+  h1{font-size:38px;line-height:1.15;letter-spacing:-.02em;margin:44px 0 10px}
+  .lede{color:var(--muted);font-size:17px;margin:0 0 34px}
+  h2{font-size:20px;margin:34px 0 10px}
+  p{color:#c3ccd8;font-size:15.5px;margin:0 0 14px}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:24px 0}
+  .panel h3{margin:0 0 8px;font-size:16px}
+  .panel p:last-child{margin-bottom:0}
+  ul{color:#c3ccd8;font-size:15.5px;padding-left:20px;margin:0 0 14px}
+  li{margin-bottom:8px}
+  .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:22px 0 6px}
+  .fact{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .fact b{display:block;font-size:22px;font-family:var(--mono);color:var(--accent2)}
+  .fact span{font-size:13px;color:var(--muted)}
+  @media(max-width:640px){.facts{grid-template-columns:1fr}h1{font-size:29px}nav{font-size:13px;gap:12px}}
+  .cta{background:var(--panel2);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:34px 0}
+  .cta p{margin:0 0 12px}
+  .btn{display:inline-block;background:var(--accent);color:#06251a;font-weight:700;font-size:14px;padding:11px 18px;border-radius:10px}
+  .btn:hover{text-decoration:none;filter:brightness(1.08)}
+  footer{border-top:1px solid var(--line);margin-top:44px;padding:24px 0 50px;color:#6c7686;font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">FEIYU<span>·</span>TOOLS</div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/tools.html">Free calculators</a>
+      <a href="/live.html">Live scan</a>
+<a href="/trading.html">Open ledger</a>
+      <a href="/notes.html">Notes</a>
+      <a href="https://t.me/feiyu_radar_bot" target="_blank">Free bot</a>
+    </nav>
+  </header>
+
+  <h1>I build the tools I use every morning.</h1>
+  <p class="lede">Feiyu Tools is a two-person operation where both people are the same trader. Nothing here was designed by committee or validated by a growth team — each file exists because I needed it at 3am and got tired of doing it by hand.</p>
+
+  <div class="facts">
+    <div class="fact"><b>9 years</b><span>in markets: stocks, futures, gold, then crypto perpetuals</span></div>
+    <div class="fact"><b>800+</b><span>USDT perpetual contracts scanned every morning</span></div>
+    <div class="fact"><b>0 accounts</b><span>no sign-up, no email, no API keys, no subscription</span></div>
+    <div class="fact"><b>12 months</b><span>of free updates on every file, same download link</span></div>
+  </div>
+
+  <h2>Why the scanner exists</h2>
+  <p>I trade a small book, mostly short altcoin perpetuals. The edge I actually have is not prediction — it is attention. If I can look at 800 contracts in a way that takes thirty seconds instead of ninety minutes, I make fewer lazy decisions and I stop opening positions simply because a chart was already on my screen.</p>
+  <p>The scanner does one thing: it narrows the board to the handful of contracts behaving abnormally right now — funding far from normal, a 24-hour move that does not match the rest of the market, a five-minute spike, open interest jumping while price does not. It does not rank them, score them, or tell you which way to trade. That part is still yours, and it should be.</p>
+
+  <h2>Why the journal exists</h2>
+  <p>I kept repeating the same three mistakes for years, and my P&amp;L was too coarse to show them. A journal that only records "win" and "loss" cannot tell you whether you lose money because of entries or because you move stops. So the template computes the things that actually change behaviour: R-multiples instead of dollars, payoff ratio next to win rate, drawdown, expectancy by setup, and the gap between your planned stop and the stop you actually honoured.</p>
+  <p>It is an Excel file because I do not want to log into anything, and because you should own the sheet you keep your own history in.</p>
+
+  <h2>How I trade — the short version</h2>
+  <ul>
+    <li><b>Fixed risk per trade</b>, decided before the entry, never adjusted because a trade is going badly. The most expensive habit in this market is widening a stop.</li>
+    <li><b>Limit orders only.</b> If the price is not where I planned, I am not in.</li>
+    <li><b>Small book, one position at a time.</b> Correlated altcoins are one bet wearing five tickers.</li>
+    <li><b>No signals, no calls, no group.</b> Everything I sell is software that reads public data. Nothing is a recommendation.</li>
+  </ul>
+  <p>If you want the longer version, it is scattered through the notes: <a href="/blog/funding-rates.html">how to read funding rates and open interest</a>, <a href="/blog/altcoin-squeeze-anatomy.html">what a squeeze looks like from the inside</a>, and <a href="/blog/trade-journal-lies.html">the four numbers most trade journals never compute</a>.</p>
+
+  <h2>What is free, and what is not</h2>
+  <p>Free: the daily public anomaly list on <a href="/live.html">the live page</a>, the <a href="/tools.html">position and funding calculators</a>, the Telegram bot, and the lite scanner source on <a href="https://github.com/fuba-agent/altcoin-anomaly-radar" target="_blank" rel="noopener">GitHub</a>. Read the code before you pay for anything — that is the point of publishing it.</p>
+  <p>Paid: the full scanner, the journal, and the cheat sheet. Five to nineteen dollars, paid in BNB or SOL, delivered as files on this site the moment the chain confirms. There is no upsell, no course, no mentorship, and no "community" to join afterwards.</p>
+
+  <div class="panel">
+    <h3>What I will not do</h3>
+    <p>I will not tell you which coin to trade, where to enter, or when to exit. I will not manage money, take a cut of profits, or accept payment in exchange for a "call". If you message asking for a signal, the answer is the same every time: this is data, not advice. That rule exists because I watched people — including me — lose money by copying confidence from someone who had none.</p>
+  </div>
+
+  <h2>Support and refunds</h2>
+  <p>Every file is tested on a clean machine before it ships, and the purchase page says exactly what you get. If a file does not open, or the payment confirms and nothing arrives, message me and I will fix it or refund the same amount in the same coin. Digital sales are otherwise final — no exceptions for "I changed my mind", because the file is already on your disk.</p>
+  <p>Telegram: <a href="https://t.me/feiyu1108" target="_blank" rel="noopener">@feiyu1108</a>. I answer in English and Chinese, usually within a few hours.</p>
+
+  <div class="cta">
+    <p><b style="font-size:16px">Start with something free.</b><br>See what the scanner flagged today before spending anything.</p>
+    <a class="btn" href="/live.html">Today's anomaly list</a>
+    <a class="btn" href="/tools.html" style="background:transparent;color:var(--text);border:1px solid var(--line);margin-left:8px">Free calculators</a>
+  </div>
+
+  <footer>
+    <div>Feiyu Tools · independent tools for crypto traders</div>
+    <div style="margin-top:10px">Nothing sold here is financial advice. Crypto derivatives can lose you your entire capital. All tools are read-only software that never connects to your exchange account.</div>
+  </footer>
+</div>
+<link rel="stylesheet" href="/static/assets/chat.css?v=20261116a">
+<script src="/static/assets/chat.js?v=20261116a" defer></script>
+</body>
+</html>
