@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://fuba-agent.github.io/feiyu-tools/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://fuba-agent.github.io/feiyu-tools/live.html</loc><changefreq>hourly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://fuba-agent.github.io/feiyu-tools/tools.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://fuba-agent.github.io/feiyu-tools/about.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://fuba-agent.github.io/feiyu-tools/blog/funding-rates.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://fuba-agent.github.io/feiyu-tools/blog/altcoin-squeeze-anatomy.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://fuba-agent.github.io/feiyu-tools/blog/scan-800-altcoins.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://fuba-agent.github.io/feiyu-tools/blog/trade-journal-lies.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://fuba-agent.github.io/feiyu-tools/blog/funding-cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://fuba-agent.github.io/feiyu-tools/how-to-buy.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://fuba-agent.github.io/feiyu-tools/history.html</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-  <url><loc>https://fuba-agent.github.io/feiyu-tools/trading.html</loc><changefreq>hourly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://fuba-agent.github.io/feiyu-tools/notes.html</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://feiyu.tailf83eec.ts.net/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://feiyu.tailf83eec.ts.net/live.html</loc><changefreq>hourly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://feiyu.tailf83eec.ts.net/tools.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://feiyu.tailf83eec.ts.net/about.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://feiyu.tailf83eec.ts.net/blog/funding-rates.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://feiyu.tailf83eec.ts.net/blog/altcoin-squeeze-anatomy.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://feiyu.tailf83eec.ts.net/blog/scan-800-altcoins.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://feiyu.tailf83eec.ts.net/blog/trade-journal-lies.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://feiyu.tailf83eec.ts.net/blog/funding-cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://feiyu.tailf83eec.ts.net/how-to-buy.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://feiyu.tailf83eec.ts.net/history.html</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+  <url><loc>https://feiyu.tailf83eec.ts.net/trading.html</loc><changefreq>hourly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://feiyu.tailf83eec.ts.net/notes.html</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
 </urlset>
