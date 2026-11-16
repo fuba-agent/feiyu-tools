@@ -380,6 +380,7 @@ html{scroll-padding-top:112px}
 
 
 </style>
+  <link rel="stylesheet" href="/static/assets/chat.css?v=20261116a">
 </head>
 <body id="top">
 <div class="ticker" aria-label="实时异动"><div class="tk-tag"><span class="tk-dot"></span>异动直播 · BYBIT 永续</div><div class="tk-view"><div class="tk-track"><div class="tk-seg"><span><b>EVAA</b><i class="up">▲ +85.90%</i></span><span><b>RARE</b><i class="up">▲ +51.43%</i></span><span><b>ARIA</b><i class="up">▲ +22.00%</i></span><span><b>JCT</b><i class="up">▲ +11.44%</i></span><span><b>KORU</b><i class="up">▲ +10.26%</i></span><span><b>AAVE</b><i class="up">▲ +9.85%</i></span><span><b>SOPH</b><i class="dn">▼ -45.06%</i></span><span><b>SOXS</b><i class="dn">▼ -7.19%</i></span><span><b>AKE</b><i class="dn">▼ -4.67%</i></span><span><b>CL</b><i class="dn">▼ -0.33%</i></span><span><b>1000PEPE</b><i class="up">▲ +1.13%</i></span><span><b>XAUT</b><i class="up">▲ +1.83%</i></span></div><div class="tk-seg"><span><b>EVAA</b><i class="up">▲ +85.90%</i></span><span><b>RARE</b><i class="up">▲ +51.43%</i></span><span><b>ARIA</b><i class="up">▲ +22.00%</i></span><span><b>JCT</b><i class="up">▲ +11.44%</i></span><span><b>KORU</b><i class="up">▲ +10.26%</i></span><span><b>AAVE</b><i class="up">▲ +9.85%</i></span><span><b>SOPH</b><i class="dn">▼ -45.06%</i></span><span><b>SOXS</b><i class="dn">▼ -7.19%</i></span><span><b>AKE</b><i class="dn">▼ -4.67%</i></span><span><b>CL</b><i class="dn">▼ -0.33%</i></span><span><b>1000PEPE</b><i class="up">▲ +1.13%</i></span><span><b>XAUT</b><i class="up">▲ +1.83%</i></span></div></div></div></div>
@@ -460,7 +461,7 @@ html{scroll-padding-top:112px}
         <h3><s>06</s>更新日志</h3>
         <div class="log">
           <div class="logrow"><div class="d">2026-11-16</div><div><b>视觉改版</b><span>全站换成深夜蓝，顶部加了一条异动直播，手机端整页重排成底部四个 tab 的 App 形态——不是把桌面页挤窄。</span></div></div>
-          <div class="logrow"><div class="d">2026-11-15</div><div><b>爆仓流上线</b><span>先跑示例流；Bybit 的 allForceOrder 和 Binance 的 forceOrder 实时接入在做，接完会真的往下滚。</span></div></div>
+          <div class="logrow"><div class="d">2026-11-15</div><div><b>爆仓流与资费上线</b><span>爆仓流、六所资费对比和热度网格都接了真数据：资费每两分钟刷新，爆仓单来自 Bybit，取不到就明说，不拿假数字凑。</span></div></div>
           <div class="logrow next"><div class="d">接下来</div><div><b>三件事</b><span>跨所资费差自动对齐、爆仓流接实时 WS、自选同步到账号（现在只存本地，换设备就没了）。</span></div></div>
         </div>
       </article>
@@ -501,7 +502,7 @@ html{scroll-padding-top:112px}
         <div class="ch">口径</div>
         <a href="/watch.html"><span>异动榜数据</span><em>11-15</em></a>
         <a href="/watch.html#heat"><span>热度网格</span><em>11-16</em></a>
-        <a href="/watch.html#funding"><span>费率</span><em>示例</em></a>
+        <a href="/watch.html#funding"><span>费率</span><em>实时</em></a>
       </div>
     </aside>
   </div>
@@ -661,5 +662,7 @@ html,body{overflow-x:hidden!important}
 .qpack+.qpack{margin-top:0!important}
 .pkrow{padding:10px 0!important}
 .pkprice,.pkbuy{font-size:15px!important}
-.faqitem{border-radius:0!important;border:0!important;border-bottom:1px solid #1C1F23!important;background:transparent!important}}</style></body>
+.faqitem{border-radius:0!important;border:0!important;border-bottom:1px solid #1C1F23!important;background:transparent!important}}</style><script src="/static/assets/i18n-full.js?v=20261116a" defer data-fy-i18n></script>
+<script src="/static/assets/chat.js?v=20261116a" defer data-fy-chat></script>
+</body>
 </html>
