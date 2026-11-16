@@ -146,11 +146,11 @@ tbody tr.mover:hover .sym b{color:#fff}
 .pp s{display:block;font-size:9px;color:#63666B;text-decoration:none;letter-spacing:.12em;margin-top:3px}
 .pb{justify-self:end}
 .pb a,.pb button{display:inline-flex;align-items:center;justify-content:center;height:44px;min-width:44px;padding:0 14px;border:1px solid rgba(255,255,255,.22);border-radius:2px;font-size:12.5px;color:#E9EAEC;background:none;font-family:inherit;cursor:pointer;letter-spacing:.04em}
-.pb a:hover,.pb button:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.pb a:hover,.pb button:hover{background:var(--blue);border-color:var(--blue);color:#101215}
 .allmore{color:var(--mut);font-size:12px}
 .prow.hot .pp{color:var(--warn)}
 .prow.hot .pn i{background:var(--warn)}
-.prow.hot .pb a,.prow.hot .pb button{background:var(--blue);border-color:var(--blue);color:#fff}
+.prow.hot .pb a,.prow.hot .pb button{background:var(--blue);border-color:var(--blue);color:#101215}
 .pnote{display:flex;justify-content:space-between;gap:24px;margin-top:16px;font-size:12px;color:#6F7276;line-height:1.8}
 .pnote b{color:#9EA1A6;font-weight:500}
 
@@ -450,28 +450,28 @@ a.hit:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
       <div class="pd">两页 PDF。当天异动按涨跌幅和成交额排好，打开就能看，也方便直接截图发群。</div>
       <div class="pf">不想自己一列列翻表的时候</div>
       <div class="pp">$5<s>USDT · 一次性</s></div>
-      <div class="pb"><button type="button">买</button></div>
+      <div class="pb"><a href="/checkout.html?p=cheatsheet">买</a></div>
     </div>
     <div class="prow">
       <div class="pn">异动雷达</div>
       <div class="pd">一个 Python 脚本。扫 Bitget 上 800 个 USDT 永续，把异动推到你的 TG，不用盯着屏幕。</div>
       <div class="pf">想全市场盯一遍，不只盯榜单</div>
       <div class="pp">$19<s>USDT · 一次性</s></div>
-      <div class="pb"><button type="button">买</button></div>
+      <div class="pb"><a href="/checkout.html?p=radar-en">买</a></div>
     </div>
     <div class="prow">
       <div class="pn">复盘表格</div>
       <div class="pd">Excel。填进去自动算盈亏、胜率、连亏、最大回撤，月底打开就知道自己错在哪类单上。</div>
       <div class="pf">打完单想记账、想复盘</div>
       <div class="pp">$12<s>USDT · 一次性</s></div>
-      <div class="pb"><button type="button">买</button></div>
+      <div class="pb"><a href="/checkout.html?p=journal-en">买</a></div>
     </div>
     <div class="prow hot">
       <div class="pn">雷达 + 表格<i>省 6</i></div>
       <div class="pd">上面两件一起拿。扫到异动之后，用同一张表把这一单记下来，前后接得上。</div>
       <div class="pf">打算长期用的一套</div>
       <div class="pp">$25<s>USDT · 两件</s></div>
-      <div class="pb"><button type="button">买</button></div>
+      <div class="pb"><a href="/checkout.html?p=bundle-en">买</a></div>
     </div>
   </div>
   <div class="pnote">
@@ -521,8 +521,36 @@ a.hit:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
 
 <header class="mbar"><div class="mbar-in">
   <a class="mbrand" href="#top"><b>肥鱼工具铺</b><span>FEIYU TOOLS</span></a>
-  <button class="micon" aria-label="搜索工具"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.4"/><path d="M15.8 15.8L20.5 20.5"/></svg></button>
+  <button class="micon" id="mSearchBtn" type="button" aria-label="搜索工具"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.4"/><path d="M15.8 15.8L20.5 20.5"/></svg></button>
 </div></header>
+<style>#mSearch::backdrop{background:rgba(0,0,0,.62)}#mSearchHits a{display:block;padding:11px 12px;border-radius:7px;color:#EDEEF0;text-decoration:none;font-size:14px}#mSearchHits a:hover{background:rgba(255,255,255,.08)}</style>
+<dialog id="mSearch" style="width:min(92vw,420px);padding:0;border:0;border-radius:12px;background:#15171A;color:#EDEEF0;box-shadow:0 24px 80px rgba(0,0,0,.6)">
+  <form method="dialog" style="display:flex;gap:8px;padding:12px;border-bottom:1px solid rgba(255,255,255,.1)">
+    <input id="mSearchInput" aria-label="搜索工具" placeholder="搜索工具：看盘 / 费率 / 仓位 / 复盘" style="flex:1;min-width:0;height:40px;padding:0 10px;border:1px solid rgba(255,255,255,.18);border-radius:7px;background:#0E0F11;color:#EDEEF0;font:14px/1.4 inherit;outline:none">
+    <button type="submit" style="height:40px;padding:0 12px;border:1px solid rgba(255,255,255,.18);border-radius:7px;background:none;color:#EDEEF0;font:13px/1.4 inherit;cursor:pointer">关闭</button>
+  </form>
+  <div id="mSearchHits" style="padding:8px;min-height:72px"></div>
+</dialog>
+<script>
+(function(){
+  var btn=document.getElementById('mSearchBtn'),dlg=document.getElementById('mSearch'),inp=document.getElementById('mSearchInput'),box=document.getElementById('mSearchHits');
+  if(!btn||!dlg||!inp||!box)return;
+  var items=[];
+  function add(label,href){label=(label||'').replace(/\s+/g,' ').trim();if(!label||!href)return;for(var i=0;i<items.length;i++)if(items[i].href===href&&items[i].label===label)return;items.push({label:label,href:href});}
+  Array.prototype.forEach.call(document.querySelectorAll('#tools a,#mtools a,#packs a'),function(a){add(a.textContent,a.getAttribute('href'));});
+  [['异动榜','/watch.html#movers'],['自选合约','/watch.html#fav'],['资金费率','/watch.html#funding'],['爆仓流','/watch.html#liq'],['仓位计算','/trade.html#calc'],['复盘记录','/trade.html#journal'],['数据包','/packs.html#packs'],['使用说明','/about.html']].forEach(function(x){add(x[0],x[1]);});
+  function render(){
+    var q=(inp.value||'').trim().toLowerCase();box.innerHTML='';
+    if(!q){box.innerHTML='<p style="margin:8px 10px;color:#8C8F94;font-size:13px">输入关键词：看盘、费率、仓位、复盘、数据包</p>';return;}
+    var hits=items.filter(function(x){return x.label.toLowerCase().indexOf(q)>=0;}).slice(0,8);
+    if(!hits.length){box.innerHTML='<p style="margin:8px 10px;color:#8C8F94;font-size:13px">没找到，试试「看盘」「费率」「仓位」「复盘」。</p>';return;}
+    hits.forEach(function(x){var a=document.createElement('a');a.href=x.href;a.textContent=x.label;box.appendChild(a);});
+  }
+  btn.addEventListener('click',function(){if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');inp.value='';render();setTimeout(function(){inp.focus();},30);});
+  inp.addEventListener('input',render);
+  dlg.addEventListener('close',function(){inp.value='';});
+})();
+</script>
 
 <section class="mhero">
   <div class="meye"><i></i><span>11-16 12:16 · 42 个合约</span></div>
@@ -598,10 +626,10 @@ a.hit:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
 <section class="msec" id="mpacks">
   <div class="msec-h"><h2>数据包</h2><span>一次性买断</span></div>
   <div class="mpacks">
-    <div class="mprow"><div class="lft"><div class="pn">异动速查表</div><div class="pd">两页 PDF，当天异动排好直接发群</div></div><div class="pp">$5<s>USDT</s></div></div>
-    <div class="mprow"><div class="lft"><div class="pn">异动雷达</div><div class="pd">Python 脚本，扫 Bitget 800 个永续</div></div><div class="pp">$19<s>USDT</s></div></div>
-    <div class="mprow"><div class="lft"><div class="pn">复盘表格</div><div class="pd">Excel，自动算盈亏胜率回撤</div></div><div class="pp">$12<s>USDT</s></div></div>
-    <div class="mprow"><div class="lft"><div class="pn">雷达 + 表格</div><div class="pd">两件一起，省 6 USDT</div></div><div class="pp" style="color:var(--warn)">$25<s>USDT</s></div></div>
+    <a class="mprow" href="/checkout.html?p=cheatsheet" style="color:inherit;text-decoration:none"><div class="lft"><div class="pn">异动速查表</div><div class="pd">两页 PDF，当天异动排好直接发群</div></div><div class="pp">$5<s>USDT</s></div></a>
+    <a class="mprow" href="/checkout.html?p=radar-en" style="color:inherit;text-decoration:none"><div class="lft"><div class="pn">异动雷达</div><div class="pd">Python 脚本，扫 Bitget 800 个永续</div></div><div class="pp">$19<s>USDT</s></div></a>
+    <a class="mprow" href="/checkout.html?p=journal-en" style="color:inherit;text-decoration:none"><div class="lft"><div class="pn">复盘表格</div><div class="pd">Excel，自动算盈亏胜率回撤</div></div><div class="pp">$12<s>USDT</s></div></a>
+    <a class="mprow" href="/checkout.html?p=bundle-en" style="color:inherit;text-decoration:none"><div class="lft"><div class="pn">雷达 + 表格</div><div class="pd">两件一起，省 6 USDT</div></div><div class="pp" style="color:var(--warn)">$25<s>USDT</s></div></a>
   </div>
   <p class="mpay">付款：BNB（BNB Chain）、SOL（Solana），不支持 USDT / ETH / TRC20。付款后页面立刻给下载链接。</p>
 </section>
@@ -633,8 +661,8 @@ a.hit:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
 .btn{background:#1E2126!important;border:1px solid rgba(237,238,240,.34)!important;color:#F2F3F4!important}
 .btn:hover{background:#EDEEF0!important;border-color:#EDEEF0!important;color:#101215!important}
 .pb a:hover,.pb button:hover,.prow.hot .pb a,.prow.hot .pb button{background:#EDEEF0!important;border-color:#EDEEF0!important;color:#101215!important}
-.pn i,.t1a em{background:#23262B!important;color:#F04452!important;border-color:#3A3D42!important}
-.tk-tag{background:#23262B!important;color:#F04452!important}.tk-dot{background:#F04452!important}
+.pn i,.t1a em{background:#23262B!important;color:#F55460!important;border-color:#3A3D42!important}
+.tk-tag{background:#23262B!important;color:#F55460!important}.tk-dot{background:#F04452!important}
 </style><style>.duo button.on,.duo a.on,.duo .on{background:#26292E!important;color:#F2F3F4!important;border:1px solid #46494E!important;box-shadow:none!important}
 .seg button.on,.seg a.on,.seg .on{background:#26292E!important;color:#F2F3F4!important;border-color:#46494E!important}
 </style><style>.seg button.on,.qseg button.on,.duo button.on,.seg a.on,.qseg a.on{background:#26292E!important;color:#F2F3F4!important;border:1px solid #46494E!important;box-shadow:none!important}
