@@ -275,9 +275,9 @@ body{font-size:15px}
 .tk-dot{width:6px;height:6px;border-radius:50%;background:#101215;animation:tkblink 1.8s ease-in-out infinite}
 @keyframes tkblink{0%,100%{opacity:1}50%{opacity:.25}}
 .tk-view{flex:1;min-width:0;overflow:hidden;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent)}
-.tk-track{display:inline-flex;white-space:nowrap;animation:tkrun 46s linear infinite;will-change:transform}
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 28px,#000 calc(100% - 36px),transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 28px,#000 calc(100% - 36px),transparent)}
+.tk-track{display:inline-flex;white-space:nowrap;padding-left:28px;animation:tkrun 46s linear infinite;will-change:transform}
 .tk-seg{display:inline-flex;gap:26px;padding-right:26px}
 .tk-seg span{color:rgba(255,255,255,.55)}
 .tk-seg b{color:#fff;font-weight:600;margin-right:5px}
@@ -380,7 +380,7 @@ html{scroll-padding-top:112px}
 
 
 </style>
-  <link rel="stylesheet" href="/static/assets/chat.css?v=20261116d">
+  <link rel="stylesheet" href="/static/assets/chat.css?v=20261116e">
 <link id="fy-theme-light" rel="stylesheet" href="/static/assets/theme-light.css?v=20261116e" disabled>
 <script>(function(){try{var q=new URLSearchParams(location.search).get("t");var t=(q==="light"||q==="dark")?q:localStorage.getItem("fy_theme");if(t==="light"){document.documentElement.setAttribute("data-theme","light");var l=document.getElementById("fy-theme-light");if(l)l.disabled=false;}else{document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
 <script src="/js/theme.js?v=20261116b" defer></script>
@@ -456,7 +456,7 @@ html{scroll-padding-top:112px}
         <h3><s>05</s>收钱的地方</h3>
         <p>九个工具免费。没有注册、没有试用期、没有「高级版」、没有藏起来的每日次数。</p>
         <p>四份数据包 5–25 USDT，一次性买断：异动速查表 $5、异动雷达 $19、复盘表格 $12、雷达 + 表格 $25（省 6）。</p>
-        <p>钱用来付服务器和行情接口的账单。付款支持 <b>USDT（BNB Chain / Solana）、BNB、SOL、ETH</b>，不支持 TRC20；付款后页面立刻给下载链接，不经过邮箱，也不存你的地址。</p>
+        <p>钱用来付服务器和行情接口的账单。付款支持 <b>BNB（BNB Chain）、SOL（Solana）</b>，不支持 USDT / ETH / TRC20；付款后页面立刻给下载链接，不经过邮箱，也不存你的地址。</p>
         <p>不想买也正常，免费的部分够用了。</p>
       </article>
 
@@ -514,7 +514,7 @@ html{scroll-padding-top:112px}
   <div class="fg">
     <div><h5>肥鱼工具铺 · FEIYU TOOLS</h5><p>一个人做的站。九个工具全免费，四份数据包收点钱，就这么简单。<br>不接广告，不卖课，不带单。</p><p style="margin-top:10px"><a href="https://t.me/siren1109" target="_blank" rel="noopener">TG @siren1109</a></p></div>
     <div><h5>目录</h5><ul><li><a href="/watch.html">看盘</a></li><li><a href="/#tools">九个工具</a></li><li><a href="/#packs">数据包</a></li><li><a href="/about.html">说明</a></li></ul></div>
-    <div><h5>说明</h5><p>数据来自交易所公开接口，有延迟，仅作信息整理，不构成投资建议。合约交易会亏光本金，别拿输不起的钱进场。</p><p style="margin-top:8px">收款：USDT（BNB Chain / Solana）、BNB、SOL、ETH，不支持 TRC20。</p></div>
+    <div><h5>说明</h5><p>数据来自交易所公开接口，有延迟，仅作信息整理，不构成投资建议。合约交易会亏光本金，别拿输不起的钱进场。</p><p style="margin-top:8px">收款：BNB（BNB Chain）、SOL（Solana），不支持 USDT / ETH / TRC20。</p></div>
   </div>
   <div class="fb">
     <span>© 2026 FEIYU TOOLS · 2026-11-15 23:30 UTC 快照</span>
@@ -571,7 +571,7 @@ html{scroll-padding-top:112px}
   <article class="abit2">
     <h3><s>05</s>收钱的地方</h3>
     <p>九个工具免费，没有注册、没有试用期、没有高级版。四份数据包 5–25 USDT 一次性买断：速查表 $5、雷达 $19、复盘表格 $12、雷达+表格 $25（省 6）。</p>
-    <p>钱用来付服务器和接口账单。付款支持 <b>USDT（BNB Chain / Solana）、BNB、SOL、ETH</b>，不支持 TRC20；付款后立刻给下载链接，不经过邮箱。</p>
+    <p>钱用来付服务器和接口账单。付款支持 <b>BNB（BNB Chain）、SOL（Solana）</b>，不支持 USDT / ETH / TRC20；付款后立刻给下载链接，不经过邮箱。</p>
     <p>不想买也正常，免费的部分够用了。</p>
   </article>
 
@@ -637,7 +637,7 @@ document.documentElement.classList.add("noop");
 .mseg a{padding:4px 9px!important;font-size:11px!important;border-radius:5px!important}}</style><style id="tkfix">@media (max-width:600px){.tk-tag,.tk-tag *,.tk-tag b,.tk-tag span{color:#C9CBCF!important;background:transparent!important}
 .tk-tag{background:#1A1C1F!important;border-right:1px solid #24262A!important}
 .tk-tag i,.tk-tag .tk-dot{background:#F04452!important;color:#F04452!important}
-body{padding-bottom:calc(58px + env(safe-area-inset-bottom))!important}
+body{padding-bottom:calc(196px + env(safe-area-inset-bottom))!important}
 }</style><style id="m3css">@media (max-width:760px){table.mt,.mt{display:none!important}
 #mcards .mcard,.mcards .mcard{display:grid!important;grid-template-columns:1fr auto auto!important;grid-template-areas:"sym pct star" "sym px star"!important;column-gap:10px!important;padding:9px 0!important;border:0!important;border-bottom:1px solid #1C1F23!important;border-radius:0!important;background:transparent!important}
 #mcards .mc-top,.mcards .mc-top{grid-area:sym!important;display:flex!important;align-items:baseline!important;gap:5px!important}
