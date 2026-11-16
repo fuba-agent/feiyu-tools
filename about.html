@@ -381,24 +381,25 @@ html{scroll-padding-top:112px}
 
 </style>
   <link rel="stylesheet" href="/static/assets/chat.css?v=20261116e">
-<link id="fy-theme-light" rel="stylesheet" href="/static/assets/theme-light.css?v=20261116e" disabled>
+<link id="fy-theme-light" rel="stylesheet" href="/static/assets/theme-light.css?v=20261118a" disabled>
 <script>(function(){try{var q=new URLSearchParams(location.search).get("t");var t=(q==="light"||q==="dark")?q:localStorage.getItem("fy_theme");if(t==="light"){document.documentElement.setAttribute("data-theme","light");var l=document.getElementById("fy-theme-light");if(l)l.disabled=false;}else{document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
-<script src="/js/theme.js?v=20261116b" defer></script>
+<script src="/js/theme.js?v=20261118a" defer></script>
 <link rel="manifest" href="/manifest.webmanifest">
 <script src="/js/pwa.js?v=20261116p" defer></script>
+<link rel="stylesheet" href="/static/assets/site-nav.css?v=20261118a">
 </head>
 <body id="top">
 <div class="ticker" aria-label="实时异动"><div class="tk-tag"><span class="tk-dot"></span>异动直播 · BYBIT 永续</div><div class="tk-view"><div class="tk-track"><div class="tk-seg"><span><b>EVAA</b><i class="up">▲ +85.90%</i></span><span><b>RARE</b><i class="up">▲ +51.43%</i></span><span><b>ARIA</b><i class="up">▲ +22.00%</i></span><span><b>JCT</b><i class="up">▲ +11.44%</i></span><span><b>KORU</b><i class="up">▲ +10.26%</i></span><span><b>AAVE</b><i class="up">▲ +9.85%</i></span><span><b>SOPH</b><i class="dn">▼ -45.06%</i></span><span><b>SOXS</b><i class="dn">▼ -7.19%</i></span><span><b>AKE</b><i class="dn">▼ -4.67%</i></span><span><b>CL</b><i class="dn">▼ -0.33%</i></span><span><b>1000PEPE</b><i class="up">▲ +1.13%</i></span><span><b>XAUT</b><i class="up">▲ +1.83%</i></span></div><div class="tk-seg"><span><b>EVAA</b><i class="up">▲ +85.90%</i></span><span><b>RARE</b><i class="up">▲ +51.43%</i></span><span><b>ARIA</b><i class="up">▲ +22.00%</i></span><span><b>JCT</b><i class="up">▲ +11.44%</i></span><span><b>KORU</b><i class="up">▲ +10.26%</i></span><span><b>AAVE</b><i class="up">▲ +9.85%</i></span><span><b>SOPH</b><i class="dn">▼ -45.06%</i></span><span><b>SOXS</b><i class="dn">▼ -7.19%</i></span><span><b>AKE</b><i class="dn">▼ -4.67%</i></span><span><b>CL</b><i class="dn">▼ -0.33%</i></span><span><b>1000PEPE</b><i class="up">▲ +1.13%</i></span><span><b>XAUT</b><i class="up">▲ +1.83%</i></span></div></div></div></div>
 <div class="d-only">
-<header class="topbar"><div class="wrap tb">
+<header class="topbar fy-nav"><div class="wrap tb">
   <a class="brand" href="/"><b>肥鱼工具铺</b><span>FEIYU TOOLS</span></a>
-  <nav class="nav">
+  <nav class="nav" aria-label="Primary">
     <a href="/watch.html">看盘</a>
-    <a href="/#tools">实战</a>
-    <a href="/#packs">数据包</a>
-    <a class="on" href="/about.html">说明</a>
+    <a href="/trade.html">实战</a>
+    <a href="/packs.html">数据包</a>
+    <a class="on" aria-current="page" href="/about.html">说明</a>
   </nav>
-  <div class="tb-r"><span class="num">ABOUT · 11-16</span><a class="tg" href="https://t.me/siren1109" target="_blank" rel="noopener">TG @siren1109</a></div>
+  <div class="tb-r"><span id="fy-lang-slot"></span><span id="fy-theme-slot"></span><a class="fy-svc" href="https://t.me/feiyu1108" target="_blank" rel="noopener noreferrer">客服</a></div>
 </div></header>
 <section class="phero"><div class="wrap">
   <div class="phero-top">
@@ -667,7 +668,8 @@ html,body{overflow-x:hidden!important}
 .qpack+.qpack{margin-top:0!important}
 .pkrow{padding:10px 0!important}
 .pkprice,.pkbuy{font-size:15px!important}
-.faqitem{border-radius:0!important;border:0!important;border-bottom:1px solid #1C1F23!important;background:transparent!important}}</style><script src="/static/assets/i18n-full.js?v=20261116x" defer data-fy-i18n></script>
+.faqitem{border-radius:0!important;border:0!important;border-bottom:1px solid #1C1F23!important;background:transparent!important}}</style><script src="/static/assets/site-nav.js?v=20261118a" defer></script>
+<script src="/static/assets/i18n-full.js?v=20261118a" defer data-fy-i18n></script>
 <script src="/static/assets/chat.js?v=20261116d" defer data-fy-chat></script>
 </body>
 </html>
