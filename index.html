@@ -273,9 +273,9 @@ body{font-size:15px}
 .tk-dot{width:6px;height:6px;border-radius:50%;background:#101215;animation:tkblink 1.8s ease-in-out infinite}
 @keyframes tkblink{0%,100%{opacity:1}50%{opacity:.25}}
 .tk-view{flex:1;min-width:0;overflow:hidden;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent)}
-.tk-track{display:inline-flex;white-space:nowrap;animation:tkrun 46s linear infinite;will-change:transform}
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 28px,#000 calc(100% - 36px),transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 28px,#000 calc(100% - 36px),transparent)}
+.tk-track{display:inline-flex;white-space:nowrap;padding-left:28px;animation:tkrun 46s linear infinite;will-change:transform}
 .tk-seg{display:inline-flex;gap:26px;padding-right:26px}
 .tk-seg span{color:rgba(255,255,255,.55)}
 .tk-seg b{color:#fff;font-weight:600;margin-right:5px}
@@ -300,7 +300,7 @@ a.hit{position:absolute;inset:0;z-index:3;border-radius:2px}
 a.hit:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
 .tools li:hover .tn,.mtools li:hover .tn{color:var(--warn)}
 </style>
-  <link rel="stylesheet" href="/static/assets/chat.css?v=20261116d">
+  <link rel="stylesheet" href="/static/assets/chat.css?v=20261116e">
 <link id="fy-theme-light" rel="stylesheet" href="/static/assets/theme-light.css?v=20261116e" disabled>
 <script>(function(){try{var q=new URLSearchParams(location.search).get("t");var t=(q==="light"||q==="dark")?q:localStorage.getItem("fy_theme");if(t==="light"){document.documentElement.setAttribute("data-theme","light");var l=document.getElementById("fy-theme-light");if(l)l.disabled=false;}else{document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
 <script src="/js/theme.js?v=20261116b" defer></script>
@@ -440,7 +440,7 @@ a.hit:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
 <section class="sec" id="packs" style="border-top:1px solid rgba(255,255,255,.12)"><div class="wrap">
   <div class="shead">
     <div><h2>四份数据包</h2><p>免费的部分是「现在」——此刻的异动和资费。付费的是「历史」和「扫描器」。</p></div>
-    <div class="right">USDT / BNB / SOL / ETH<br>不支持 TRC20</div>
+    <div class="right">BNB / SOL<br>不支持 USDT / ETH / TRC20</div>
   </div>
   <div class="packs">
     <div class="prow">
@@ -473,7 +473,7 @@ a.hit:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
     </div>
   </div>
   <div class="pnote">
-    <span><b>怎么付：</b>USDT（BNB Chain / Solana）、BNB、SOL、ETH。不支持 TRC20。付款后页面立刻给下载链接，不经过邮箱。</span>
+    <span><b>怎么付：</b>BNB（BNB Chain / BEP20）或 SOL（Solana）。不支持 USDT / ETH / TRC20。付款后页面立刻给下载链接，不经过邮箱。</span>
     <span><b>不想买也正常：</b>九个工具全免费，数据包只是给愿意花钱省时间的人。</span>
   </div>
 </div></section>
@@ -505,7 +505,7 @@ a.hit:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
     <div>
       <h5>说明</h5>
       <p>数据来自交易所公开接口，有延迟，仅作信息整理，不构成投资建议。合约交易会亏光本金，别拿输不起的钱进场。</p>
-      <p style="margin-top:8px">收款：USDT（BNB Chain / Solana）、BNB、SOL、ETH，不支持 TRC20。</p>
+      <p style="margin-top:8px">收款：BNB（BNB Chain）、SOL（Solana），不支持 USDT / ETH / TRC20。</p>
     </div>
   </div>
   <div class="fb">
@@ -601,7 +601,7 @@ a.hit:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
     <div class="mprow"><div class="lft"><div class="pn">复盘表格</div><div class="pd">Excel，自动算盈亏胜率回撤</div></div><div class="pp">$12<s>USDT</s></div></div>
     <div class="mprow"><div class="lft"><div class="pn">雷达 + 表格</div><div class="pd">两件一起，省 6 USDT</div></div><div class="pp" style="color:var(--warn)">$25<s>USDT</s></div></div>
   </div>
-  <p class="mpay">付款：USDT（BNB Chain / Solana）、BNB、SOL、ETH，不支持 TRC20。付款后页面立刻给下载链接。</p>
+  <p class="mpay">付款：BNB（BNB Chain）、SOL（Solana），不支持 USDT / ETH / TRC20。付款后页面立刻给下载链接。</p>
 </section>
 
 <section class="msec mfaq">
@@ -619,7 +619,7 @@ a.hit:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
 </div>
 
 <nav class="tabbar">
-  <a class="tab on" href="/watch.html"><svg viewBox="0 0 24 24"><path d="M4 19.2V4.8"/><path d="M4 19.2h16"/><path d="M8 15.4l3.4-4.2 3 2.6L20 7.8"/></svg><span>看盘</span></a>
+  <a class="tab" href="/watch.html"><svg viewBox="0 0 24 24"><path d="M4 19.2V4.8"/><path d="M4 19.2h16"/><path d="M8 15.4l3.4-4.2 3 2.6L20 7.8"/></svg><span>看盘</span></a>
   <a class="tab" href="/trade.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.6"/><path d="M12 2.6v2.6M12 18.8v2.6M2.6 12h2.6M18.8 12h2.6"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg><span>实战</span></a>
   <a class="tab" href="/packs.html"><svg viewBox="0 0 24 24"><path d="M3.6 8.2L12 4l8.4 4.2v7.6L12 20l-8.4-4.2z"/><path d="M3.6 8.2L12 12.4l8.4-4.2"/><path d="M12 12.4V20"/></svg><span>数据包</span></a>
   <a class="tab" href="/about.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="8.2" r="3.6"/><path d="M5.2 20c1.2-4 3.7-5.6 6.8-5.6s5.6 1.6 6.8 5.6"/></svg><span>我的</span></a>
@@ -657,7 +657,7 @@ a.hit:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
 .mseg a{padding:4px 9px!important;font-size:11px!important;border-radius:5px!important}}</style><style id="tkfix">@media (max-width:600px){.tk-tag,.tk-tag *,.tk-tag b,.tk-tag span{color:#C9CBCF!important;background:transparent!important}
 .tk-tag{background:#1A1C1F!important;border-right:1px solid #24262A!important}
 .tk-tag i,.tk-tag .tk-dot{background:#F04452!important;color:#F04452!important}
-body{padding-bottom:calc(58px + env(safe-area-inset-bottom))!important}
+body{padding-bottom:calc(196px + env(safe-area-inset-bottom))!important}
 }</style><style id="m3css">@media (max-width:760px){table.mt,.mt{display:none!important}
 #mcards .mcard,.mcards .mcard{display:grid!important;grid-template-columns:1fr auto auto!important;grid-template-areas:"sym pct star" "sym px star"!important;column-gap:10px!important;padding:9px 0!important;border:0!important;border-bottom:1px solid #1C1F23!important;border-radius:0!important;background:transparent!important}
 #mcards .mc-top,.mcards .mc-top{grid-area:sym!important;display:flex!important;align-items:baseline!important;gap:5px!important}
