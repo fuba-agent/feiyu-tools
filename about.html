@@ -393,7 +393,13 @@ html{scroll-padding-top:112px}
 </head>
 <body id="top">
 <div class="ticker" aria-label="实时异动"><div class="tk-tag"><span class="tk-dot"></span>异动直播 · BYBIT 永续</div><div class="tk-view"><div class="tk-track"><div class="tk-seg"><span><b>EVAA</b><i class="up">▲ +85.90%</i></span><span><b>RARE</b><i class="up">▲ +51.43%</i></span><span><b>ARIA</b><i class="up">▲ +22.00%</i></span><span><b>JCT</b><i class="up">▲ +11.44%</i></span><span><b>KORU</b><i class="up">▲ +10.26%</i></span><span><b>AAVE</b><i class="up">▲ +9.85%</i></span><span><b>SOPH</b><i class="dn">▼ -45.06%</i></span><span><b>SOXS</b><i class="dn">▼ -7.19%</i></span><span><b>AKE</b><i class="dn">▼ -4.67%</i></span><span><b>CL</b><i class="dn">▼ -0.33%</i></span><span><b>1000PEPE</b><i class="up">▲ +1.13%</i></span><span><b>XAUT</b><i class="up">▲ +1.83%</i></span></div><div class="tk-seg"><span><b>EVAA</b><i class="up">▲ +85.90%</i></span><span><b>RARE</b><i class="up">▲ +51.43%</i></span><span><b>ARIA</b><i class="up">▲ +22.00%</i></span><span><b>JCT</b><i class="up">▲ +11.44%</i></span><span><b>KORU</b><i class="up">▲ +10.26%</i></span><span><b>AAVE</b><i class="up">▲ +9.85%</i></span><span><b>SOPH</b><i class="dn">▼ -45.06%</i></span><span><b>SOXS</b><i class="dn">▼ -7.19%</i></span><span><b>AKE</b><i class="dn">▼ -4.67%</i></span><span><b>CL</b><i class="dn">▼ -0.33%</i></span><span><b>1000PEPE</b><i class="up">▲ +1.13%</i></span><span><b>XAUT</b><i class="up">▲ +1.83%</i></span></div></div></div></div>
-<div class="d-only">
+
+<style>
+/* fy-cls-pre-B: topbar/subnav/crumb 静态预置，首帧占满挂载后高度，零位移（2026-11-17） */
+.fy-subnav[data-fy-slot]{min-height:45px}
+nav.fy-crumb[data-fy-slot]{min-height:32px}
+@media (min-width:901px){.fy-subnav[data-fy-slot]{min-height:0}}
+</style>
 <header class="topbar fy-nav"><div class="wrap tb">
   <a class="brand" href="/"><b>肥鱼工具铺</b><span>FEIYU TOOLS</span></a>
   <nav class="nav" aria-label="Primary">
@@ -405,6 +411,9 @@ html{scroll-padding-top:112px}
   </nav>
   <div class="tb-r"><span id="fy-lang-slot"></span><span id="fy-theme-slot"></span><a class="fy-svc" href="https://t.me/feiyu1108" target="_blank" rel="noopener noreferrer">客服</a></div>
 </div></header>
+<div class="fy-subnav" data-fy-slot></div>
+<nav class="fy-crumb" data-fy-slot aria-label="面包屑"></nav>
+<div class="d-only">
 <section class="phero"><div class="wrap">
   <div class="phero-top">
     <div class="eyebrow"><i></i><span>ABOUT · FEIYU TOOLS</span></div>
