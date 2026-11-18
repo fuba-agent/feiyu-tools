@@ -771,5 +771,91 @@ html,body{overflow-x:hidden!important}
 <script>window.FY_ENGINE_MIN='20261120j';</script>
 <script src="/static/assets/i18n-full.js?v=20261151a" defer data-fy-i18n></script>
 <script src="/static/assets/chat.js?v=20261130a" defer data-fy-chat></script>
+<script id="fy-sorttabs">
+/* 首页两处排序 tab（桌面对照表 / 手机卡片）原本是死链，点了没反应。
+   这里补上真实排序 + 键盘可用（tabindex / 方向键 / Enter）。 */
+(function () {
+  function txt(e) { return e ? (e.textContent || '').trim() : ''; }
+  function pct(e) { var v = parseFloat(txt(e).replace(/[^0-9.\-+]/g, '')); return isNaN(v) ? 0 : v; }
+  function vol(t) {
+    var m = txt(t).replace(/,/g, '').match(/([0-9.]+)\s*([KMBT]?)/i);
+    if (!m) return 0;
+    var n = parseFloat(m[1]) || 0, u = (m[2] || '').toUpperCase();
+    return n * ({ K: 1e3, M: 1e6, B: 1e9, T: 1e12 }[u] || 1);
+  }
+  function ampOfCard(card) {
+    var d = card.querySelector('.t1d');
+    if (!d) return 0;
+    var bs = d.querySelectorAll('b');
+    var hi = bs.length > 1 ? parseFloat(txt(bs[1]).replace(/,/g, '')) : 0;
+    var lo = bs.length > 2 ? parseFloat(txt(bs[2]).replace(/,/g, '')) : 0;
+    if (!hi || !lo) return 0;
+    return (hi - lo) / lo * 100;
+  }
+  function renumber(rows) {
+    rows.forEach(function (tr, i) {
+      var rk = tr.querySelector('.rk');
+      if (rk) rk.textContent = ('0' + (i + 1)).slice(-2);
+    });
+  }
+  function bindTabs(scopeSel, items, valueOf, onSorted) {
+    var scope = document.querySelector(scopeSel);
+    if (!scope) return;
+    var tabs = [].slice.call(scope.querySelectorAll(':scope > a'));
+    if (!tabs.length) return;
+    function apply(i) {
+      tabs.forEach(function (a, j) {
+        a.classList.toggle('on', i === j);
+        a.setAttribute('aria-selected', i === j ? 'true' : 'false');
+        a.setAttribute('tabindex', i === j ? '0' : '-1');
+      });
+      var box = document.querySelector(items.container);
+      if (!box) return;
+      var list = [].slice.call(box.querySelectorAll(items.item));
+      list.sort(function (a, b) { return valueOf(b, i) - valueOf(a, i); });
+      list.forEach(function (n) { box.appendChild(n); });
+      if (onSorted) onSorted(list);
+    }
+    tabs.forEach(function (a, i) {
+      a.setAttribute('role', 'tab');
+      a.setAttribute('aria-selected', a.classList.contains('on') ? 'true' : 'false');
+      a.setAttribute('tabindex', a.classList.contains('on') ? '0' : '-1');
+      a.addEventListener('click', function (e) { e.preventDefault(); apply(i); });
+      a.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); apply(i); }
+        else if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          var n = (i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length;
+          tabs[n].focus(); apply(n);
+        }
+      });
+    });
+  }
+  /* 桌面这张表没有「振幅」这一列，第三档排不出真结果 —— 藏起来，不留假按钮。 */
+  var deskWrap = document.querySelector('.mhead .mtabs');
+  if (deskWrap && deskWrap.querySelectorAll('a')[2]) {
+    deskWrap.querySelectorAll('a')[2].style.display = 'none';
+  }
+  bindTabs('.mhead .mtabs',
+    { container: 'table.mt tbody', item: 'tr.mover' },
+    function (tr, i) {
+      if (i === 1) return vol(tr.querySelector('td.vol'));
+      return pct(tr.querySelector('td.up, td.dn'));
+    },
+    renumber);
+  /* 手机卡片里也没有振幅数据（只有涨跌幅 / 成交额 / 最新价），第三档同样藏掉。 */
+  var msegWrap = document.querySelector('.mseg');
+  if (msegWrap && msegWrap.querySelectorAll('a')[2]) {
+    msegWrap.querySelectorAll('a')[2].style.display = 'none';
+  }
+  bindTabs('.mseg',
+    { container: '.mcards', item: 'article.mcard' },
+    function (card, i) {
+      if (i === 0) return pct(card.querySelector('.mc-pct'));
+      if (i === 1) return vol(card.querySelector('.mc-vol'));
+      return ampOfCard(card);
+    });
+})();
+</script>
 </body>
 </html>
