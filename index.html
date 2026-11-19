@@ -161,7 +161,7 @@ tbody tr.mover:hover .sym b{color:#fff}
 .pb{justify-self:end}
 .pb a,.pb button{display:inline-flex;align-items:center;justify-content:center;height:44px;min-width:44px;padding:0 14px;border:1px solid rgba(255,255,255,.22);border-radius:2px;font-size:12.5px;color:#E9EAEC;background:none;font-family:inherit;cursor:pointer;letter-spacing:.04em}
 .pb a:hover,.pb button:hover{background:var(--blue);border-color:var(--blue);color:#101215}
-.allmore{color:var(--mut);font-size:12px}
+.allmore{color:var(--mut);font-size:12px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.22)}.allmore:hover{color:#E9EAEC;border-bottom-color:#E9EAEC}
 .prow.hot .pp{color:var(--warn)}
 .prow.hot .pn i{background:var(--warn)}
 .prow.hot .pb a,.prow.hot .pb button{background:var(--blue);border-color:var(--blue);color:#101215}
@@ -324,7 +324,7 @@ a.hit:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
 <script src="/js/theme.js?v=20261128b" defer></script>
 <link rel="manifest" href="/manifest.webmanifest">
 <script src="/js/pwa.js?v=20261117a" defer></script>
-<link rel="stylesheet" href="/static/assets/site-nav.css?v=20261163a">
+<link rel="stylesheet" href="/static/assets/site-nav.css?v=20261208a">
 <!-- fy-i18n-paint-gate: 非中文访客首轮翻译前不显示正文，避免中文首帧闪现（2026-11-17） -->
 <style>html.fy-i18n-pending body{visibility:hidden!important}</style>
 <script>(function(){try{var l=localStorage.getItem('fy_lang_v1');if(l&&l!=='zh'){document.documentElement.classList.add('fy-i18n-pending');setTimeout(function(){document.documentElement.classList.remove('fy-i18n-pending')},1800)}}catch(e){}})();</script>
@@ -432,7 +432,7 @@ nav.fy-crumb[data-fy-slot]{min-height:32px}
   </table>
   <div class="tfoot">
     <span>异动榜每 2 分钟刷一次，成交额低于 2000 万 USDT 的合约不进榜——那种盘子，几百 U 就能拉一根针。</span>
-    <span class="allmore">在异动榜里看全部 42 个 →</span>
+    <a class="allmore" href="/watch.html#movers">在异动榜里看全部 42 个 →</a>
   </div>
 </div></section>
 
@@ -767,9 +767,9 @@ html,body{overflow-x:hidden!important}
   @media (max-width:640px){
     .mc-sym em,.mtools .tm,.pp s,.mprow .pp s,.msec-h span,.t1a em,.t1x span,.pakmini a i{font-size:11.5px}
   }
-</style><script src="/static/assets/site-nav.js?v=20261206a" defer></script>
+</style><script src="/static/assets/site-nav.js?v=20261209a" defer></script>
 <script>window.FY_ENGINE_MIN='20261120j';</script>
-<script src="/static/assets/i18n-full.js?v=20261206a" defer data-fy-i18n></script>
+<script src="/static/assets/i18n-full.js?v=20261207a" defer data-fy-i18n></script>
 <script src="/static/assets/chat.js?v=20261206a" defer data-fy-chat></script>
 <script id="fy-sorttabs">
 /* 首页两处排序 tab（桌面对照表 / 手机卡片）原本是死链，点了没反应。
