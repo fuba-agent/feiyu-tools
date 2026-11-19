@@ -110,7 +110,7 @@ table.mt{width:100%;border-collapse:collapse;table-layout:fixed}
 tbody tr.mover:hover{background:rgba(255,255,255,.022)}
 tbody tr.mover:hover .rk{color:var(--blue)}
 tbody tr.mover:hover .sym b{color:#fff}
-.mt th{font:400 10px/1 var(--mono);letter-spacing:.13em;color:#8C8F94;text-align:left;padding:10px 0 12px;border-bottom:1px solid rgba(255,255,255,.13)}
+.mt th{font:400 10px/1 var(--mono);letter-spacing:.13em;color:#8C8F94;text-align:start;padding:10px 0 12px;border-bottom:1px solid rgba(255,255,255,.13)}
 .mt th.r{text-align:right}
 .mt td{height:54px;border-bottom:1px solid var(--hair2);vertical-align:middle;font-size:13.5px}
 .mt tr.mover:hover td{background:rgba(255,255,255,.016)}
@@ -324,7 +324,7 @@ a.hit:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
 <script src="/js/theme.js?v=20261128b" defer></script>
 <link rel="manifest" href="/manifest.webmanifest">
 <script src="/js/pwa.js?v=20261117a" defer></script>
-<link rel="stylesheet" href="/static/assets/site-nav.css?v=20261212c">
+<link rel="stylesheet" href="/static/assets/site-nav.css?v=20261212e">
 <!-- fy-i18n-paint-gate: 非中文访客首轮翻译前不显示正文，避免中文首帧闪现（2026-11-17） -->
 <style>html.fy-i18n-pending body{visibility:hidden!important}</style>
 <script>(function(){try{var l=localStorage.getItem('fy_lang_v1');if(l&&l!=='zh'){document.documentElement.classList.add('fy-i18n-pending');setTimeout(function(){document.documentElement.classList.remove('fy-i18n-pending')},1800)}}catch(e){}})();</script>
@@ -392,7 +392,7 @@ nav.fy-crumb[data-fy-slot]{min-height:32px}
 .rb-hook a:hover{border-color:rgba(237,238,240,.32)}
 @media(max-width:640px){.rb-hook{padding:0 16px;margin-top:16px}.rb-hook a{display:grid;grid-template-columns:1fr auto;gap:3px 10px;align-items:center;padding:12px 14px}.rb-hook b{grid-area:1/1}.rb-hook i{grid-area:1/2;margin-left:0}.rb-hook span{grid-area:2/1/3/3;font-size:12px}}
 </style>
-<div class="rb-hook"><a href="/robots.html"><b>机器人市场</b><span>一句话建一只 · 量化 / 提示词 / AI 三类 · 虚拟代币模拟盘 · 收益·胜率·回撤实时排行</span><i>进去看看 ›</i></a></div>
+<div class="rb-hook"><a href="/robots.html"><b>机器人市场</b><span>一句话建一只 · 量化 / 提示词 / AI 三类 · 虚拟代币模拟盘 · 收益·胜率·回撤实时排行</span><i>进去看看 <span class="fy-arrow">›</span></i></a></div>
 
 <div class="strip"><div class="wrap sr">
   <span><b>48</b> 个合约，已筛掉成交额 &lt; 2000 万 USDT 的小盘</span>
@@ -432,7 +432,7 @@ nav.fy-crumb[data-fy-slot]{min-height:32px}
   </table>
   <div class="tfoot">
     <span>异动榜每 2 分钟刷一次，成交额低于 2000 万 USDT 的合约不进榜——那种盘子，几百 U 就能拉一根针。</span>
-    <a class="allmore" href="/watch.html#movers">在异动榜里看全部 42 个 →</a>
+    <a class="allmore" href="/watch.html#movers">在异动榜里看全部 42 个 <span class="fy-arrow">→</span></a>
   </div>
 </div></section>
 
@@ -608,7 +608,7 @@ nav.fy-crumb[data-fy-slot]{min-height:32px}
     <div class="t1d"><span>成交额 <b>55.3M</b></span><span>24H 高 <b>0.02576</b></span><span>低 <b>0.01621</b></span></div>
   </div>
 </section>
-<div class="rb-hook"><a href="/robots.html"><b>机器人市场</b><span>一句话建一只 · 量化 / 提示词 / AI · 虚拟代币模拟盘</span><i>进去 ›</i></a></div>
+<div class="rb-hook"><a href="/robots.html"><b>机器人市场</b><span>一句话建一只 · 量化 / 提示词 / AI · 虚拟代币模拟盘</span><i>进去 <span class="fy-arrow">›</span></i></a></div>
 
 <section class="msec" id="mmovers">
   <div class="msec-h"><h2>异动榜</h2><span>BYBIT · 2000 万以上</span></div>
