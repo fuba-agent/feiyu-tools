@@ -245,5 +245,56 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
 </div></footer>
 
 <script src="/static/assets/site-nav.js?v=20261214a" defer></script>
+<script>
+(function(){
+  "use strict";
+  function fmt(v){ v=Number(v)||0; if(v>=1e9) return "$"+(v/1e9).toFixed(2)+"B"; return "$"+(v/1e6).toFixed(2)+"M"; }
+  function esc(s){ return String(s==null?"":s); }
+  fetch("/static/history.json",{cache:"no-store"}).then(function(r){ return r.ok?r.json():null; }).then(function(hist){
+    if(!Array.isArray(hist)||!hist.length) return;
+    var days=hist.length, total=0, i, j;
+    for(i=0;i<hist.length;i++) total += (hist[i].items||[]).length;
+    var kpis=document.querySelectorAll(".d-kpis .d-kpi");
+    if(kpis.length>=3){
+      var first=kpis[0].querySelector(".v"), fs=kpis[0].querySelector(".s");
+      var second=kpis[1].querySelector(".v"), ss=kpis[1].querySelector(".s");
+      var third=kpis[2].querySelector(".v"), ts=kpis[2].querySelector(".s");
+      if(first) first.textContent=String(days);
+      if(fs) fs.textContent=hist[days-1].date+" → "+hist[0].date;
+      if(second) second.textContent=String(total);
+      if(ss) ss.textContent=(total/days).toFixed(1)+" per day on average";
+      if(third) third.textContent=hist[0].date;
+      if(ts) ts.textContent=(hist[0].items||[]).length+" hits";
+    }
+    var spans=document.querySelectorAll(".d-ph span");
+    for(i=0;i<spans.length;i++){ if(/hits/.test(spans[i].textContent||"")) spans[i].textContent="Newest first · "+total+" hits"; }
+    var tbody=document.querySelector("table.hist-tbl tbody"); if(!tbody) return;
+    var frag=document.createDocumentFragment();
+    var shown=hist.slice(0,14);
+    for(i=0;i<shown.length;i++){
+      var day=shown[i], items=day.items||[];
+      if(!items.length){
+        var tr0=document.createElement("tr");
+        var td0=document.createElement("td"); td0.colSpan=5; td0.className="quiet"; td0.textContent="Quiet day — nothing crossed the thresholds.";
+        tr0.appendChild(td0); frag.appendChild(tr0); continue;
+      }
+      for(j=0;j<items.length;j++){
+        var it=items[j], tr=document.createElement("tr");
+        if(j===0){ tr.className="gstart";
+          var tdD=document.createElement("td"); tdD.className="date"; tdD.rowSpan=items.length;
+          var b=document.createElement("b"); b.textContent=day.date; var sp=document.createElement("span"); sp.textContent=items.length+" hits";
+          tdD.appendChild(b); tdD.appendChild(sp); tr.appendChild(tdD);
+        }
+        var tdS=document.createElement("td"); tdS.className="sym"; tdS.textContent=it.sym; tr.appendChild(tdS);
+        var tdC=document.createElement("td"); tdC.className="chg "+(Number(it.chg)>=0?"up":"down"); tdC.textContent=(Number(it.chg)>=0?"+":"")+Number(it.chg).toFixed(1)+"%"; tr.appendChild(tdC);
+        var tdV=document.createElement("td"); tdV.className="vol"; tdV.textContent=fmt(it.vol); tr.appendChild(tdV);
+        var tdW=document.createElement("td"); tdW.className="why"; tdW.textContent=(it.why||[]).join(" · "); tr.appendChild(tdW);
+        frag.appendChild(tr);
+      }
+    }
+    tbody.textContent=""; tbody.appendChild(frag);
+  }).catch(function(){});
+})();
+</script>
 </body>
 </html>
