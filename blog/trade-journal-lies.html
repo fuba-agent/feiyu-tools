@@ -1,40 +1,92 @@
 <!doctype html>
 <html lang="en">
 <head>
+<style id="fy-theme-critical">html[data-theme="light"],html[data-theme="light"] body{background:#FFFFFF!important;color:#10233C!important}html[data-theme="light"]{--bg:#F7F8FA;--bg2:#FFFFFF;--hair:rgba(17,21,26,.075);--hair2:rgba(17,21,26,.045);--txt:#11151A;--mut:#565D64;--mut2:#4B5158;--blue:#11151A;--warn:#D62F3D;--dn:#565D64}</style>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Your trade journal is lying to you (and how to fix it)</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Five ways a trade log quietly misleads you, and the ten fields that make it honest.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Your trade journal is lying to you">
 <meta property="og:description" content="Five ways a trade log quietly misleads you, and the ten fields that make it honest.">
-<meta property="og:image" content="https://feiyu.tailf83eec.ts.net/img/og-cover.png">
-<meta name="twitter:card" content="summary_large_image">
-<style>
-  :root{--bg:#0b0d10;--panel:#12151a;--line:#242a33;--text:#e8edf4;--muted:#8b95a5;--accent:#3ddc97}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.7}
-  .wrap{max-width:720px;margin:0 auto;padding:36px 22px 80px}
-  a{color:var(--accent)}
-  h1{font-size:32px;line-height:1.2;margin:0 0 10px;letter-spacing:-.02em}
-  h2{font-size:20px;margin:32px 0 10px}
-  p,li{color:#cfd6e0}
-  .meta{color:var(--muted);font-size:13px;margin-bottom:24px}
-  blockquote{border-left:3px solid var(--accent);margin:18px 0;padding:6px 0 6px 16px;color:#cfd6e0}
-  table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
-  th,td{border:1px solid var(--line);padding:8px 10px;text-align:start;vertical-align:top}
-  th{background:var(--panel)}
-  .cta{margin-top:40px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
-  .btn{display:inline-block;background:var(--accent);color:#06251a;font-weight:700;text-decoration:none;padding:10px 16px;border-radius:10px}
-</style>
-<link rel="canonical" href="https://feiyu.tailf83eec.ts.net/blog/trade-journal-lies.html">
+<meta property="og:image" content="https://feiyu.tailf83eec.ts.net/static/img/og-cover.png">
 <meta property="og:url" content="https://feiyu.tailf83eec.ts.net/blog/trade-journal-lies.html">
-<link rel="stylesheet" href="/static/assets/site.css?v=20261117h">
-<link rel="stylesheet" href="/static/assets/site-v4.css?v=20261116f">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Your trade journal is lying to you">
+<meta name="twitter:description" content="Five ways a trade log quietly misleads you, and the ten fields that make it honest.">
+<meta name="twitter:image" content="https://feiyu.tailf83eec.ts.net/static/img/og-cover.png">
+<link rel="canonical" href="https://feiyu.tailf83eec.ts.net/blog/trade-journal-lies.html">
+<title>Your trade journal is lying to you (and how to fix it)</title>
+<link rel="stylesheet" href="/static/assets/chat.css?v=20261215a">
+<link id="fy-theme-light" rel="stylesheet" href="/static/assets/theme-light.css?v=20261128b" disabled>
+<script>(function(){try{var q=new URLSearchParams(location.search).get("t");var s=localStorage.getItem("fy_theme");var t=(q==="light"||q==="dark")?q:(s==="light"?"light":"dark");document.documentElement.setAttribute("data-theme",t);if(t==="light"){var l=document.getElementById("fy-theme-light");if(l)l.disabled=false;}}catch(e){}})();</script>
+<script src="/js/theme.js?v=20261128c" defer></script>
+<link rel="manifest" href="/manifest.webmanifest">
+<script src="/js/pwa.js?v=20261117a" defer></script>
+<style id="fy-shell">
+:root{--bg:#0B0D10;--bg2:#15171A;--hair:rgba(255,255,255,.075);--hair2:rgba(255,255,255,.045);--txt:#FFFFFF;--mut:#8C8F94;--mut2:#4B5158;--blue:#EDEEF0;--warn:#F04452;--dn:#2FC08A;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+.topbar{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--hair2)}
+.tb{display:flex;align-items:center;justify-content:space-between;height:58px}
+.brand{display:flex;align-items:baseline;gap:10px}
+.brand b{font-size:15px;letter-spacing:.02em}
+.brand span{font:400 9.5px/1 var(--mono);letter-spacing:.22em;color:#5E6166}
+.nav{display:flex;gap:26px;margin-left:auto;margin-right:34px}
+.nav a{font-size:13.5px;color:var(--mut);padding:12px 0;border-bottom:1.5px solid transparent;line-height:20px}
+.nav a:hover{color:#fff}
+.nav a.on{color:#fff;border-bottom-color:var(--blue)}
+.tb-r{display:flex;align-items:center;gap:18px;font-size:12px;color:#6F7276}
+.fy-svc{color:#6F7276}
+.fy-svc:hover{color:#fff}
+.fy-subnav:empty{min-height:0}
+footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top:8px}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1.3fr;gap:48px}
+.fg h5{font-size:13.5px;font-weight:600;margin:0 0 12px}
+.fg p,.fg a,.fg li{font-size:12.5px;line-height:1.9;color:#808388}
+.fg a:hover{color:#fff}
+.fg ul{list-style:none;display:flex;flex-wrap:wrap;gap:0 18px;margin:0;padding:0}
+.fb{display:flex;justify-content:space-between;gap:20px;margin-top:36px;padding-top:18px;border-top:1px solid var(--hair2);font:400 10.5px/1.9 var(--mono);color:#47494D;letter-spacing:.03em}
+@media (max-width:900px){
+  .wrap{padding:0 20px}
+  .nav{gap:16px;margin-right:0}
+  .fg{grid-template-columns:1fr;gap:28px}
+  .fb{flex-direction:column;gap:6px}
+}
+@media (max-width:600px){
+  .wrap{padding:0 16px}
+  footer{padding:32px 0 40px}
+}
+</style>
 <link rel="stylesheet" href="/static/assets/site-nav.css?v=20261212k">
-<script defer src="/static/assets/site-nav.js?v=20261213b"></script>
-<script src="/static/assets/i18n.js?v=20261215a" defer></script>
-
+<style>html.fy-i18n-pending body{visibility:hidden!important}</style>
+<script>(function(){try{var l=localStorage.getItem('fy_lang_v1');if(l&&l!=='zh'){document.documentElement.classList.add('fy-i18n-pending');setTimeout(function(){document.documentElement.classList.remove('fy-i18n-pending')},1800)}}catch(e){}})();</script>
+<link rel="stylesheet" href="/static/assets/home-v2.css?v=20261119a">
+<link rel="stylesheet" href="/static/assets/data-v2.css?v=20261120a">
+<style>
+/* Blog article specific styles */
+.blog-article{max-width:720px;margin:0 auto;padding:36px 22px 80px}
+.blog-article h1{font-size:32px;line-height:1.2;margin:0 0 10px;letter-spacing:-.02em}
+.blog-article h2{font-size:20px;margin:32px 0 10px}
+.blog-article p,.blog-article li{color:#cfd6e0;line-height:1.7}
+.blog-article .meta{color:var(--mut);font-size:13px;margin-bottom:24px}
+.blog-article blockquote{border-left:3px solid var(--dn);margin:18px 0;padding:6px 0 6px 16px;color:#cfd6e0}
+.blog-article table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+.blog-article th,.blog-article td{border:1px solid var(--hair);padding:8px 10px;text-align:start;vertical-align:top}
+.blog-article th{background:var(--bg2)}
+.blog-article .cta{margin-top:40px;background:var(--bg2);border:1px solid var(--hair);border-radius:14px;padding:20px}
+.blog-article .btn{display:inline-block;background:var(--dn);color:#06251a;font-weight:700;text-decoration:none;padding:10px 16px;border-radius:10px}
+@media (max-width:640px){
+  .blog-article{padding:24px 16px 60px}
+  .blog-article h1{font-size:24px}
+  .blog-article h2{font-size:18px}
+  .blog-article p,.blog-article li{font-size:16px;line-height:1.7}
+  .blog-article table{font-size:13px}
+  .blog-article th,.blog-article td{padding:6px 8px}
+}
+</style>
 <!-- hreflang: same page per locale -->
 <link rel="alternate" hreflang="en" href="https://feiyu.tailf83eec.ts.net/blog/trade-journal-lies.html?lang=en">
 <link rel="alternate" hreflang="zh" href="https://feiyu.tailf83eec.ts.net/blog/trade-journal-lies.html?lang=zh">
@@ -47,78 +99,112 @@
 <link rel="alternate" hreflang="vi" href="https://feiyu.tailf83eec.ts.net/blog/trade-journal-lies.html?lang=vi">
 <link rel="alternate" hreflang="x-default" href="https://feiyu.tailf83eec.ts.net/blog/trade-journal-lies.html">
 </head>
-<body>
-<div class="wrap">
-  <header>
-    <div class="brand">FEIYU<span>·</span>TOOLS</div>
-    <nav class="topnav">
-      <a href="/">Home</a>
-      <a href="/tools.html">Free calculators</a>
-      <a href="/live.html">Live scan</a>
-      <a href="/trading.html">Open ledger</a>
-      <a href="/notes.html">Notes</a>
-      <a href="/about.html">About</a>
-      <a href="https://t.me/feiyu_radar_bot" target="_blank">Free bot</a>
-      <a href="/app/" target="_blank" rel="noopener">Toolbox</a>
-    </nav>
-  </header>
-  <div class="meta">Flying Fish Academy · 2026-11-09 · 5 min read</div>
-  <h1>Your trade journal is lying to you</h1>
-  <p>Most people who keep a trade journal keep a diary. A diary records what happened and how it felt. A journal is
-     supposed to answer a much narrower question: <b>which of my decisions actually make money?</b> Those are different
-     jobs, and a diary is very good at hiding the answer.</p>
+<body id="top" data-fy-page="blog-article" data-en-eyebrow="Notes" data-en-h1="Your trade journal is lying to you" data-en-lede="Five ways a trade log quietly misleads you, and the ten fields that make it honest.">
+<header class="topbar fy-nav"><div class="wrap tb">
+  <a class="brand" href="/"><b>飞鱼学院</b><span>FEIYU ACADEMY</span></a>
+  <nav class="nav" aria-label="Primary">
+    <a href="/watch.html">看盘</a>
+    <a href="/trade.html">实战</a>
+    <a href="/robots.html">机器人</a>
+    <a href="/packs.html">数据包</a>
+    <a href="/blog/index.html" class="on" aria-current="page">笔记</a><a href="/about.html">说明</a>
+  </nav>
+  <div class="tb-r"><span id="fy-lang-slot"></span><span id="fy-theme-slot"></span><a class="fy-svc fy-auth" href="/login.html">登录 / 注册</a></div>
+</div></header>
+<div class="fy-subnav" data-fy-slot></div>
 
-  <h2>Lie 1: the sample is too small to mean anything</h2>
-  <p>Ten trades tell you almost nothing. With a 50% win rate, the chance of seeing 7 wins in 10 trades is roughly 12% —
-     common enough that a normal week looks like an edge. The usual failure mode is that people make a change after
-     five trades, so they never accumulate enough data for any single setup to be judged.</p>
-  <p>Practical minimum: 30 trades per setup before you believe anything about it, and 100 before you size up on it.</p>
+<main class="home-v2 data-v2 blog-article-page" id="main">
+<div class="d-wrap">
 
-  <h2>Lie 2: dollars hide the risk you took</h2>
-  <p>"+$80" sounds like a good trade. If it was a 25x position where you risked $100 and got lucky, it is not a good
-     trade — it is a bad trade that worked. Measure in <b>R</b>: profit divided by the amount you put at risk.
-     A +0.4R win that came from a 3R-sized gamble is a failure, and the journal has to say so.</p>
-  <blockquote>If your journal records dollars and not risk, it is measuring your luck, not your skill.</blockquote>
+  <nav class="d-crumb" aria-label="面包屑"><a href="/">首页</a><span aria-hidden="true">/</span><a href="/blog/index.html">笔记</a><span aria-hidden="true">/</span><span>交易日志在骗你</span></nav>
 
-  <h2>Lie 3: the exit that never happened</h2>
-  <p>Most logs record the result of the trade you actually took. They do not record the stop you moved, the target you
-     abandoned, or the position you closed early because you were bored. Those are the decisions that need auditing —
-     they are where the money leaks. Log at least one field for
-     <b>"did I follow my plan: yes / no / partially"</b>, and track the ratio over time. It is usually uglier than the
-     P&amp;L suggests.</p>
+  <article class="blog-article">
+    <div class="meta">Flying Fish Academy · 2026-11-09 · 5 min read</div>
+    <h1>Your trade journal is lying to you</h1>
+    <p>Most people who keep a trade journal keep a diary. A diary records what happened and how it felt. A journal is
+       supposed to answer a much narrower question: <b>which of my decisions actually make money?</b> Those are different
+       jobs, and a diary is very good at hiding the answer.</p>
 
-  <h2>Lie 4: mixing setups into one number</h2>
-  <p>A single win rate across "breakout retests", "funding-rate fades" and "someone on Telegram said so" is an average
-     across unrelated populations. One setup is +2R per trade and another is -0.8R, and together they look like a
-     mediocre system. Tag every trade with the setup name, then evaluate each tag separately.</p>
+    <h2>Lie 1: the sample is too small to mean anything</h2>
+    <p>Ten trades tell you almost nothing. With a 50% win rate, the chance of seeing 7 wins in 10 trades is roughly 12% —
+       common enough that a normal week looks like an edge. The usual failure mode is that people make a change after
+       five trades, so they never accumulate enough data for any single setup to be judged.</p>
+    <p>Practical minimum: 30 trades per setup before you believe anything about it, and 100 before you size up on it.</p>
 
-  <h2>Lie 5: no drawdown, no truth</h2>
-  <p>Win rate and average win are comfortable numbers. Drawdown is the one that decides whether you survive to use
-     them. A system with a 70% win rate and a 40% drawdown will end you. Track the equity curve, the longest losing
-     streak, and the peak-to-trough number — and look at them honestly before increasing size.</p>
+    <h2>Lie 2: dollars hide the risk you took</h2>
+    <p>"+$80" sounds like a good trade. If it was a 25x position where you risked $100 and got lucky, it is not a good
+       trade — it is a bad trade that worked. Measure in <b>R</b>: profit divided by the amount you put at risk.
+       A +0.4R win that came from a 3R-sized gamble is a failure, and the journal has to say so.</p>
+    <blockquote>If your journal records dollars and not risk, it is measuring your luck, not your skill.</blockquote>
 
-  <h2>The ten fields that make a journal honest</h2>
-  <table>
-    <tr><th>Field</th><th>Why it matters</th></tr>
-    <tr><td>Date / pair / direction</td><td>Context and filtering</td></tr>
-    <tr><td>Setup tag</td><td>So you can evaluate setups separately</td></tr>
-    <tr><td>Entry, stop, target</td><td>Risk is defined before the trade</td></tr>
-    <tr><td>Size</td><td>To compute R and exposure</td></tr>
-    <tr><td>Risk in $ and in R</td><td>The denominator of every meaningful stat</td></tr>
-    <tr><td>Exit price and result in R</td><td>Skill measure, not luck measure</td></tr>
-    <tr><td>Followed the plan? (Y/N/partial)</td><td>The only field that catches self-sabotage</td></tr>
-    <tr><td>One-line reason for the entry</td><td>Lets you find the recurring mistake</td></tr>
-    <tr><td>Emotional state</td><td>Patterns you cannot see from P&amp;L</td></tr>
-    <tr><td>Screenshot or note</td><td>So you can re-read the chart, not your memory of it</td></tr>
-  </table>
+    <h2>Lie 3: the exit that never happened</h2>
+    <p>Most logs record the result of the trade you actually took. They do not record the stop you moved, the target you
+       abandoned, or the position you closed early because you were bored. Those are the decisions that need auditing —
+       they are where the money leaks. Log at least one field for
+       <b>"did I follow my plan: yes / no / partially"</b>, and track the ratio over time. It is usually uglier than the
+       P&L suggests.</p>
 
-  <div class="cta">
-    <p style="margin-top:0">I built an Excel template that does all of the above automatically — win rate, R-multiples,
-       payoff ratio, max drawdown, equity curve and per-setup stats. It is $12, paid in BNB or SOL, delivered on-chain.</p>
-    <a class="btn" href="/">See the journal →</a>
-  </div>
+    <h2>Lie 4: mixing setups into one number</h2>
+    <p>A single win rate across "breakout retests", "funding-rate fades" and "someone on Telegram said so" is an average
+       across unrelated populations. One setup is +2R per trade and another is -0.8R, and together they look like a
+       mediocre system. Tag every trade with the setup name, then evaluate each tag separately.</p>
+
+    <h2>Lie 5: no drawdown, no truth</h2>
+    <p>Win rate and average win are comfortable numbers. Drawdown is the one that decides whether you survive to use
+       them. A system with a 70% win rate and a 40% drawdown will end you. Track the equity curve, the longest losing
+       streak, and the peak-to-trough number — and look at them honestly before increasing size.</p>
+
+    <h2>The ten fields that make a journal honest</h2>
+    <table>
+      <tr><th>Field</th><th>Why it matters</th></tr>
+      <tr><td>Date / pair / direction</td><td>Context and filtering</td></tr>
+      <tr><td>Setup tag</td><td>So you can evaluate setups separately</td></tr>
+      <tr><td>Entry, stop, target</td><td>Risk is defined before the trade</td></tr>
+      <tr><td>Size</td><td>To compute R and exposure</td></tr>
+      <tr><td>Risk in $ and in R</td><td>The denominator of every meaningful stat</td></tr>
+      <tr><td>Exit price and result in R</td><td>Skill measure, not luck measure</td></tr>
+      <tr><td>Followed the plan? (Y/N/partial)</td><td>The only field that catches self-sabotage</td></tr>
+      <tr><td>One-line reason for the entry</td><td>Lets you find the recurring mistake</td></tr>
+      <tr><td>Emotional state</td><td>Patterns you cannot see from P&L</td></tr>
+      <tr><td>Screenshot or note</td><td>So you can re-read the chart, not your memory of it</td></tr>
+    </table>
+
+    <div class="cta">
+      <p style="margin-top:0">I built an Excel template that does all of the above automatically — win rate, R-multiples,
+         payoff ratio, max drawdown, equity curve and per-setup stats. It is $12, paid in BNB or SOL, delivered on-chain.</p>
+      <a class="btn" href="/">See the journal →</a>
+    </div>
+  </article>
+
 </div>
-<link rel="stylesheet" href="/static/assets/chat.css?v=20261215a">
-<script src="/static/assets/chat.js?v=20261215a" defer></script>
+</main>
+
+<footer><div class="wrap">
+  <div class="fg">
+    <div>
+      <h5>飞鱼学院 · FEIYU ACADEMY</h5>
+      <p>一个人做的站。九个工具都在这儿，四份数据包全免费，登录就能拿。<br>不接广告，不卖课，不带单。</p>
+      <p style="margin-top:10px"><a href="https://t.me/siren1109" target="_blank" rel="noopener">TG 频道 @siren1109</a></p>
+    </div>
+    <div>
+      <h5>目录</h5>
+      <ul><li><a href="/watch.html#movers">异动榜</a></li><li><a href="/trade.html">九个工具</a></li><li><a href="/packs.html">数据包</a></li><li><a href="/blog/index.html">笔记</a></li><li><a href="/about.html">说明</a></li></ul>
+    </div>
+    <div>
+      <h5>说明</h5>
+      <p>行情与价格来自交易所公开接口；只有模拟盘的下单成交与账户余额是模拟的。合约交易会亏光本金，别拿输不起的钱进场。</p>
+      <p style="margin-top:8px">收款：BNB、ETH、POL、SOL、USDT、USDC（七条链）；不支持 TRON / TRC20。</p>
+    </div>
+  </div>
+  <div class="fb">
+    <span>© 2026 FEIYU ACADEMY · 行情实时 · 模拟盘用 USDm</span>
+    <span>BYBIT USDT PERP · 61 CONTRACTS</span>
+  </div>
+</div></footer>
+
+<script src="/static/assets/site-nav.js?v=20261214a" defer></script>
+<script>window.FY_ENGINE_MIN='20261120j';</script>
+<script src="/static/assets/i18n-full.js?v=20261220i" defer data-fy-i18n></script>
+<script src="/static/assets/chat.js?v=20261215a" defer data-fy-chat></script>
 </body>
 </html>
