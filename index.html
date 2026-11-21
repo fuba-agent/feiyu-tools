@@ -404,6 +404,9 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
       if (q && tr.textContent.toLowerCase().indexOf(q) < 0) return false;
       if (mode === "watch") return tr.getAttribute("data-watch") === "1";
       if (mode === "new") return tr.getAttribute("data-new") === "1";
+      // 涨幅榜只留上涨的、跌幅榜只留下跌的，别把对面的混进来
+      if (mode === "gain") return num(tr, "chg") > 0;
+      if (mode === "lose") return num(tr, "chg") < 0;
       return true;
     });
   }
@@ -413,6 +416,12 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
       if (mode === "turnover") return num(b, "turnover") - num(a, "turnover");
       if (mode === "gain") return num(b, "chg") - num(a, "chg");
       if (mode === "lose") return num(a, "chg") - num(b, "chg");
+      if (mode === "all") {
+        // 「全部」是名单不是榜单：按币种字母序，不能和涨幅榜排成一模一样
+        var sa = (a.cells[0] ? a.cells[0].textContent : "").trim().toUpperCase();
+        var sb = (b.cells[0] ? b.cells[0].textContent : "").trim().toUpperCase();
+        return sa < sb ? -1 : sa > sb ? 1 : num(a, "idx") - num(b, "idx");
+      }
       return num(a, "idx") - num(b, "idx");
     });
     rows.forEach(function (tr) { tr.hidden = true; });
