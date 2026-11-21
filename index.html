@@ -65,7 +65,7 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
 <link rel="stylesheet" href="/static/assets/site-nav.css?v=20261212k">
 <style>html.fy-i18n-pending body{visibility:hidden!important}</style>
 <script>(function(){try{var l=localStorage.getItem('fy_lang_v1');if(l&&l!=='zh'){document.documentElement.classList.add('fy-i18n-pending');setTimeout(function(){document.documentElement.classList.remove('fy-i18n-pending')},1800)}}catch(e){}})();</script>
-<link rel="stylesheet" href="/static/assets/home-v2.css?v=20261119a">
+<link rel="stylesheet" href="/static/assets/home-v2.css?v=20261121a">
 </head>
 <body id="top">
 
@@ -87,24 +87,24 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
   <section class="h-assets" aria-label="模拟账户资产">
     <div class="h-wrap h-assets-in">
       <div class="h-stat h-stat-main">
-        <span class="k">模拟账户</span>
-        <span class="v"><b class="n">102,430.62</b><em>USDm</em></span>
+        <span class="k">模拟账户 <i class="h-demo" data-ha-demo>示例</i></span>
+        <span class="v"><b class="n" data-ha="equity">102,430.62</b><em>USDm</em></span>
       </div>
       <div class="h-stat">
         <span class="k">今日盈亏</span>
-        <span class="v"><b class="n up">+893.12</b><em>USDm</em><b class="n up h-pct">(+0.88%)</b></span>
+        <span class="v"><b class="n up" data-ha="todayPnl">+893.12</b><em>USDm</em><b class="n up h-pct" data-ha="todayPct">(+0.88%)</b></span>
       </div>
       <div class="h-stat h-sm-hide">
         <span class="k">持仓保证金</span>
-        <span class="v"><b class="n">15,000.00</b></span>
+        <span class="v"><b class="n" data-ha="usedMargin">15,000.00</b></span>
       </div>
       <div class="h-stat">
         <span class="k">可用</span>
-        <span class="v"><b class="n">87,430.62</b></span>
+        <span class="v"><b class="n" data-ha="available">87,430.62</b></span>
       </div>
       <div class="h-stat h-sm-hide">
         <span class="k">今日成交</span>
-        <span class="v"><b class="n">3</b><em>笔</em></span>
+        <span class="v"><b class="n" data-ha="todayTrades">3</b><em>笔</em></span>
       </div>
       <a class="h-cta" href="/sim.html">去靶场</a>
     </div>
@@ -263,14 +263,14 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
         </section>
 
         <section class="h-block">
-          <div class="h-bh"><h2>我的模拟账户</h2><a href="/sim.html">靶场 →</a></div>
-          <div class="h-bal"><span class="k">账户权益</span><span class="n">102,430.62 <em>USDm</em></span></div>
-          <div class="h-pos">
+          <div class="h-bh"><h2>我的模拟账户 <i class="h-demo" data-ha-demo>示例</i></h2><a href="/sim.html">靶场 →</a></div>
+          <div class="h-bal"><span class="k">账户权益</span><span class="n"><span data-ha="sideEquity">102,430.62</span> <em>USDm</em></span></div>
+          <div class="h-pos" data-ha="positions">
             <a class="h-prow" href="/sim.html"><span>IRYS/USDT</span><span class="k">多 3x</span><b class="n up">+612.40</b></a>
             <a class="h-prow" href="/sim.html"><span>SUI/USDT</span><span class="k">多 5x</span><b class="n up">+393.20</b></a>
             <a class="h-prow" href="/sim.html"><span>OP/USDT</span><span class="k">空 2x</span><b class="n down">-112.48</b></a>
           </div>
-          <div class="h-pnl"><span class="k">今日盈亏</span><b class="n up">+893.12 USDm (+0.88%)</b></div>
+          <div class="h-pnl"><span class="k">今日盈亏</span><b class="n up" data-ha="sidePnl">+893.12 USDm (+0.88%)</b></div>
         </section>
 
         <section class="h-block">
@@ -461,6 +461,7 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
   });
 })();
 </script>
+<script src="/js/home-account.js?v=20261121a" defer></script>
 <script src="/static/assets/coin-icons.js?v=20261121c"></script>
 </body>
 </html>
