@@ -1,45 +1,96 @@
 <!doctype html>
 <html lang="en">
 <head>
+<style id="fy-theme-critical">html[data-theme="light"],html[data-theme="light"] body{background:#FFFFFF!important;color:#10233C!important}html[data-theme="light"]{--bg:#F7F8FA;--bg2:#FFFFFF;--hair:rgba(17,21,26,.075);--hair2:rgba(17,21,26,.045);--txt:#11151A;--mut:#565D64;--mut2:#4B5158;--blue:#11151A;--warn:#D62F3D;--dn:#565D64}</style>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Anatomy of an altcoin squeeze: three days of INIT</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="A real case study from my scanner: INIT ran +68.9% on deeply negative funding, then fell 44% two days later. What the funding and open interest actually said.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Anatomy of an altcoin squeeze: three days of INIT">
 <meta property="og:description" content="A real case study from the scanner: what -0.566% funding looked like before +68.9%, and what it looked like before -44%.">
 <meta property="og:image" content="https://feiyu.tailf83eec.ts.net/static/img/og-cover.png">
-<meta name="twitter:card" content="summary_large_image">
-
-<meta name="description" content="A real case study from my scanner: INIT ran +68.9% on deeply negative funding, then fell 44% two days later. What the funding and open interest actually said.">
-<style>
-  :root{--bg:#0b0d10;--panel:#12151a;--line:#242a33;--text:#e8edf4;--muted:#8b95a5;--accent:#3ddc97;--warn:#ffb547}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.7}
-  .wrap{max-width:720px;margin:0 auto;padding:36px 22px 80px}
-  a{color:var(--accent)}
-  h1{font-size:34px;line-height:1.2;margin:0 0 10px;letter-spacing:-.02em}
-  h2{font-size:21px;margin:34px 0 10px}
-  p,li{color:#cfd6e0}
-  .meta{color:var(--muted);font-size:13px;margin-bottom:26px}
-  table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
-  th,td{border:1px solid var(--line);padding:8px 10px;text-align:start;vertical-align:top}
-  th{background:var(--panel);font-weight:600}
-  td:first-child{white-space:nowrap}
-  blockquote{border-left:3px solid var(--accent);margin:18px 0;padding:6px 0 6px 16px;color:#cfd6e0}
-  .cta{margin-top:44px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
-  .cta p{margin:6px 0 14px;color:var(--muted);font-size:14px}
-  .btn{display:inline-block;background:var(--accent);color:#06251a;font-weight:700;text-decoration:none;padding:10px 16px;border-radius:10px}
-  code{background:#161a20;padding:1px 5px;border-radius:4px;font-size:13px}
-  .neg{color:#ff7b7b}.pos{color:#3ddc97}
-</style>
-<link rel="canonical" href="https://feiyu.tailf83eec.ts.net/blog/altcoin-squeeze-anatomy.html">
 <meta property="og:url" content="https://feiyu.tailf83eec.ts.net/blog/altcoin-squeeze-anatomy.html">
-<link rel="stylesheet" href="/static/assets/site.css?v=20261117h">
-<link rel="stylesheet" href="/static/assets/site-v4.css?v=20261116f">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Anatomy of an altcoin squeeze: three days of INIT">
+<meta name="twitter:description" content="A real case study from the scanner: what -0.566% funding looked like before +68.9%, and what it looked like before -44%.">
+<meta name="twitter:image" content="https://feiyu.tailf83eec.ts.net/static/img/og-cover.png">
+<link rel="canonical" href="https://feiyu.tailf83eec.ts.net/blog/altcoin-squeeze-anatomy.html">
+<title>Anatomy of an altcoin squeeze: three days of INIT</title>
+<link rel="stylesheet" href="/static/assets/chat.css?v=20261215a">
+<link id="fy-theme-light" rel="stylesheet" href="/static/assets/theme-light.css?v=20261128b" disabled>
+<script>(function(){try{var q=new URLSearchParams(location.search).get("t");var s=localStorage.getItem("fy_theme");var t=(q==="light"||q==="dark")?q:(s==="light"?"light":"dark");document.documentElement.setAttribute("data-theme",t);if(t==="light"){var l=document.getElementById("fy-theme-light");if(l)l.disabled=false;}}catch(e){}})();</script>
+<script src="/js/theme.js?v=20261128c" defer></script>
+<link rel="manifest" href="/manifest.webmanifest">
+<script src="/js/pwa.js?v=20261117a" defer></script>
+<style id="fy-shell">
+:root{--bg:#0B0D10;--bg2:#15171A;--hair:rgba(255,255,255,.075);--hair2:rgba(255,255,255,.045);--txt:#FFFFFF;--mut:#8C8F94;--mut2:#4B5158;--blue:#EDEEF0;--warn:#F04452;--dn:#2FC08A;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+.topbar{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--hair2)}
+.tb{display:flex;align-items:center;justify-content:space-between;height:58px}
+.brand{display:flex;align-items:baseline;gap:10px}
+.brand b{font-size:15px;letter-spacing:.02em}
+.brand span{font:400 9.5px/1 var(--mono);letter-spacing:.22em;color:#5E6166}
+.nav{display:flex;gap:26px;margin-left:auto;margin-right:34px}
+.nav a{font-size:13.5px;color:var(--mut);padding:12px 0;border-bottom:1.5px solid transparent;line-height:20px}
+.nav a:hover{color:#fff}
+.nav a.on{color:#fff;border-bottom-color:var(--blue)}
+.tb-r{display:flex;align-items:center;gap:18px;font-size:12px;color:#6F7276}
+.fy-svc{color:#6F7276}
+.fy-svc:hover{color:#fff}
+.fy-subnav:empty{min-height:0}
+footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top:8px}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1.3fr;gap:48px}
+.fg h5{font-size:13.5px;font-weight:600;margin:0 0 12px}
+.fg p,.fg a,.fg li{font-size:12.5px;line-height:1.9;color:#808388}
+.fg a:hover{color:#fff}
+.fg ul{list-style:none;display:flex;flex-wrap:wrap;gap:0 18px;margin:0;padding:0}
+.fb{display:flex;justify-content:space-between;gap:20px;margin-top:36px;padding-top:18px;border-top:1px solid var(--hair2);font:400 10.5px/1.9 var(--mono);color:#47494D;letter-spacing:.03em}
+@media (max-width:900px){
+  .wrap{padding:0 20px}
+  .nav{gap:16px;margin-right:0}
+  .fg{grid-template-columns:1fr;gap:28px}
+  .fb{flex-direction:column;gap:6px}
+}
+@media (max-width:600px){
+  .wrap{padding:0 16px}
+  footer{padding:32px 0 40px}
+}
+</style>
 <link rel="stylesheet" href="/static/assets/site-nav.css?v=20261212k">
-<script defer src="/static/assets/site-nav.js?v=20261213b"></script>
-<script src="/static/assets/i18n.js?v=20261215a" defer></script>
-
+<style>html.fy-i18n-pending body{visibility:hidden!important}</style>
+<script>(function(){try{var l=localStorage.getItem('fy_lang_v1');if(l&&l!=='zh'){document.documentElement.classList.add('fy-i18n-pending');setTimeout(function(){document.documentElement.classList.remove('fy-i18n-pending')},1800)}}catch(e){}})();</script>
+<link rel="stylesheet" href="/static/assets/home-v2.css?v=20261119a">
+<link rel="stylesheet" href="/static/assets/data-v2.css?v=20261120a">
+<style>
+/* Blog article specific styles */
+.blog-article{max-width:720px;margin:0 auto;padding:36px 22px 80px}
+.blog-article h1{font-size:34px;line-height:1.2;margin:0 0 10px;letter-spacing:-.02em}
+.blog-article h2{font-size:21px;margin:34px 0 10px}
+.blog-article p,.blog-article li{color:#cfd6e0;line-height:1.7}
+.blog-article .meta{color:var(--mut);font-size:13px;margin-bottom:26px}
+.blog-article table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+.blog-article th,.blog-article td{border:1px solid var(--hair);padding:8px 10px;text-align:start;vertical-align:top}
+.blog-article th{background:var(--bg2);font-weight:600}
+.blog-article td:first-child{white-space:nowrap}
+.blog-article blockquote{border-left:3px solid var(--dn);margin:18px 0;padding:6px 0 6px 16px;color:#cfd6e0}
+.blog-article .cta{margin-top:44px;background:var(--bg2);border:1px solid var(--hair);border-radius:14px;padding:20px}
+.blog-article .cta p{margin:6px 0 14px;color:var(--mut);font-size:14px}
+.blog-article .btn{display:inline-block;background:var(--dn);color:#06251a;font-weight:700;text-decoration:none;padding:10px 16px;border-radius:10px}
+.blog-article code{background:#161a20;padding:1px 5px;border-radius:4px;font-size:13px}
+.blog-article .neg{color:#ff7b7b}.blog-article .pos{color:#3ddc97}
+@media (max-width:640px){
+  .blog-article{padding:24px 16px 60px}
+  .blog-article h1{font-size:26px}
+  .blog-article h2{font-size:19px}
+  .blog-article p,.blog-article li{font-size:16px;line-height:1.7}
+  .blog-article table{font-size:13px}
+  .blog-article th,.blog-article td{padding:6px 8px}
+}
+</style>
 <!-- hreflang: same page per locale -->
 <link rel="alternate" hreflang="en" href="https://feiyu.tailf83eec.ts.net/blog/altcoin-squeeze-anatomy.html?lang=en">
 <link rel="alternate" hreflang="zh" href="https://feiyu.tailf83eec.ts.net/blog/altcoin-squeeze-anatomy.html?lang=zh">
@@ -52,112 +103,146 @@
 <link rel="alternate" hreflang="vi" href="https://feiyu.tailf83eec.ts.net/blog/altcoin-squeeze-anatomy.html?lang=vi">
 <link rel="alternate" hreflang="x-default" href="https://feiyu.tailf83eec.ts.net/blog/altcoin-squeeze-anatomy.html">
 </head>
-<body>
-<div class="wrap">
-  <header>
-    <div class="brand">FEIYU<span>·</span>TOOLS</div>
-    <nav class="topnav">
-      <a href="/">Home</a>
-      <a href="/tools.html">Free calculators</a>
-      <a href="/live.html">Live scan</a>
-      <a href="/trading.html">Open ledger</a>
-      <a href="/notes.html">Notes</a>
-      <a href="/about.html">About</a>
-      <a href="https://t.me/feiyu_radar_bot" target="_blank">Free bot</a>
-      <a href="/app/" target="_blank" rel="noopener">Toolbox</a>
-    </nav>
-  </header>
-  <div class="meta">Flying Fish Academy · 2026-11-13 · 7 min read · every number below is from the scanner's own log</div>
-  <h1>Anatomy of an altcoin squeeze: three days of INIT</h1>
-  <p>On 10 November, INIT printed <b>+68.9%</b> in 24 hours while its funding sat at
-     <b class="neg">-0.566% per 4 hours</b> — roughly <b>-1,240% annualised</b>. Two days later it was
-     <b class="neg">-44%</b>. The same contract, the same crowd, two very different conclusions.
-     This is what a squeeze actually looks like from the inside, using the data the scanner logged that week.</p>
+<body id="top" data-fy-page="blog-article" data-en-eyebrow="Notes" data-en-h1="Anatomy of an altcoin squeeze" data-en-lede="INIT +68.9% on -0.566% funding, then -44%. What funding and OI actually said.">
+<header class="topbar fy-nav"><div class="wrap tb">
+  <a class="brand" href="/"><b>飞鱼学院</b><span>FEIYU ACADEMY</span></a>
+  <nav class="nav" aria-label="Primary">
+    <a href="/watch.html">看盘</a>
+    <a href="/trade.html">实战</a>
+    <a href="/robots.html">机器人</a>
+    <a href="/packs.html">数据包</a>
+    <a href="/blog/index.html" class="on" aria-current="page">笔记</a><a href="/about.html">说明</a>
+  </nav>
+  <div class="tb-r"><span id="fy-lang-slot"></span><span id="fy-theme-slot"></span><a class="fy-svc fy-auth" href="/login.html">登录 / 注册</a></div>
+</div></header>
+<div class="fy-subnav" data-fy-slot></div>
 
-  <h2>1. What a squeeze is, physically</h2>
-  <p>Forget the charts for a second. A squeeze is a <b>liquidation queue</b>. Shorts hold borrowed exposure with
-     maintenance margin. When price rises, their equity falls. When equity falls below maintenance, the exchange
-     closes them at market — that is a market buy. That buy pushes price higher, which pushes the next short below
-     maintenance, and the queue drains itself in a chain.</p>
-  <p>Three ingredients make that chain violent:</p>
-  <ul>
-    <li><b>Crowded positioning.</b> Too many shorts, visible as persistently negative funding.</li>
-    <li><b>Thin liquidity.</b> Small caps move on less size, so each liquidation covers more ground.</li>
-    <li><b>A catalyst.</b> A listing, a partnership rumour, a large spot buyer, or simply someone deciding to push
-        the queue because they can see it too.</li>
-  </ul>
-  <p>Funding is the only one of the three that is printed on a schedule. That is why it is the first thing I check
-     every morning — see <a href="/blog/funding-rates.html">how to read funding rates and open interest</a> for the
-     basic table.</p>
+<main class="home-v2 data-v2 blog-article-page" id="main">
+<div class="d-wrap">
 
-  <h2>2. The week, as the scanner logged it</h2>
-  <table>
-    <tr><th>Date</th><th>Crowded side</th><th>Funding</th><th>24h move</th><th>Reading</th></tr>
-    <tr><td>11-09</td><td>PIEVERSE</td><td class="pos">+0.079% / 4h</td><td>+39.4%</td><td>Longs paying, longs getting paid — momentum, not squeeze</td></tr>
-    <tr><td>11-10</td><td>INIT</td><td class="neg">-0.566% / 4h</td><td>+68.9%</td><td>Shorts crowded and bleeding — the queue starts draining</td></tr>
-    <tr><td>11-11</td><td>ONE</td><td class="neg">-0.276% / 4h</td><td>+27.9%</td><td>Same structure, smaller size</td></tr>
-    <tr><td>11-12</td><td>JCT</td><td class="pos">+0.056% / 4h</td><td>-47.0%</td><td>Opposite: longs crowded, then dumped</td></tr>
-    <tr><td>11-13</td><td>BARD</td><td class="neg">-1.999% / 4h</td><td>+59.3%</td><td>Extreme: shorts paying ~4,400% a year to stay wrong</td></tr>
-  </table>
-  <p>Read the first column closely. On the days the crowd was short and paying, price went <em>up</em>. On the day
-     the crowd was long and paying (JCT, 11-12), price went <em>down 47%</em>. Funding did not predict the direction
-     of the next candle — it described <b>which side had no room to be wrong</b>.</p>
+  <nav class="d-crumb" aria-label="面包屑"><a href="/">首页</a><span aria-hidden="true">/</span><a href="/blog/index.html">笔记</a><span aria-hidden="true">/</span><span>山寨币轧空解剖</span></nav>
 
-  <h2>3. The trap nobody warns you about</h2>
-  <p>The obvious mistake is to read extreme negative funding as "shorts are trapped, buy." That is how you end up
-     long the top of the squeeze instead of short the start of it.</p>
-  <p>This is what happened to INIT after the first squeeze:</p>
-  <table>
-    <tr><th>Window</th><th>Funding at the time</th><th>Move</th><th>What the crowd learned</th></tr>
-    <tr><td>11-10</td><td class="neg">-0.566% / 4h</td><td>+68.9%</td><td>Shorts were right to be scared, not right about direction forever</td></tr>
-    <tr><td>11-12</td><td>-0.053% / 1h</td><td>-44.0%</td><td>Funding had normalised — the queue was empty, price could fall again</td></tr>
-    <tr><td>11-13</td><td>-0.133% / 1h</td><td>-15.8%</td><td>Still no squeeze fuel; just drift</td></tr>
-  </table>
-  <blockquote>Extreme funding means "this side is about to be punished." It does not mean "the other side is about to
-     win."</blockquote>
-  <p>The tradable event is not the extreme reading itself. It is the <b>exhaustion</b> of the extreme: funding back
-     toward neutral, open interest down, and price no longer making new highs on the squeeze. That is when the
-     crowd that got liquidated is gone and the move has nothing left behind it.</p>
+  <article class="blog-article">
+    <div class="meta">Flying Fish Academy · 2026-11-13 · 7 min read · every number below is from the scanner's own log</div>
+    <h1>Anatomy of an altcoin squeeze: three days of INIT</h1>
+    <p>On 10 November, INIT printed <b>+68.9%</b> in 24 hours while its funding sat at
+       <b class="neg">-0.566% per 4 hours</b> — roughly <b>-1,240% annualised</b>. Two days later it was
+       <b class="neg">-44%</b>. The same contract, the same crowd, two very different conclusions.
+       This is what a squeeze actually looks like from the inside, using the data the scanner logged that week.</p>
 
-  <h2>4. The checklist I actually use</h2>
-  <p>Before I short any small-cap perp, four boxes have to be ticked. If one is missing, I wait.</p>
-  <ol>
-    <li><b>Funding is not deeply negative.</b> If shorts are paying more than roughly 0.1% per 4 hours, I do not
-        open a new short — I am joining the queue that is about to be drained, not fading a move that already
-        happened.</li>
-    <li><b>Open interest is falling or flat, not rising.</b> Rising OI into a rally means new longs are still
-        arriving; falling OI means the move is being paid for by closing positions, which fades.</li>
-    <li><b>The coin is underperforming its market.</b> Compare to ETH over the same window. Beta is noise; own
-        weakness is information.</li>
-    <li><b>Liquidity is deep enough to exit.</b> A $2M volume coin with a 30% spread will not let you out at your
-        stop. Size for the exit, not the entry.</li>
-  </ol>
-  <p>And when I am already short and wrong, I leave on structure, not on hope: a run of consecutive strong
-     15-minute candles on a squeeze is the market handing out liquidation tickets, and I do not want one.</p>
+    <h2>1. What a squeeze is, physically</h2>
+    <p>Forget the charts for a second. A squeeze is a <b>liquidation queue</b>. Shorts hold borrowed exposure with
+       maintenance margin. When price rises, their equity falls. When equity falls below maintenance, the exchange
+       closes them at market — that is a market buy. That buy pushes price higher, which pushes the next short below
+       maintenance, and the queue drains itself in a chain.</p>
+    <p>Three ingredients make that chain violent:</p>
+    <ul>
+      <li><b>Crowded positioning.</b> Too many shorts, visible as persistently negative funding.</li>
+      <li><b>Thin liquidity.</b> Small caps move on less size, so each liquidation covers more ground.</li>
+      <li><b>A catalyst.</b> A listing, a partnership rumour, a large spot buyer, or simply someone deciding to push
+          the queue because they can see it too.</li>
+    </ul>
+    <p>Funding is the only one of the three that is printed on a schedule. That is why it is the first thing I check
+       every morning — see <a href="/blog/funding-rates.html">how to read funding rates and open interest</a> for the
+       basic table.</p>
 
-  <h2>5. The honest limits</h2>
-  <p>Everything above describes positioning, not price. It tells you when one side is fragile. It does not tell you
-     the day, the hour, or the trigger. Anyone who claims otherwise is selling certainty they do not have.</p>
-  <p>What it does do is keep you out of the worst trade available on any given day: being the crowded side with no
-     room left. In a market where the crowd is usually wrong, that is most of the edge.</p>
+    <h2>2. The week, as the scanner logged it</h2>
+    <table>
+      <tr><th>Date</th><th>Crowded side</th><th>Funding</th><th>24h move</th><th>Reading</th></tr>
+      <tr><td>11-09</td><td>PIEVERSE</td><td class="pos">+0.079% / 4h</td><td>+39.4%</td><td>Longs paying, longs getting paid — momentum, not squeeze</td></tr>
+      <tr><td>11-10</td><td>INIT</td><td class="neg">-0.566% / 4h</td><td>+68.9%</td><td>Shorts crowded and bleeding — the queue starts draining</td></tr>
+      <tr><td>11-11</td><td>ONE</td><td class="neg">-0.276% / 4h</td><td>+27.9%</td><td>Same structure, smaller size</td></tr>
+      <tr><td>11-12</td><td>JCT</td><td class="pos">+0.056% / 4h</td><td>-47.0%</td><td>Opposite: longs crowded, then dumped</td></tr>
+      <tr><td>11-13</td><td>BARD</td><td class="neg">-1.999% / 4h</td><td>+59.3%</td><td>Extreme: shorts paying ~4,400% a year to stay wrong</td></tr>
+    </table>
+    <p>Read the first column closely. On the days the crowd was short and paying, price went <em>up</em>. On the day
+       the crowd was long and paying (JCT, 11-12), price went <em>down 47%</em>. Funding did not predict the direction
+       of the next candle — it described <b>which side had no room to be wrong</b>.</p>
 
-  <div class="cta">
-    <h2 style="margin:0 0 6px;font-size:19px">See the scan before you decide</h2>
-    <p>The scanner logs every flag it finds, every day, in public. Look at the last week of data first — it costs
-       nothing and it shows you exactly what these readings look like in practice.</p>
-    <a class="btn" href="/live">Today's free anomaly list →</a>
-    <p style="margin-top:14px">Want the full version that also tracks open interest, 5-minute spikes and coin-vs-market
-       beta, plus the written rules? The <a href="/">radar and journal start at $5</a>.</p>
-  </div>
+    <h2>3. The trap nobody warns you about</h2>
+    <p>The obvious mistake is to read extreme negative funding as "shorts are trapped, buy." That is how you end up
+       long the top of the squeeze instead of short the start of it.</p>
+    <p>This is what happened to INIT after the first squeeze:</p>
+    <table>
+      <tr><th>Window</th><th>Funding at the time</th><th>Move</th><th>What the crowd learned</th></tr>
+      <tr><td>11-10</td><td class="neg">-0.566% / 4h</td><td>+68.9%</td><td>Shorts were right to be scared, not right about direction forever</td></tr>
+      <tr><td>11-12</td><td>-0.053% / 1h</td><td>-44.0%</td><td>Funding had normalised — the queue was empty, price could fall again</td></tr>
+      <tr><td>11-13</td><td>-0.133% / 1h</td><td>-15.8%</td><td>Still no squeeze fuel; just drift</td></tr>
+    </table>
+    <blockquote>Extreme funding means "this side is about to be punished." It does not mean "the other side is about to
+       win."</blockquote>
+    <p>The tradable event is not the extreme reading itself. It is the <b>exhaustion</b> of the extreme: funding back
+       toward neutral, open interest down, and price no longer making new highs on the squeeze. That is when the
+       crowd that got liquidated is gone and the move has nothing left behind it.</p>
 
-  <p style="margin-top:30px;color:var(--muted);font-size:13px">Nothing here is financial advice. These are
-     observations from my own trading log. Crypto derivatives can lose you your entire capital.</p>
-  <p style="color:var(--muted);font-size:13px">Related: <a href="/blog/funding-rates.html">reading funding and open
-     interest</a> · <a href="/blog/scan-800-altcoins.html">how the scanner works</a> ·
-     <a href="/blog/trade-journal-lies.html">why trade journals lie</a> ·
-     <a href="/blog/zombie-token-rebound.html">why a -99% token is not a bounce</a></p>
+    <h2>4. The checklist I actually use</h2>
+    <p>Before I short any small-cap perp, four boxes have to be ticked. If one is missing, I wait.</p>
+    <ol>
+      <li><b>Funding is not deeply negative.</b> If shorts are paying more than roughly 0.1% per 4 hours, I do not
+          open a new short — I am joining the queue that is about to be drained, not fading a move that already
+          happened.</li>
+      <li><b>Open interest is falling or flat, not rising.</b> Rising OI into a rally means new longs are still
+          arriving; falling OI means the move is being paid for by closing positions, which fades.</li>
+      <li><b>The coin is underperforming its market.</b> Compare to ETH over the same window. Beta is noise; own
+          weakness is information.</li>
+      <li><b>Liquidity is deep enough to exit.</b> A $2M volume coin with a 30% spread will not let you out at your
+          stop. Size for the exit, not the entry.</li>
+    </ol>
+    <p>And when I am already short and wrong, I leave on structure, not on hope: a run of consecutive strong
+       15-minute candles on a squeeze is the market handing out liquidation tickets, and I do not want one.</p>
+
+    <h2>5. The honest limits</h2>
+    <p>Everything above describes positioning, not price. It tells you when one side is fragile. It does not tell you
+       the day, the hour, or the trigger. Anyone who claims otherwise is selling certainty they do not have.</p>
+    <p>What it does do is keep you out of the worst trade available on any given day: being the crowded side with no
+       room left. In a market where the crowd is usually wrong, that is most of the edge.</p>
+
+    <div class="cta">
+      <h2 style="margin:0 0 6px;font-size:19px">See the scan before you decide</h2>
+      <p>The scanner logs every flag it finds, every day, in public. Look at the last week of data first — it costs
+         nothing and it shows you exactly what these readings look like in practice.</p>
+      <a class="btn" href="/live">Today's free anomaly list →</a>
+      <p style="margin-top:14px">Want the full version that also tracks open interest, 5-minute spikes and coin-vs-market
+         beta, plus the written rules? The <a href="/">radar and journal start at $5</a>.</p>
+    </div>
+
+    <p style="margin-top:30px;color:var(--mut);font-size:13px">Nothing here is financial advice. These are
+       observations from my own trading log. Crypto derivatives can lose you your entire capital.</p>
+    <p style="color:var(--mut);font-size:13px">Related: <a href="/blog/funding-rates.html">reading funding and open
+       interest</a> · <a href="/blog/scan-800-altcoins.html">how the scanner works</a> ·
+       <a href="/blog/trade-journal-lies.html">why trade journals lie</a> ·
+       <a href="/blog/zombie-token-rebound.html">why a -99% token is not a bounce</a></p>
+  </article>
+
 </div>
-<link rel="stylesheet" href="/static/assets/chat.css?v=20261215a">
-<script src="/static/assets/chat.js?v=20261215a" defer></script>
+</main>
+
+<footer><div class="wrap">
+  <div class="fg">
+    <div>
+      <h5>飞鱼学院 · FEIYU ACADEMY</h5>
+      <p>一个人做的站。九个工具都在这儿，四份数据包全免费，登录就能拿。<br>不接广告，不卖课，不带单。</p>
+      <p style="margin-top:10px"><a href="https://t.me/siren1109" target="_blank" rel="noopener">TG 频道 @siren1109</a></p>
+    </div>
+    <div>
+      <h5>目录</h5>
+      <ul><li><a href="/watch.html#movers">异动榜</a></li><li><a href="/trade.html">九个工具</a></li><li><a href="/packs.html">数据包</a></li><li><a href="/blog/index.html">笔记</a></li><li><a href="/about.html">说明</a></li></ul>
+    </div>
+    <div>
+      <h5>说明</h5>
+      <p>行情与价格来自交易所公开接口；只有模拟盘的下单成交与账户余额是模拟的。合约交易会亏光本金，别拿输不起的钱进场。</p>
+      <p style="margin-top:8px">收款：BNB、ETH、POL、SOL、USDT、USDC（七条链）；不支持 TRON / TRC20。</p>
+    </div>
+  </div>
+  <div class="fb">
+    <span>© 2026 FEIYU ACADEMY · 行情实时 · 模拟盘用 USDm</span>
+    <span>BYBIT USDT PERP · 61 CONTRACTS</span>
+  </div>
+</div></footer>
+
+<script src="/static/assets/site-nav.js?v=20261214a" defer></script>
+<script>window.FY_ENGINE_MIN='20261120j';</script>
+<script src="/static/assets/i18n-full.js?v=20261220i" defer data-fy-i18n></script>
+<script src="/static/assets/chat.js?v=20261215a" defer data-fy-chat></script>
 </body>
 </html>
