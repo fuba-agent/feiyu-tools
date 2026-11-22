@@ -74,6 +74,9 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
 .h-guest a{color:var(--acc,#4fc3f7);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px}
 .h-guest a:hover{color:var(--txt,#e6edf3)}
 .h-guest a:focus-visible{outline:2px solid var(--acc,#4fc3f7);outline-offset:3px}
+.h-stamp{margin:10px 2px 0;font:400 12px/1.6 var(--mono,ui-monospace,SFMono-Regular,Menlo,monospace);color:var(--mut2,#9fb0c0);letter-spacing:.01em}
+.h-stamp:empty{display:none}
+.h-nospark{color:var(--mut2,#9fb0c0)}
 </style>
 </head>
 <body id="top">
@@ -143,7 +146,6 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
           <button type="button" role="tab" data-sort="gain" aria-selected="true">涨幅榜</button>
           <button type="button" role="tab" data-sort="lose" aria-selected="false">跌幅榜</button>
           <button type="button" role="tab" data-sort="turnover" aria-selected="false">成交额</button>
-          <button type="button" role="tab" data-sort="new" aria-selected="false">新币</button>
         </div>
 
         <table class="h-tbl">
@@ -159,100 +161,13 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
               <th scope="col" class="r">操作</th>
             </tr>
           </thead>
-          <tbody id="mktBody">
-            <tr data-chg="46.00" data-turnover="62.4" data-watch="1" data-new="1">
-              <td><a class="h-coin" href="/sim.html?symbol=IRYS"><span class="h-ic" aria-hidden="true">I</span><span class="h-cn"><b>IRYS</b><span class="h-pair">/USDT</span></span></a></td>
-              <td class="r n">0.018420</td>
-              <td class="r n up">+46.00%</td>
-              <td class="r n">62.4M</td>
-              <td class="r n">3.39B</td>
-              <td class="r"><svg class="h-spark" viewBox="0 0 72 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0.0,18.9 6.0,19.2 12.0,20.0 18.0,16.9 24.0,16.9 30.0,14.2 36.0,14.4 42.0,11.2 48.0,9.1 54.0,8.3 60.0,7.7 66.0,3.7 72.0,2.0"/></svg></td>
-              <td class="r"><a class="h-order" href="/sim.html?symbol=IRYS">下单 →</a></td>
-            </tr>
-            <tr data-chg="15.15" data-turnover="25.0" data-watch="0" data-new="0">
-              <td><a class="h-coin" href="/sim.html?symbol=EVAA"><span class="h-ic" aria-hidden="true">E</span><span class="h-cn"><b>EVAA</b><span class="h-pair">/USDT</span></span></a></td>
-              <td class="r n">4.3240</td>
-              <td class="r n up">+15.15%</td>
-              <td class="r n">25.0M</td>
-              <td class="r n">5.78M</td>
-              <td class="r"><svg class="h-spark" viewBox="0 0 72 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0.0,19.0 6.0,13.7 12.0,16.7 18.0,19.2 24.0,20.0 30.0,17.9 36.0,16.7 42.0,11.2 48.0,9.9 54.0,9.8 60.0,4.9 66.0,8.3 72.0,2.0"/></svg></td>
-              <td class="r"><a class="h-order" href="/sim.html?symbol=EVAA">下单 →</a></td>
-            </tr>
-            <tr data-chg="13.40" data-turnover="18.6" data-watch="0" data-new="1">
-              <td><a class="h-coin" href="/sim.html?symbol=BARD"><span class="h-ic" aria-hidden="true">B</span><span class="h-cn"><b>BARD</b><span class="h-pair">/USDT</span></span></a></td>
-              <td class="r n">1.8420</td>
-              <td class="r n up">+13.40%</td>
-              <td class="r n">18.6M</td>
-              <td class="r n">10.1M</td>
-              <td class="r"><svg class="h-spark" viewBox="0 0 72 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0.0,19.5 6.0,20.0 12.0,17.5 18.0,13.9 24.0,15.6 30.0,12.4 36.0,8.3 42.0,6.6 48.0,3.7 54.0,2.0 60.0,3.7 66.0,4.3 72.0,4.3"/></svg></td>
-              <td class="r"><a class="h-order" href="/sim.html?symbol=BARD">下单 →</a></td>
-            </tr>
-            <tr data-chg="8.62" data-turnover="96.3" data-watch="0" data-new="0">
-              <td><a class="h-coin" href="/sim.html?symbol=WIF"><span class="h-ic" aria-hidden="true">W</span><span class="h-cn"><b>WIF</b><span class="h-pair">/USDT</span></span></a></td>
-              <td class="r n">2.4180</td>
-              <td class="r n up">+8.62%</td>
-              <td class="r n">96.3M</td>
-              <td class="r n">39.8M</td>
-              <td class="r"><svg class="h-spark" viewBox="0 0 72 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0.0,20.0 6.0,18.2 12.0,16.7 18.0,17.1 24.0,14.1 30.0,12.3 36.0,9.6 42.0,7.7 48.0,7.7 54.0,4.5 60.0,3.1 66.0,3.9 72.0,2.0"/></svg></td>
-              <td class="r"><a class="h-order" href="/sim.html?symbol=WIF">下单 →</a></td>
-            </tr>
-            <tr data-chg="6.31" data-turnover="214.7" data-watch="1" data-new="0">
-              <td><a class="h-coin" href="/sim.html?symbol=SUI"><span class="h-ic" aria-hidden="true">S</span><span class="h-cn"><b>SUI</b><span class="h-pair">/USDT</span></span></a></td>
-              <td class="r n">3.9265</td>
-              <td class="r n up">+6.31%</td>
-              <td class="r n">214.7M</td>
-              <td class="r n">54.7M</td>
-              <td class="r"><svg class="h-spark" viewBox="0 0 72 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0.0,20.0 6.0,16.8 12.0,17.6 18.0,16.3 24.0,13.3 30.0,7.7 36.0,7.7 42.0,4.7 48.0,6.8 54.0,4.0 60.0,2.5 66.0,4.2 72.0,2.0"/></svg></td>
-              <td class="r"><a class="h-order" href="/sim.html?symbol=SUI">下单 →</a></td>
-            </tr>
-            <tr data-chg="4.87" data-turnover="88.1" data-watch="0" data-new="0">
-              <td><a class="h-coin" href="/sim.html?symbol=TIA"><span class="h-ic" aria-hidden="true">T</span><span class="h-cn"><b>TIA</b><span class="h-pair">/USDT</span></span></a></td>
-              <td class="r n">5.1048</td>
-              <td class="r n up">+4.87%</td>
-              <td class="r n">88.1M</td>
-              <td class="r n">17.3M</td>
-              <td class="r"><svg class="h-spark" viewBox="0 0 72 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0.0,20.0 6.0,18.5 12.0,18.1 18.0,16.0 24.0,15.1 30.0,15.2 36.0,12.7 42.0,11.0 48.0,10.0 54.0,8.7 60.0,6.8 66.0,4.4 72.0,2.0"/></svg></td>
-              <td class="r"><a class="h-order" href="/sim.html?symbol=TIA">下单 →</a></td>
-            </tr>
-            <tr data-chg="2.14" data-turnover="121.5" data-watch="0" data-new="0">
-              <td><a class="h-coin" href="/sim.html?symbol=ARB"><span class="h-ic" aria-hidden="true">A</span><span class="h-cn"><b>ARB</b><span class="h-pair">/USDT</span></span></a></td>
-              <td class="r n">0.8421</td>
-              <td class="r n up">+2.14%</td>
-              <td class="r n">121.5M</td>
-              <td class="r n">144.3M</td>
-              <td class="r"><svg class="h-spark" viewBox="0 0 72 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0.0,20.0 6.0,15.2 12.0,12.0 18.0,14.7 24.0,13.0 30.0,10.0 36.0,2.0 42.0,5.2 48.0,3.9 54.0,4.8 60.0,8.8 66.0,3.0 72.0,5.9"/></svg></td>
-              <td class="r"><a class="h-order" href="/sim.html?symbol=ARB">下单 →</a></td>
-            </tr>
-            <tr data-chg="-1.28" data-turnover="54.2" data-watch="1" data-new="0">
-              <td><a class="h-coin" href="/sim.html?symbol=OP"><span class="h-ic" aria-hidden="true">O</span><span class="h-cn"><b>OP</b><span class="h-pair">/USDT</span></span></a></td>
-              <td class="r n">1.9304</td>
-              <td class="r n down">-1.28%</td>
-              <td class="r n">54.2M</td>
-              <td class="r n">28.1M</td>
-              <td class="r"><svg class="h-spark" viewBox="0 0 72 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0.0,2.0 6.0,5.2 12.0,8.5 18.0,7.3 24.0,7.0 30.0,6.0 36.0,9.1 42.0,11.0 48.0,12.0 54.0,15.5 60.0,13.6 66.0,16.2 72.0,20.0"/></svg></td>
-              <td class="r"><a class="h-order" href="/sim.html?symbol=OP">下单 →</a></td>
-            </tr>
-            <tr data-chg="-4.62" data-turnover="12.8" data-watch="0" data-new="0">
-              <td><a class="h-coin" href="/sim.html?symbol=ZETA"><span class="h-ic" aria-hidden="true">Z</span><span class="h-cn"><b>ZETA</b><span class="h-pair">/USDT</span></span></a></td>
-              <td class="r n">0.6724</td>
-              <td class="r n down">-4.62%</td>
-              <td class="r n">12.8M</td>
-              <td class="r n">19.0M</td>
-              <td class="r"><svg class="h-spark" viewBox="0 0 72 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0.0,4.4 6.0,8.1 12.0,7.6 18.0,5.6 24.0,4.0 30.0,2.4 36.0,2.2 42.0,2.0 48.0,3.3 54.0,8.9 60.0,12.4 66.0,17.8 72.0,20.0"/></svg></td>
-              <td class="r"><a class="h-order" href="/sim.html?symbol=ZETA">下单 →</a></td>
-            </tr>
-            <tr data-chg="-7.05" data-turnover="33.9" data-watch="0" data-new="0">
-              <td><a class="h-coin" href="/sim.html?symbol=AERO"><span class="h-ic" aria-hidden="true">A</span><span class="h-cn"><b>AERO</b><span class="h-pair">/USDT</span></span></a></td>
-              <td class="r n">1.2446</td>
-              <td class="r n down">-7.05%</td>
-              <td class="r n">33.9M</td>
-              <td class="r n">27.2M</td>
-              <td class="r"><svg class="h-spark" viewBox="0 0 72 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0.0,2.0 6.0,2.0 12.0,4.9 18.0,7.1 24.0,7.3 30.0,7.9 36.0,9.4 42.0,11.1 48.0,12.7 54.0,15.5 60.0,17.3 66.0,18.4 72.0,20.0"/></svg></td>
-              <td class="r"><a class="h-order" href="/sim.html?symbol=AERO">下单 →</a></td>
-            </tr>
-          </tbody>
+          <tbody id="mktBody"></tbody>
         </table>
         <p class="h-note" id="mktEmpty" hidden>没有匹配的币种，换个关键词试试。</p>
+        <p class="h-note" id="mktEmptyWatch" hidden>自选里还没有币种，在看盘页点星标加入。</p>
+        <p class="h-note" id="mktLoading">正在加载行情…</p>
+        <p class="h-note" id="mktFail" hidden>行情暂不可用，稍后自动重试。<a href="/watch.html">去看盘页</a></p>
+        <p class="h-stamp" id="mktStamp"></p>
         <p class="h-note">行情来自交易所公开接口，约 30 秒刷新；只有模拟盘的下单成交、持仓与账户余额是模拟的。不构成投资建议。</p>
       </section>
 
@@ -404,86 +319,175 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
 (function () {
   var tbody = document.getElementById("mktBody");
   if (!tbody) return;
-  var rows = Array.prototype.slice.call(tbody.querySelectorAll("tr"));
-  var tabs = Array.prototype.slice.call(document.querySelectorAll(".home-v2 .h-tabs button"));
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".h-tabs button[data-sort]"));
   var input = document.getElementById("mktSearch");
-  var empty = document.getElementById("mktEmpty");
-  var mode = "gain", q = "";
-  rows.forEach(function (tr, i) { tr.setAttribute("data-idx", String(i)); });
+  var emptyEl = document.getElementById("mktEmpty");
+  var emptyWatchEl = document.getElementById("mktEmptyWatch");
+  var loadEl = document.getElementById("mktLoading");
+  var failEl = document.getElementById("mktFail");
+  var stamp = document.getElementById("mktStamp");
+  var mode = "gain", q = "", rows = [], favs = {}, sparks = {}, busy = {};
+  var FAV_KEY = "feiyu_watch_fav_v1", W = 72, H = 22;
 
-  function num(tr, key) {
-    var v = parseFloat(tr.getAttribute("data-" + key));
-    return isNaN(v) ? 0 : v;
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+  function priceFmt(p) {
+    if (!isFinite(p) || p <= 0) return "—";
+    if (p >= 1000) return p.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    if (p >= 100) return p.toFixed(2);
+    if (p >= 1) return p.toFixed(4);
+    if (p >= 0.01) return p.toFixed(5);
+    if (p >= 0.0001) return p.toFixed(6);
+    return p.toPrecision(4);
+  }
+  function compact(v) {
+    if (!isFinite(v) || v <= 0) return "—";
+    var a = Math.abs(v);
+    if (a >= 1e9) return (v / 1e9).toFixed(2).replace(/\.?0+$/, "") + "B";
+    if (a >= 1e6) return (v / 1e6).toFixed(1).replace(/\.0$/, "") + "M";
+    if (a >= 1e3) return (v / 1e3).toFixed(1).replace(/\.0$/, "") + "K";
+    return String(Math.round(v));
+  }
+  function pctFmt(c) { return isFinite(c) ? (c > 0 ? "+" : "") + c.toFixed(2) + "%" : "—"; }
+  function sparkSvg(vals, up) {
+    if (!vals || vals.length < 2) return "";
+    var mn = Infinity, mx = -Infinity, i;
+    for (i = 0; i < vals.length; i++) { if (vals[i] < mn) mn = vals[i]; if (vals[i] > mx) mx = vals[i]; }
+    var span = (mx - mn) || 1, n = vals.length, pts = [];
+    for (i = 0; i < n; i++) {
+      var x = (i * W) / (n - 1);
+      var y = H - 2 - ((vals[i] - mn) / span) * (H - 4);
+      pts.push(x.toFixed(1) + "," + y.toFixed(1));
+    }
+    var line = pts.join(" ");
+    return '<svg class="h-spark" viewBox="0 0 72 22" preserveAspectRatio="none" aria-hidden="true" data-dir="' + (up ? "up" : "down") + '">' +
+      '<polygon class="h-fillm" points="' + line + " " + W + "," + H + " 0," + H + '"/><polyline points="' + line + '"/></svg>';
+  }
+  function readFavs() {
+    var out = {}, raw = [];
+    try { raw = JSON.parse(localStorage.getItem(FAV_KEY) || "[]"); } catch (e) { raw = []; }
+    if (!Array.isArray(raw)) raw = [];
+    raw.forEach(function (it) {
+      var s = typeof it === "string" ? it : (it && (it.sym || it.symbol || it.coin)) || "";
+      s = String(s).toUpperCase().replace(/USDT$/, "");
+      if (s) out[s] = 1;
+    });
+    return out;
+  }
+  function rowFor(r) {
+    var c = isFinite(r.chg) ? r.chg : 0, up = c >= 0;
+    var sym = esc(r.sym), href = "/sim.html?symbol=" + encodeURIComponent(r.sym);
+    var spark = sparkSvg(sparks[r.sym], up);
+    var tr = '<tr data-sym="' + sym + '" data-chg="' + c.toFixed(2) + '" data-turnover="' + (isFinite(r.vol) ? r.vol : 0) + '" data-watch="' + (favs[r.sym] ? 1 : 0) + '">';
+    tr += '<td><a class="h-coin" href="' + href + '"><span class="h-ic" aria-hidden="true">' + sym.charAt(0) + '</span><span class="h-cn"><b>' + sym + '</b><span class="h-pair">/USDT</span></span></a></td>';
+    tr += '<td class="r n">' + priceFmt(r.price) + '</td>';
+    tr += '<td class="r n ' + (up ? "up" : "down") + '">' + pctFmt(r.chg) + '</td>';
+    tr += '<td class="r n">' + compact(r.vol) + '</td>';
+    tr += '<td class="r n">' + compact(r.volCoin) + '</td>';
+    tr += '<td class="r">' + (spark || '<span class="h-nospark">—</span>') + '</td>';
+    tr += '<td class="r"><a class="h-order" href="' + href + '">下单 →</a></td></tr>';
+    return tr;
   }
   function visible() {
-    return rows.filter(function (tr) {
-      if (q && tr.textContent.toLowerCase().indexOf(q) < 0) return false;
-      if (mode === "watch") return tr.getAttribute("data-watch") === "1";
-      if (mode === "new") return tr.getAttribute("data-new") === "1";
-      // 涨幅榜只留上涨的、跌幅榜只留下跌的，别把对面的混进来
-      if (mode === "gain") return num(tr, "chg") > 0;
-      if (mode === "lose") return num(tr, "chg") < 0;
+    var qq = q.toLowerCase();
+    var list = rows.filter(function (r) {
+      if (qq && String(r.sym).toLowerCase().indexOf(qq) < 0) return false;
+      if (mode === "watch") return !!favs[r.sym];
+      if (mode === "gain") return (r.chg || 0) > 0;
+      if (mode === "lose") return (r.chg || 0) < 0;
       return true;
     });
-  }
-  function apply() {
-    var list = visible();
     list.sort(function (a, b) {
-      if (mode === "turnover") return num(b, "turnover") - num(a, "turnover");
-      if (mode === "gain") return num(b, "chg") - num(a, "chg");
-      if (mode === "lose") return num(a, "chg") - num(b, "chg");
-      if (mode === "all") {
-        // 「全部」是名单不是榜单：按币种字母序，不能和涨幅榜排成一模一样
-        var sa = (a.cells[0] ? a.cells[0].textContent : "").trim().toUpperCase();
-        var sb = (b.cells[0] ? b.cells[0].textContent : "").trim().toUpperCase();
-        return sa < sb ? -1 : sa > sb ? 1 : num(a, "idx") - num(b, "idx");
-      }
-      return num(a, "idx") - num(b, "idx");
+      if (mode === "gain") return (b.chg || 0) - (a.chg || 0);
+      if (mode === "lose") return (a.chg || 0) - (b.chg || 0);
+      if (mode === "turnover") return (b.vol || 0) - (a.vol || 0);
+      if (mode === "all") return a.sym < b.sym ? -1 : a.sym > b.sym ? 1 : 0;
+      return (b.vol || 0) - (a.vol || 0);
     });
-    rows.forEach(function (tr) { tr.hidden = true; });
-    list.forEach(function (tr) { tr.hidden = false; tbody.appendChild(tr); });
-    if (empty) empty.hidden = list.length > 0;
+    return list;
+  }
+  function state(showEl) {
+    [emptyEl, emptyWatchEl, loadEl, failEl].forEach(function (el) { if (el) el.hidden = el !== showEl; });
+  }
+  function render() {
+    var list = visible();
+    if (!list.length) {
+      tbody.innerHTML = "";
+      state(mode === "watch" && !q ? emptyWatchEl : emptyEl);
+      return;
+    }
+    state(null);
+    var html = "", i;
+    for (i = 0; i < list.length; i++) html += rowFor(list[i]);
+    tbody.innerHTML = html;
+    ensureSparks(list);
+  }
+  function ensureSparks(list) {
+    var need = [], i;
+    for (i = 0; i < list.length && need.length < 24; i++) {
+      var s = list[i].sym;
+      if (!sparks[s] && !busy[s]) { busy[s] = 1; need.push(s); }
+    }
+    if (!need.length) return;
+    var url = "/api/klines?ex=bybit&tf=1h&limit=24&syms=" + encodeURIComponent(need.join(","));
+    fetch(url, { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        var series = (j && j.series) || {};
+        Object.keys(series).forEach(function (k) {
+          if (Array.isArray(series[k]) && series[k].length > 1) sparks[k] = series[k];
+        });
+      })
+      .catch(function () {})
+      .then(function () {
+        need.forEach(function (s) { delete busy[s]; });
+        repaint();
+      });
+  }
+  function repaint() {
+    var trs = tbody.querySelectorAll("tr[data-sym]"), i;
+    for (i = 0; i < trs.length; i++) {
+      var tr = trs[i], s = tr.getAttribute("data-sym");
+      if (!sparks[s] || !tr.cells[5]) continue;
+      tr.cells[5].innerHTML = sparkSvg(sparks[s], parseFloat(tr.getAttribute("data-chg")) >= 0);
+    }
+  }
+  function stampText(n, ts) {
+    if (!stamp) return;
+    var d = new Date(ts);
+    function p(x) { return (x < 10 ? "0" : "") + x; }
+    stamp.textContent = "BYBIT USDT PERP · " + n + " CONTRACTS · " + p(d.getUTCHours()) + ":" + p(d.getUTCMinutes()) + ":" + p(d.getUTCSeconds()) + " UTC";
+  }
+  function load() {
+    fetch("/api/markets", { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (j) {
+        var list = (j && Array.isArray(j.rows)) ? j.rows.filter(function (r) { return r && r.sym && isFinite(r.price); }) : [];
+        if (!list.length) throw new Error("empty");
+        rows = list;
+        favs = readFavs();
+        render();
+        stampText(rows.length, j.ts || Date.now());
+      })
+      .catch(function () {
+        if (rows.length) { stampText(rows.length, Date.now()); return; }
+        state(failEl);
+      });
   }
   tabs.forEach(function (btn) {
     btn.addEventListener("click", function () {
-      mode = btn.getAttribute("data-sort") || "all";
-      tabs.forEach(function (b) {
-        b.setAttribute("aria-selected", b === btn ? "true" : "false");
-      });
-      apply();
+      mode = btn.getAttribute("data-sort") || "gain";
+      tabs.forEach(function (b) { b.setAttribute("aria-selected", b === btn ? "true" : "false"); });
+      render();
     });
   });
-  if (input) {
-    input.addEventListener("input", function () {
-      q = String(input.value || "").trim().toLowerCase();
-      apply();
-    });
-    input.addEventListener("search", function () {
-      q = String(input.value || "").trim().toLowerCase();
-      apply();
-    });
-  }
-  apply();
-})();
-
-/* 迷你走势按所在行涨跌染色（绿涨红跌 + 10% 填充） */
-(function () {
-  var list = Array.prototype.slice.call(document.querySelectorAll(".home-v2 svg.h-spark"));
-  list.forEach(function (sv) {
-    if (sv.getAttribute("data-spark")) return;
-    var pl = sv.querySelector("polyline");
-    if (!pl) return;
-    sv.setAttribute("data-spark", "1");
-    var tr = sv.closest("tr");
-    sv.setAttribute("data-dir", (tr && tr.querySelector(".down")) ? "down" : "up");
-    var pts = (pl.getAttribute("points") || "").trim();
-    if (!pts) return;
-    var x0 = pts.split(/\s+/)[0].split(",")[0];
-    var area = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-    area.setAttribute("points", pts + " 72,22 " + x0 + ",22");
-    area.setAttribute("class", "h-fillm");
-    sv.insertBefore(area, pl);
-  });
+  if (input) input.addEventListener("input", function () { q = String(input.value || "").trim(); render(); });
+  window.addEventListener("storage", function (e) { if (e.key === FAV_KEY) { favs = readFavs(); render(); } });
+  load();
+  setInterval(load, 30000);
 })();
 </script>
 <script src="/js/home-account.js?v=20261222b" defer></script>
