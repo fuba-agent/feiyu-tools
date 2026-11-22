@@ -66,6 +66,15 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
 <style>html.fy-i18n-pending body{visibility:hidden!important}</style>
 <script>(function(){try{var l=localStorage.getItem('fy_lang_v1');if(l&&l!=='zh'){document.documentElement.classList.add('fy-i18n-pending');setTimeout(function(){document.documentElement.classList.remove('fy-i18n-pending')},1800)}}catch(e){}})();</script>
 <link rel="stylesheet" href="/static/assets/home-v2.css?v=20261215b">
+<style>
+/* 未登录时资产区提示条：只在本页用，故不改进 home-v2.css（避免全站 ?v= 联动） */
+.h-guest{background:var(--bg2,#141a20);border-bottom:1px solid var(--hair,#243040)}
+.h-guest[hidden]{display:none}
+.h-guest-in{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;justify-content:center;padding:9px 16px;font:400 13px/1.5 inherit;color:var(--mut2,#9fb0c0)}
+.h-guest a{color:var(--acc,#4fc3f7);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px}
+.h-guest a:hover{color:var(--txt,#e6edf3)}
+.h-guest a:focus-visible{outline:2px solid var(--acc,#4fc3f7);outline-offset:3px}
+</style>
 </head>
 <body id="top">
 
@@ -109,6 +118,13 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
       <a class="h-cta" href="/sim.html">去靶场</a>
     </div>
   </section>
+
+  <div class="h-guest" data-ha-guest hidden>
+    <div class="h-wrap h-guest-in">
+      <span>登录后查看模拟账户</span>
+      <a href="/login.html">去登录 →</a>
+    </div>
+  </div>
 
   <div class="h-wrap h-main">
     <div class="h-grid">
