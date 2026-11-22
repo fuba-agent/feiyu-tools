@@ -74,6 +74,9 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
 .h-guest a{color:var(--acc,#4fc3f7);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px}
 .h-guest a:hover{color:var(--txt,#e6edf3)}
 .h-guest a:focus-visible{outline:2px solid var(--acc,#4fc3f7);outline-offset:3px}
+/* 游客态：账户条与侧栏余额/持仓/盈亏的 display 被样式表设成 flex/grid，
+   仅靠 [hidden] 的 UA 规则盖不住，这里显式兜底；auth 后由脚本移除 hidden。 */
+.home-v2 .h-assets[hidden],.home-v2 .h-bal[hidden],.home-v2 .h-pos[hidden],.home-v2 .h-pnl[hidden]{display:none!important}
 .h-stamp{margin:10px 2px 0;font:400 12px/1.6 var(--mono,ui-monospace,SFMono-Regular,Menlo,monospace);color:var(--mut2,#9fb0c0);letter-spacing:.01em}
 .h-stamp:empty{display:none}
 .h-nospark{color:var(--mut2,#9fb0c0)}
@@ -99,24 +102,24 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
   <section class="h-assets" aria-label="模拟账户资产">
     <div class="h-wrap h-assets-in">
       <div class="h-stat h-stat-main">
-        <span class="k">模拟账户 <i class="h-demo" data-ha-demo>示例</i></span>
-        <span class="v"><b class="n" data-ha="equity">102,430.62</b><em>USDm</em></span>
+        <span class="k">模拟账户 <i class="h-demo" data-ha-demo hidden>示例</i></span>
+        <span class="v"><b class="n" data-ha="equity">—</b><em>USDm</em></span>
       </div>
       <div class="h-stat">
         <span class="k">今日盈亏</span>
-        <span class="v"><b class="n up" data-ha="todayPnl">+893.12</b><em>USDm</em><b class="n up h-pct" data-ha="todayPct">(+0.88%)</b></span>
+        <span class="v"><b class="n" data-ha="todayPnl">—</b><em>USDm</em><b class="n h-pct" data-ha="todayPct">—</b></span>
       </div>
       <div class="h-stat h-sm-hide">
         <span class="k">持仓保证金</span>
-        <span class="v"><b class="n" data-ha="usedMargin">15,000.00</b></span>
+        <span class="v"><b class="n" data-ha="usedMargin">—</b></span>
       </div>
       <div class="h-stat">
         <span class="k">可用</span>
-        <span class="v"><b class="n" data-ha="available">87,430.62</b></span>
+        <span class="v"><b class="n" data-ha="available">—</b></span>
       </div>
       <div class="h-stat h-sm-hide">
         <span class="k">今日成交</span>
-        <span class="v"><b class="n" data-ha="todayTrades">3</b><em>笔</em></span>
+        <span class="v"><b class="n" data-ha="todayTrades">—</b><em>笔</em></span>
       </div>
       <a class="h-cta" href="/sim.html">去靶场</a>
     </div>
@@ -175,33 +178,22 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
 
         <section class="h-block">
           <div class="h-bh"><h2>板块热点</h2><span class="k">24h 涨跌</span></div>
-          <div class="h-sector">
-            <div class="h-sec-h"><b>AI</b><span class="n up">+3.82%</span></div>
-            <a class="h-srow" href="/sim.html?symbol=TAO"><span>TAO/USDT</span><span class="n up">+5.21%</span></a>
-            <a class="h-srow" href="/sim.html?symbol=FET"><span>FET/USDT</span><span class="n up">+3.84%</span></a>
-            <a class="h-srow" href="/sim.html?symbol=RNDR"><span>RNDR/USDT</span><span class="n up">+2.66%</span></a>
-
-            <div class="h-sec-h"><b>Meme</b><span class="n up">+5.71%</span></div>
-            <a class="h-srow" href="/sim.html?symbol=WIF"><span>WIF/USDT</span><span class="n up">+8.62%</span></a>
-            <a class="h-srow" href="/sim.html?symbol=PEPE"><span>PEPE/USDT</span><span class="n up">+6.14%</span></a>
-            <a class="h-srow" href="/sim.html?symbol=BONK"><span>BONK/USDT</span><span class="n up">+2.35%</span></a>
-
-            <div class="h-sec-h"><b>Layer2</b><span class="n down">-0.62%</span></div>
-            <a class="h-srow" href="/sim.html?symbol=ARB"><span>ARB/USDT</span><span class="n up">+2.14%</span></a>
-            <a class="h-srow" href="/sim.html?symbol=OP"><span>OP/USDT</span><span class="n down">-1.28%</span></a>
-            <a class="h-srow" href="/sim.html?symbol=STRK"><span>STRK/USDT</span><span class="n down">-2.72%</span></a>
+          <div class="h-sector" id="hSectorHot">
+            <div class="h-sec-h"><b>AI</b><span class="n" data-ssec="AI">—</span></div>
+            <div data-srows="AI"></div>
+            <div class="h-sec-h"><b>Meme</b><span class="n" data-ssec="Meme">—</span></div>
+            <div data-srows="Meme"></div>
+            <div class="h-sec-h"><b>Layer2</b><span class="n" data-ssec="Layer2">—</span></div>
+            <div data-srows="Layer2"></div>
           </div>
         </section>
 
         <section class="h-block">
-          <div class="h-bh"><h2>我的模拟账户 <i class="h-demo" data-ha-demo>示例</i></h2><a href="/sim.html">靶场 →</a></div>
-          <div class="h-bal"><span class="k">账户权益</span><span class="n"><span data-ha="sideEquity">102,430.62</span> <em>USDm</em></span></div>
-          <div class="h-pos" data-ha="positions">
-            <a class="h-prow" href="/sim.html"><span>IRYS/USDT</span><span class="k">多 3x</span><b class="n up">+612.40</b></a>
-            <a class="h-prow" href="/sim.html"><span>SUI/USDT</span><span class="k">多 5x</span><b class="n up">+393.20</b></a>
-            <a class="h-prow" href="/sim.html"><span>OP/USDT</span><span class="k">空 2x</span><b class="n down">-112.48</b></a>
-          </div>
-          <div class="h-pnl"><span class="k">今日盈亏</span><b class="n up" data-ha="sidePnl">+893.12 USDm (+0.88%)</b></div>
+          <div class="h-bh"><h2>我的模拟账户 <i class="h-demo" data-ha-demo hidden>示例</i></h2><a href="/sim.html">靶场 →</a></div>
+          <p class="h-note" data-ha-guest-side hidden><span data-en="Log in to view your sim account" data-zh="登录后查看模拟账户">登录后查看模拟账户</span> · <a href="/login.html"><span data-en="Log in →" data-zh="去登录 →">去登录 →</span></a></p>
+          <div class="h-bal"><span class="k">账户权益</span><span class="n"><span data-ha="sideEquity">—</span> <em>USDm</em></span></div>
+          <div class="h-pos" data-ha="positions"></div>
+          <div class="h-pnl"><span class="k">今日盈亏</span><b class="n" data-ha="sidePnl">—</b></div>
         </section>
 
         <section class="h-block">
@@ -328,6 +320,13 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
   var stamp = document.getElementById("mktStamp");
   var mode = "gain", q = "", rows = [], favs = {}, sparks = {}, busy = {};
   var FAV_KEY = "feiyu_watch_fav_v1", W = 72, H = 22;
+  /* 板块热点：固定成分币（手工归类）+ 实时 24h 涨跌；成分不在当前行情里就不显示，
+     组头涨跌为成员等权平均。数据全部来自 /api/markets，没有写死数字。 */
+  var SECTORS = [
+    { k: "AI", syms: ["TAO", "WLD", "NEAR", "INJ", "VIRTUAL", "DGAI"] },
+    { k: "Meme", syms: ["DOGE", "1000PEPE", "WIF", "SHIB1000"] },
+    { k: "Layer2", syms: ["ARB", "OP", "STRK"] }
+  ];
 
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
@@ -412,6 +411,34 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
   function state(showEl) {
     [emptyEl, emptyWatchEl, loadEl, failEl].forEach(function (el) { if (el) el.hidden = el !== showEl; });
   }
+  function setToneEl(el, c) {
+    if (!el) return;
+    el.classList.remove("up", "down");
+    if (c > 0) el.classList.add("up"); else if (c < 0) el.classList.add("down");
+  }
+  function renderSectors(list) {
+    var box = document.getElementById("hSectorHot");
+    if (!box) return;
+    var bySym = {}, i;
+    for (i = 0; i < list.length; i++) bySym[list[i].sym] = list[i];
+    SECTORS.forEach(function (sec) {
+      var mem = [], j;
+      for (j = 0; j < sec.syms.length; j++) if (bySym[sec.syms[j]]) mem.push(bySym[sec.syms[j]]);
+      var head = box.querySelector('[data-ssec="' + sec.k + '"]');
+      var rowsBox = box.querySelector('[data-srows="' + sec.k + '"]');
+      if (!rowsBox) return;
+      if (!mem.length) { if (head) { head.textContent = "—"; setToneEl(head, 0); } rowsBox.innerHTML = ""; return; }
+      var sum = 0;
+      mem.forEach(function (r) { sum += isFinite(r.chg) ? r.chg : 0; });
+      var avg = sum / mem.length;
+      if (head) { head.textContent = pctFmt(avg); setToneEl(head, avg); }
+      mem.sort(function (a, b) { return Math.abs(b.chg || 0) - Math.abs(a.chg || 0); });
+      rowsBox.innerHTML = mem.slice(0, 3).map(function (r) {
+        var c = isFinite(r.chg) ? r.chg : 0;
+        return '<a class="h-srow" href="/sim.html?symbol=' + encodeURIComponent(r.sym) + '"><span>' + esc(r.sym) + '/USDT</span><span class="n ' + (c >= 0 ? "up" : "down") + '">' + pctFmt(c) + '</span></a>';
+      }).join("");
+    });
+  }
   function render() {
     var list = visible();
     if (!list.length) {
@@ -470,6 +497,7 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
         rows = list;
         favs = readFavs();
         render();
+        renderSectors(rows);
         stampText(rows.length, j.ts || Date.now());
       })
       .catch(function () {
@@ -490,7 +518,7 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
   setInterval(load, 30000);
 })();
 </script>
-<script src="/js/home-account.js?v=20261222b" defer></script>
+<script src="/js/home-account.js?v=20261222c" defer></script>
 <script src="/static/assets/coin-icons.js?v=20261215b"></script>
 <script src="/static/assets/coin-link.js?v=20261121a"></script>
 </body>
