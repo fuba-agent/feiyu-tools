@@ -107,10 +107,18 @@ footer{padding:42px 0 36px;background:#fff;border-top:1px solid var(--line)}
 .pc .d{margin-top:7px;font-size:13.5px;line-height:1.6;color:var(--t3)}
 .pc a{display:inline-block;margin-top:12px;font-size:13px;font-weight:600;color:var(--brand);text-decoration:none}
 .pc a:hover{text-decoration:underline}
-.langpill{display:inline-flex;align-items:center;height:32px;padding:0 3px;border:1px solid var(--line);border-radius:999px;background:#fff;cursor:pointer;font-size:12.5px;font-weight:700;color:var(--t3);white-space:nowrap;flex:0 0 auto;margin-right:8px}
-.langpill b{display:block;padding:0 9px;border-radius:999px;line-height:24px;font-weight:700;transition:.15s}
-.langpill b.on{background:var(--brand);color:#fff}
-.langpill:hover{border-color:var(--line-hover)}
+.lang{position:relative;flex:0 0 auto;margin-right:8px}
+.langbtn{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 10px;border:1px solid var(--line);border-radius:999px;background:#fff;cursor:pointer;font-size:12.5px;font-weight:600;color:var(--t2);white-space:nowrap;font-family:inherit;transition:.15s}
+.langbtn:hover{border-color:var(--line-hover);color:var(--brand)}
+.langbtn>svg:first-child{width:15px;height:15px;flex:0 0 auto;color:var(--brand)}
+.langbtn .chev{width:12px;height:12px;opacity:.5}
+.langpop{position:absolute;top:38px;right:0;min-width:172px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 28px rgba(23,43,77,.14);padding:6px;display:none;z-index:80}
+.langpop.open{display:block}
+.langpop button{display:flex;width:100%;align-items:center;justify-content:space-between;gap:10px;padding:8px 10px;border:0;background:none;border-radius:8px;font-size:13px;color:var(--t2);cursor:pointer;text-align:left;font-family:inherit}
+.langpop button:hover{background:#EFF6FF;color:var(--brand)}
+.langpop button.on{color:var(--brand);font-weight:700}
+.langpop button.on::after{content:"✓";font-size:12px;opacity:.9}
+.fy-lang-btn,.fy-lang-mobile,.fy-lang-sel{display:none!important}
 /* 导航一行放得下（英文比中文长，之前挤成两行） */
 .nav .wrap{display:flex;align-items:center;flex-wrap:nowrap;gap:16px;padding-left:24px;padding-right:24px}
 .nav .item{white-space:nowrap;flex:0 0 auto;font-size:13.5px}
@@ -124,7 +132,14 @@ footer{padding:42px 0 36px;background:#fff;border-top:1px solid var(--line)}
   <a class="item" href="/sim.html">模拟实验室</a><a class="item" href="/trade.html">量化实验室</a><a class="item" href="/robots-create.html">AI 实验室</a>
   <a class="item" href="/robots.html">机器人市场</a><a class="item" href="/community.html">社区</a>
   <span class="sp"></span>
-  <button class="langpill" id="langPill" type="button" aria-label="切换语言"><b>中</b><b>EN</b></button>
+  <div class="lang" id="langWrap">
+    <button class="langbtn" id="langBtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.6 2.4 15.4 0 18M12 3c-2.4 2.6-2.4 15.4 0 18"/></svg>
+      <span id="langCur">中文</span>
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="langpop" id="langPop"></div>
+  </div>
   <a class="btn btn-s" href="/login.html" style="height:38px;padding:0 16px">登录</a>
   <a class="btn btn-p" href="/login.html?tab=reg" style="height:38px;padding:0 18px">注册</a>
 </div></nav>
@@ -143,7 +158,7 @@ footer{padding:42px 0 36px;background:#fff;border-top:1px solid var(--line)}
     <div class="hero-btns"><button class="btn btn-p">免费注册 · 送 100,000 USDm</button><button class="btn btn-s">先逛一圈</button></div>
     <p class="hero-note">注册即送模拟资金，不绑定钱包、不需要入金。</p>
   </div>
-  <div class="fly-wrap"><img src="/static/assets/brand/hero-manta.svg" alt="" style="width:100%;max-width:420px;height:auto;display:block">
+  <div class="fly-wrap"><img src="/static/assets/brand/hero-manta-v2.svg" alt="" style="width:100%;max-width:420px;height:auto;display:block">
     <div class="float f1"><div class="k">模拟账户净值</div><div class="v">100,000.00 <span style="font-size:11px;color:var(--t4)">USDm</span></div></div>
     <div class="float f2"><div class="k">AERO 空 25x</div><div class="v" style="color:var(--up)">+38.42</div></div>
   </div>
@@ -251,17 +266,30 @@ footer{padding:42px 0 36px;background:#fff;border-top:1px solid var(--line)}
 <script src="/static/assets/i18n-full.js?v=20261220r" defer data-fy-i18n></script>
 <script>
 (function(){
-  var pill=document.getElementById('langPill'); if(!pill) return;
-  var raw=(localStorage.getItem('fy_lang_v1')||'zh'); var cur=String(raw).slice(0,2)==='en'?'en':'zh';
-  function paint(){ var bs=pill.children; for(var i=0;i<bs.length;i++){ var isZh=bs[i].textContent.trim()==='中'; bs[i].className=(isZh?'zh':'en')===cur?'on':''; } }
-  paint();
-  pill.addEventListener('click',function(e){
-    var t=e.target; if(t.tagName!=='B') return;
-    var next=t.textContent.trim()==='中'?'zh':'en'; if(next===cur) return;
-    try{ localStorage.setItem('fy_lang_v1',next); }catch(_){}
-    document.documentElement.lang = next==='en'?'en':'zh-CN';
-    location.reload();
+  var btn = document.getElementById('langBtn'), pop = document.getElementById('langPop'), cur = document.getElementById('langCur');
+  if (!btn || !pop) return;
+  var LANGS = [['zh','中文'],['en','English'],['ar','العربية'],['es','Español'],['ru','Русский'],['pt','Português'],['tr','Türkçe'],['id','Bahasa Indonesia'],['vi','Tiếng Việt']];
+  var saved = (localStorage.getItem('fy_lang_v1') || 'zh');
+  var now = saved.slice(0, 2); if (now === 'zh') now = 'zh';
+  var nameOf = function (c) { for (var i = 0; i < LANGS.length; i++) if (LANGS[i][0] === c) return LANGS[i][1]; return '中文'; };
+  cur.textContent = nameOf(now);
+  pop.innerHTML = '';
+  LANGS.forEach(function (L) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.innerHTML = '<span>' + L[1] + '</span>';
+    if (L[0] === now) b.className = 'on';
+    b.onclick = function (e) {
+      e.stopPropagation();
+      localStorage.setItem('fy_lang_v1', L[0]);
+      try { document.documentElement.lang = L[0]; } catch (err) {}
+      location.reload();
+    };
+    pop.appendChild(b);
   });
+  btn.onclick = function (e) { e.stopPropagation(); pop.classList.toggle('open'); };
+  document.addEventListener('click', function () { pop.classList.remove('open'); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') pop.classList.remove('open'); });
 })();
 </script>
 </body></html>
