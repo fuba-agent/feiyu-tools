@@ -299,7 +299,7 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
   </div>
   <div class="fb">
     <span>© 2026 FEIYU ACADEMY · 行情实时 · 模拟盘用 USDm</span>
-    <span>BYBIT USDT PERP · 30 CONTRACTS</span>
+    <span id="footContracts">BYBIT USDT PERP · — CONTRACTS</span>
   </div>
 </div></footer>
 
@@ -483,6 +483,8 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
     }
   }
   function stampText(n, ts) {
+    var fc = document.getElementById("footContracts");
+    if (fc && n) fc.textContent = "BYBIT USDT PERP · " + n + " CONTRACTS";
     if (!stamp) return;
     var d = new Date(ts);
     function p(x) { return (x < 10 ? "0" : "") + x; }
