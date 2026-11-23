@@ -111,6 +111,12 @@ footer{padding:42px 0 36px;background:#fff;border-top:1px solid var(--line)}
 .langpill b{display:block;padding:0 9px;border-radius:999px;line-height:24px;font-weight:700;transition:.15s}
 .langpill b.on{background:var(--brand);color:#fff}
 .langpill:hover{border-color:var(--line-hover)}
+/* 导航一行放得下（英文比中文长，之前挤成两行） */
+.nav .wrap{display:flex;align-items:center;flex-wrap:nowrap;gap:16px;padding-left:24px;padding-right:24px}
+.nav .item{white-space:nowrap;flex:0 0 auto;font-size:13.5px}
+.nav .logo{white-space:nowrap;flex:0 0 auto;font-size:15px}
+.nav .sp{flex:1 1 auto;min-width:8px}
+@media(max-width:1400px){.nav .wrap{gap:12px}.nav .item{font-size:13px}}
 </style></head><body>
 <nav class="nav"><div class="wrap">
   <a class="logo" href="/"><img src="/static/assets/brand/logo-mark.svg" alt="" style="width:26px;height:26px;border-radius:8px;display:block">飞鱼学院</a>
