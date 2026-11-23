@@ -7,7 +7,7 @@ body{background:var(--bg);min-width:1180px}
 /* 评审条 */
 .ribbon{background:#0F2A5C;color:#CFE0FF;font-size:12.5px;padding:7px 16px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
 .ribbon b{color:#fff;font-weight:600}
-.nav .logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--t1);font-size:16px;letter-spacing:-.01em}
+.nav .logo{white-space:nowrap;display:flex;align-items:center;gap:9px;font-weight:700;color:var(--t1);font-size:16px;letter-spacing:-.01em}
 .nav .logo i{width:26px;height:26px;border-radius:8px;background:linear-gradient(140deg,#60A5FA,#1D4ED8);display:block}
 .nav .sp{flex:1} .nav .who{font-size:13.5px;color:var(--t3)}
 /* Hero */
@@ -107,13 +107,18 @@ footer{padding:42px 0 36px;background:#fff;border-top:1px solid var(--line)}
 .pc .d{margin-top:7px;font-size:13.5px;line-height:1.6;color:var(--t3)}
 .pc a{display:inline-block;margin-top:12px;font-size:13px;font-weight:600;color:var(--brand);text-decoration:none}
 .pc a:hover{text-decoration:underline}
+.langpill{display:inline-flex;align-items:center;height:32px;padding:0 3px;border:1px solid var(--line);border-radius:999px;background:#fff;cursor:pointer;font-size:12.5px;font-weight:700;color:var(--t3);white-space:nowrap;flex:0 0 auto;margin-right:8px}
+.langpill b{display:block;padding:0 9px;border-radius:999px;line-height:24px;font-weight:700;transition:.15s}
+.langpill b.on{background:var(--brand);color:#fff}
+.langpill:hover{border-color:var(--line-hover)}
 </style></head><body>
 <nav class="nav"><div class="wrap">
-  <a class="logo" href="/"><i></i>飞鱼学院</a>
+  <a class="logo" href="/"><img src="/static/assets/brand/logo-mark.svg" alt="" style="width:26px;height:26px;border-radius:8px;display:block">飞鱼学院</a>
   <a class="item on" href="/">首页</a><a class="item" href="/academy.html">学习中心</a><a class="item" href="/watch.html">交易研究</a>
   <a class="item" href="/sim.html">模拟实验室</a><a class="item" href="/trade.html">量化实验室</a><a class="item" href="/robots-create.html">AI 实验室</a>
   <a class="item" href="/robots.html">机器人市场</a><a class="item" href="/community.html">社区</a>
-  <span class="sp"></span><span class="who">中文 / EN</span>
+  <span class="sp"></span>
+  <button class="langpill" id="langPill" type="button" aria-label="切换语言"><b>中</b><b>EN</b></button>
   <a class="btn btn-s" href="/login.html" style="height:38px;padding:0 16px">登录</a>
   <a class="btn btn-p" href="/login.html?tab=reg" style="height:38px;padding:0 18px">注册</a>
 </div></nav>
@@ -132,28 +137,7 @@ footer{padding:42px 0 36px;background:#fff;border-top:1px solid var(--line)}
     <div class="hero-btns"><button class="btn btn-p">免费注册 · 送 100,000 USDm</button><button class="btn btn-s">先逛一圈</button></div>
     <p class="hero-note">注册即送模拟资金，不绑定钱包、不需要入金。</p>
   </div>
-  <div class="fly-wrap"><svg viewBox="0 0 420 300" class="fly" aria-hidden="true">
-  <defs>
-    <linearGradient id="gW" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#DBEAFE"/><stop offset="1" stop-color="#60A5FA" stop-opacity=".55"/></linearGradient>
-    <linearGradient id="gF" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#60A5FA"/><stop offset=".55" stop-color="#2563EB"/><stop offset="1" stop-color="#1D4ED8"/></linearGradient>
-  </defs>
-  <circle cx="300" cy="112" r="86" fill="#EFF6FF"/>
-  <circle cx="300" cy="112" r="58" fill="#DBEAFE" opacity=".7"/>
-  <path d="M8 232c46-26 92-26 138 0s92 26 138 0 92-26 126 6" fill="none" stroke="url(#gW)" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M28 262c46-26 92-26 138 0s92 26 138 0 92-26 106 12" fill="none" stroke="url(#gW)" stroke-width="2" stroke-linecap="round" opacity=".6"/>
-  <g transform="translate(120 78) rotate(-8)">
-    <path d="M100 4 L214 66 L100 42 Z" fill="url(#gF)" opacity=".85"/>
-    <path d="M100 4 L-14 66 L100 42 Z" fill="url(#gF)"/>
-    <path d="M100 0c24 0 36 16 31 33-5 18-18 27-31 27s-26-9-31-27C64 16 76 0 100 0Z" fill="url(#gF)"/>
-    <path d="M100 58c1 30-5 56-18 78" stroke="url(#gF)" stroke-width="5" fill="none" stroke-linecap="round"/>
-    <path d="M86 18 70 2M114 18l16-16" stroke="#1D4ED8" stroke-width="4.4" stroke-linecap="round" opacity=".9"/>
-    <circle cx="90" cy="26" r="3.2" fill="#fff" opacity=".95"/><circle cx="110" cy="26" r="3.2" fill="#fff" opacity=".95"/>
-  </g>
-  <g stroke="#A9C8F0" stroke-width="1.6" fill="none" opacity=".85">
-    <path d="M64 74h44M64 90h28"/><path d="M330 208h48M354 224h24"/>
-  </g>
-  <circle cx="352" cy="60" r="3" fill="#2563EB" opacity=".5"/><circle cx="92" cy="196" r="2.4" fill="#1499B8" opacity=".55"/>
-</svg>
+  <div class="fly-wrap"><img src="/static/assets/brand/hero-manta.svg" alt="" style="width:100%;max-width:420px;height:auto;display:block">
     <div class="float f1"><div class="k">模拟账户净值</div><div class="v">100,000.00 <span style="font-size:11px;color:var(--t4)">USDm</span></div></div>
     <div class="float f2"><div class="k">AERO 空 25x</div><div class="v" style="color:var(--up)">+38.42</div></div>
   </div>
@@ -258,4 +242,20 @@ footer{padding:42px 0 36px;background:#fff;border-top:1px solid var(--line)}
   </div>
   <div class="fbot"><span>© 2026 飞鱼学院 FEIYU ACADEMY</span><span>Ocean Blue 设计系统 · v2026-11-23</span></div>
 </div></footer>
+<script src="/static/assets/i18n-full.js?v=20261220r" defer data-fy-i18n></script>
+<script>
+(function(){
+  var pill=document.getElementById('langPill'); if(!pill) return;
+  var raw=(localStorage.getItem('fy_lang_v1')||'zh'); var cur=String(raw).slice(0,2)==='en'?'en':'zh';
+  function paint(){ var bs=pill.children; for(var i=0;i<bs.length;i++){ var isZh=bs[i].textContent.trim()==='中'; bs[i].className=(isZh?'zh':'en')===cur?'on':''; } }
+  paint();
+  pill.addEventListener('click',function(e){
+    var t=e.target; if(t.tagName!=='B') return;
+    var next=t.textContent.trim()==='中'?'zh':'en'; if(next===cur) return;
+    try{ localStorage.setItem('fy_lang_v1',next); }catch(_){}
+    document.documentElement.lang = next==='en'?'en':'zh-CN';
+    location.reload();
+  });
+})();
+</script>
 </body></html>
