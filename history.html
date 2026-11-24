@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-<style id="fy-theme-critical">html[data-theme="light"],html[data-theme="light"] body{background:#FFFFFF!important;color:#10233C!important}html[data-theme="light"]{--bg:#F7F8FA;--bg2:#FFFFFF;--hair:rgba(17,21,26,.075);--hair2:rgba(17,21,26,.045);--txt:#11151A;--mut:#565D64;--mut2:#4B5158;--blue:#11151A;--warn:#D62F3D;--dn:#565D64}</style>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="fy-api-token" content="__FY_TOKEN__">
@@ -18,57 +17,20 @@
 <meta name="twitter:description" content="Daily log of altcoin perpetual anomalies: funding-rate extremes and 24h moves detected by an automated screener.">
 <meta name="twitter:image" content="https://feiyu.tailf83eec.ts.net/static/img/og-cover.png">
 <link rel="canonical" href="https://feiyu.tailf83eec.ts.net:8443/history.html">
-<link id="fy-theme-light" rel="stylesheet" href="/static/assets/theme-light.css?v=20261128b" disabled>
-<script>(function(){try{var q=new URLSearchParams(location.search).get("t");var s=localStorage.getItem("fy_theme");var t=(q==="light"||q==="dark")?q:(s==="light"?"light":"dark");document.documentElement.setAttribute("data-theme",t);if(t==="light"){var l=document.getElementById("fy-theme-light");if(l)l.disabled=false;}}catch(e){}})();</script>
-<script src="/js/theme.js?v=20261128c" defer></script>
+<link rel="stylesheet" href="/static/assets/chat.css?v=20261215a">
 <link rel="manifest" href="/manifest.webmanifest">
 <script src="/js/pwa.js?v=20261117a" defer></script>
-<style id="fy-shell">
-:root{--bg:#0B0D10;--bg2:#15171A;--hair:rgba(255,255,255,.075);--hair2:rgba(255,255,255,.045);--txt:#FFFFFF;--mut:#8C8F94;--mut2:#4B5158;--blue:#EDEEF0;--warn:#F04452;--dn:#2FC08A;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-img,svg{max-width:100%}
-.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
-.topbar{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--hair2)}
-.tb{display:flex;align-items:center;justify-content:space-between;height:58px}
-.brand{display:flex;align-items:baseline;gap:10px}
-.brand b{font-size:15px;letter-spacing:.02em}
-.brand span{font:400 9.5px/1 var(--mono);letter-spacing:.22em;color:#5E6166}
-.nav{display:flex;gap:26px;margin-left:auto;margin-right:34px}
-.nav a{font-size:13.5px;color:var(--mut);padding:12px 0;border-bottom:1.5px solid transparent;line-height:20px}
-.nav a:hover{color:#fff}
-.nav a.on{color:#fff;border-bottom-color:var(--blue)}
-.tb-r{display:flex;align-items:center;gap:18px;font-size:12px;color:#6F7276}
-.fy-svc{color:#6F7276}
-.fy-svc:hover{color:#fff}
-.fy-subnav:empty{min-height:0}
-footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top:8px}
-.fg{display:grid;grid-template-columns:1.4fr 1fr 1.3fr;gap:48px}
-.fg h5{font-size:13.5px;font-weight:600;margin:0 0 12px}
-.fg p,.fg a,.fg li{font-size:12.5px;line-height:1.9;color:#808388}
-.fg a:hover{color:#fff}
-.fg ul{list-style:none;display:flex;flex-wrap:wrap;gap:0 18px;margin:0;padding:0}
-.fb{display:flex;justify-content:space-between;gap:20px;margin-top:36px;padding-top:18px;border-top:1px solid var(--hair2);font:400 10.5px/1.9 var(--mono);color:#47494D;letter-spacing:.03em}
-@media (max-width:900px){
-  .wrap{padding:0 20px}
-  .nav{gap:16px;margin-right:0}
-  .fg{grid-template-columns:1fr;gap:28px}
-  .fb{flex-direction:column;gap:6px}
-}
-@media (max-width:600px){
-  .wrap{padding:0 16px}
-  footer{padding:32px 0 40px}
-}
-</style>
 <link rel="stylesheet" href="/static/assets/site-nav.css?v=20261224a">
 <style>html.fy-i18n-pending body{visibility:hidden!important}</style>
 <script>(function(){try{var l=localStorage.getItem('fy_lang_v1');if(l&&l!=='zh'){document.documentElement.classList.add('fy-i18n-pending');setTimeout(function(){document.documentElement.classList.remove('fy-i18n-pending')},1800)}}catch(e){}})();</script>
-<link rel="stylesheet" href="/static/assets/home-v2.css?v=20261119a">
-<link rel="stylesheet" href="/static/assets/data-v2.css?v=20261215b">
-<link rel="stylesheet" href="/static/assets/history-v2.css?v=20261120a">
+
+<link rel="stylesheet" href="/static/assets/ocean/tokens.css?v=20261123a">
+<link rel="stylesheet" href="/static/assets/ocean/shell.css?v=20261123a">
+<link rel="stylesheet" href="/static/assets/ocean/app.css?v=20261123a">
+<link rel="stylesheet" href="/static/assets/ocean/pages/history.css?v=20261124a">
 </head>
-<body id="top" data-fy-page="history">
+<body id="top" class="pg-history-body" data-fy-page="history" data-en-eyebrow="Anomaly log" data-en-h1="Every day the scanner flagged." data-en-lede="What the scanner flagged each day — funding-rate extremes and 24h moves across the Bitget USDT perpetual universe, low-volume contracts removed. Generated automatically, not hand-picked.">
+
 <header class="topbar fy-nav"><div class="wrap tb">
   <a class="brand" href="/"><b>飞鱼学院</b><span>FEIYU ACADEMY</span></a>
   <nav class="nav" aria-label="Primary">
@@ -84,35 +46,64 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
 
 <main class="home-v2 data-v2 pg-history">
 <div class="d-wrap">
-<nav class="d-crumb" aria-label="Breadcrumb"><a href="/">Home</a><i>/</i><span>Anomaly history</span></nav>
+<nav class="d-crumb" aria-label="Breadcrumb"><a href="/">Home</a><i>/</i><a href="/watch.html">Trading research</a><i>/</i><span aria-current="page">Anomaly history</span></nav>
 
-<header class="d-head">
-  <div class="d-title">
-    <div>
-      <h1>Altcoin anomaly history</h1>
-      <p>What the scanner flagged each day — funding-rate extremes and 24h moves across the Bitget USDT perpetual universe, low-volume contracts removed. Generated automatically, not hand-picked.</p>
+<section class="hs-hero">
+  <div class="hs-hero-t">
+    <p class="hs-kicker"><i aria-hidden="true"></i>ANOMALY LOG · 12 DAYS · 101 HITS</p>
+    <h1 class="hs-h1">Every day the scanner <span>flagged.</span></h1>
+    <p class="hs-lede">What the scanner flagged each day — funding-rate extremes and 24h moves across the Bitget USDT perpetual universe, low-volume contracts removed. Generated automatically, not hand-picked.</p>
+    <div class="hs-meta">
+      <span class="hs-chip"><svg class="i" aria-hidden="true"><use href="/static/assets/ocean/icons.svg#i-shield-check"></use></svg>Source <b>Bitget USDT perps</b></span>
+      <span class="hs-chip"><svg class="i" aria-hidden="true"><use href="/static/assets/ocean/icons.svg#i-pulse"></use></svg>Snapshot <b>2026-11-20</b></span>
+      <span class="hs-chip"><svg class="i" aria-hidden="true"><use href="/static/assets/ocean/icons.svg#i-list-checks"></use></svg>Filter <b>0.05% funding · 15% 24h · $3M</b></span>
     </div>
-    <div class="d-meta">
-      <div class="mrow"><span>Source</span> <b>Bitget USDT perps</b></div>
-      <div class="mrow"><span>Snapshot</span> <b>2026-11-20</b></div>
+    <div class="hs-cta">
+      <a class="btn btn-p" href="/live.html">Open the live screener →</a>
+      <a class="btn btn-s" href="#log">Jump to the log</a>
     </div>
   </div>
-</header>
+  <div class="hs-art">
+    <svg viewBox="0 0 340 220" role="img" aria-label="A daily log sheet with rows scanned by a beam, and a small calendar chip">
+      <defs><linearGradient id="hsg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFF6FF"/><stop offset="1" stop-color="#DBEAFE"/></linearGradient></defs>
+      <circle cx="186" cy="108" r="93" fill="url(#hsg)"/>
+      <rect x="86" y="54" width="128" height="112" rx="10" fill="#DBEAFE" opacity=".75" transform="rotate(4 150 110)"/>
+      <rect x="102" y="64" width="142" height="118" rx="12" fill="#fff" stroke="#DCE6F2"/>
+      <rect x="116" y="78" width="34" height="90" rx="6" fill="#EFF6FF"/>
+      <rect x="116" y="76" width="46" height="8" rx="4" fill="#2563EB"/>
+      <g fill="#60A5FA"><circle cx="126" cy="100" r="3"/><circle cx="126" cy="116" r="3"/><circle cx="126" cy="132" r="3"/><circle cx="126" cy="148" r="3"/></g>
+      <rect x="154" y="110" width="64" height="11" rx="5.5" fill="#DBEAFE"/>
+      <g fill="#E8EEF6">
+        <rect x="158" y="94" width="54" height="7" rx="3.5"/>
+        <rect x="158" y="126" width="60" height="7" rx="3.5"/>
+        <rect x="158" y="142" width="42" height="7" rx="3.5"/>
+      </g>
+      <g fill="#DBEAFE"><rect x="222" y="94" width="14" height="7" rx="3.5"/><rect x="222" y="112" width="14" height="7" rx="3.5"/><rect x="222" y="126" width="14" height="7" rx="3.5"/><rect x="222" y="142" width="14" height="7" rx="3.5"/></g>
+      <rect x="92" y="96" width="170" height="24" rx="12" fill="#2563EB" opacity=".1" transform="rotate(-13 177 108)"/>
+      <rect x="62" y="74" width="42" height="42" rx="10" fill="#fff" stroke="#DCE6F2"/>
+      <rect x="70" y="70" width="9" height="7" rx="3.5" fill="#DBEAFE"/>
+      <rect x="87" y="70" width="9" height="7" rx="3.5" fill="#DBEAFE"/>
+      <rect x="70" y="86" width="26" height="7" rx="3.5" fill="#E8EEF6"/>
+      <rect x="70" y="99" width="14" height="7" rx="3.5" fill="#60A5FA"/>
+      <circle cx="272" cy="60" r="18" fill="#DBEAFE" opacity=".5"/>
+    </svg>
+  </div>
+</section>
 
 <section class="d-kpis" aria-label="Log summary">
   <div class="d-kpi"><span class="k">Days logged</span><div class="v">12</div><span class="s">2026-11-09 → 2026-11-20</span></div>
   <div class="d-kpi"><span class="k">Hits logged</span><div class="v">101</div><span class="s">8.4 per day on average</span></div>
   <div class="d-kpi"><span class="k">Latest day</span><div class="v">2026-11-20</div><span class="s">10 hits</span></div>
-  <div class="d-kpi pg-wide"><span class="k">Screen filter</span><div class="v">0.05% <em>funding</em></div><span class="s">or 15% 24h move · turnover ≥ $3M</span></div>
+  <div class="d-kpi"><span class="k">Screen filter</span><div class="v">0.05% <em style="font:400 13px/1 var(--mono);color:var(--t4);font-style:normal">funding</em></div><span class="s">or 15% 24h move · turnover ≥ $3M</span></div>
 </section>
 
-<div class="d-panel">
+<div class="d-panel" id="log">
   <div class="d-ph"><h2>Last 12 days</h2><span>Newest first · 101 hits</span></div>
   <div class="h-wrap">
     <table class="hist-tbl">
       <thead><tr><th>Time</th><th>Coin</th><th class="num">24h</th><th class="num">Turnover</th><th>Trigger</th></tr></thead>
       <tbody>
-<tr class="gstart"><td class="date" rowspan="10"><b>2026-11-20</b><span>10 hits</span></td><td class="sym">BARD</td><td class="chg up">+19.5%</td><td class="vol">$3.99M</td><td class="why">funding -2.000%/4h (-4380%/yr) · 24h +19.5%</td></tr>
+        <tr class="gstart"><td class="date" rowspan="10"><b>2026-11-20</b><span>10 hits</span></td><td class="sym">BARD</td><td class="chg up">+19.5%</td><td class="vol">$3.99M</td><td class="why">funding -2.000%/4h (-4380%/yr) · 24h +19.5%</td></tr>
         <tr><td class="sym">LUNC</td><td class="chg down">-7.7%</td><td class="vol">$4.62M</td><td class="why">funding -0.112%/8h (-122%/yr)</td></tr>
         <tr><td class="sym">WLD</td><td class="chg down">-5.7%</td><td class="vol">$11.01M</td><td class="why">funding -0.065%/8h (-71%/yr)</td></tr>
         <tr><td class="sym">INIT</td><td class="chg down">-1.1%</td><td class="vol">$4.08M</td><td class="why">funding -0.116%/1h (-1017%/yr)</td></tr>
@@ -216,35 +207,52 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
       </tbody>
     </table>
   </div>
+  <p class="hs-hint">Table scrolls sideways — swipe to see every column →</p>
 </div>
 
-<div class="d-note pg-cta">
-  <p><b>Get these the morning they happen:</b> <a href="https://t.me/feiyu_radar_bot">@feiyu_radar_bot</a> · live page: <a href="live.html">free screener</a> · <a href="https://fuba-agent.github.io/feiyu-tools/">full tools</a></p>
-  <p class="fine">Data only, no buy/sell signals. Not financial advice.</p>
+<div class="d-panel">
+  <div class="d-ph"><h2>How to read this log</h2><span>Same rules every day</span></div>
+  <div class="hs-how">
+    <div class="hs-how-i"><b>One row, one hit</b><p>A hit means the contract crossed a threshold that day: funding at or beyond <code>0.05%</code>, or a 24h move of <code>15%</code> and up, with turnover of at least <code>$3M</code>. Quiet days are left out, not padded.</p></div>
+    <div class="hs-how-i"><b>Thresholds, not opinions</b><p>The scanner does not rank, score or pick. If nothing crossed the line, the day has no rows — the log is a record of the filter firing, not a list of good trades.</p></div>
+    <div class="hs-how-i"><b>What it is not</b><p>No entry or exit levels, no buy or sell calls, no backtest. An extreme funding rate usually means crowded positioning, and crowded positioning can stay crowded for a long time.</p></div>
+  </div>
 </div>
+
+<div class="hs-cta-bar">
+  <p><b>Get these the morning they happen.</b> The bot posts the same hits to Telegram; the live page shows what crossed in the last cycle.</p>
+  <a class="btn btn-p" href="https://t.me/feiyu_radar_bot" target="_blank" rel="noopener">Open @feiyu_radar_bot →</a>
+</div>
+
+<p class="d-note" style="margin-top:var(--sp-4)">Data only, no buy or sell signals, no financial advice. Snapshot dates are the days the scanner ran; figures come from public Bitget endpoints and are not restated.</p>
 </div>
 </main>
+
 <footer><div class="wrap">
   <div class="fg">
     <div>
-      <h5>飞鱼学院 · FEIYU ACADEMY</h5>
-      <p>综合性交易研究与实践学院。课程、工具、研究与实践都在这里；四份数据包全免费，登录就能拿。<br>不接广告，不带单。</p>
+      <h5>飞鱼学院</h5>
+      <p>综合性交易研究与实践学院。课程、工具、研究与实践都在这里；四份数据包全免费，登录就能拿。不接广告，不带单。</p>
       <p style="margin-top:10px"><a href="https://t.me/siren1109" target="_blank" rel="noopener">TG 频道 <span>@siren1109</span></a> · <a href="https://t.me/feiyu1108" target="_blank" rel="noopener">客服 <span>@feiyu1108</span></a></p>
     </div>
     <div>
-      <h5>目录</h5>
-      <ul><li><a href="/watch.html#movers">异动榜</a></li><li><a href="/trade.html">九个工具</a></li><li><a href="/packs.html">数据包</a></li><li><a href="/blog/index.html">笔记</a></li><li><a href="/about.html">说明</a></li></ul>
+      <h5>交易研究</h5>
+      <ul>
+        <li><a href="/signals.html">信号市场</a></li>
+        <li><a href="/liq.html">爆仓流</a></li>
+        <li><a href="/longshort.html">多空比</a></li>
+        <li><a href="/openinterest.html">持仓量</a></li>
+        <li><a href="/funding.html">资金费率</a></li>
+        <li><a href="/analysis.html">分析</a></li>
+      </ul>
     </div>
     <div>
-      <h5>说明</h5>
-      <p>行情与价格来自交易所公开接口；只有模拟盘的下单成交与账户余额是模拟的。合约交易会亏光本金，别拿输不起的钱进场。</p>
-      <p style="margin-top:8px">收款：BNB、ETH、POL、SOL、USDT、USDC（七条链）；不支持 TRON / TRC20。</p>
+      <h5>继续</h5>
+      <p><a href="/watch.html">看盘</a> · <a href="/data.html">数据中心</a> · <a href="/packs.html">数据包</a> · <a href="/trade.html">实战</a> · <a href="/about.html">说明</a></p>
+      <p>行情实时 · 模拟盘用 USDm</p>
     </div>
   </div>
-  <div class="fb">
-    <span>© 2026 FEIYU ACADEMY · 行情实时 · 模拟盘用 USDm</span>
-    <span>BYBIT USDT PERP · — CONTRACTS</span>
-  </div>
+  <div class="fb"><span>© 2026 FEIYU ACADEMY · 行情实时 · 模拟盘用 USDm</span><span>BYBIT USDT PERP · — CONTRACTS</span></div>
 </div></footer>
 
 <script src="/static/assets/site-nav.js?v=20261123f" defer></script>
