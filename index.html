@@ -198,7 +198,7 @@ footer{padding:42px 0 36px;background:#fff;border-top:1px solid var(--line)}
     <p class="hero-note">注册即送模拟资金，不绑定钱包、不需要入金。</p>
   </div>
   <div class="fly-wrap"><img src="/static/assets/brand/hero-fish.webp?v=20261124d" alt="" style="width:100%;max-width:470px;height:auto;display:block">
-    <div class="float f1"><div class="k">模拟账户净值</div><div class="v">1,000.00 <span style="font-size:11px;color:var(--t4)">USDm</span></div></div>
+    <div class="float f1"><div class="k">注册送</div><div class="v">1,000.00 <span style="font-size:11px;color:var(--t4)">USDm</span></div></div>
   </div>
 </div></section>
 
@@ -212,16 +212,9 @@ footer{padding:42px 0 36px;background:#fff;border-top:1px solid var(--line)}
 <section class="market"><div class="wrap"><div class="mk-grid">
   <div class="panel">
     <div class="panel-h"><h3>市场异动</h3><span class="src">数据来源：交易所公开接口 · 每 60 秒刷新</span></div>
-    <div class="filters"><button class="on">全部</button><button>涨幅榜</button><button>跌幅榜</button><button>成交额</button><button>资金费</button><button>新上币</button></div>
+    <div class="filters"><button class="on" data-mkt="all">全部</button><button data-mkt="up">涨幅榜</button><button data-mkt="down">跌幅榜</button><button data-mkt="vol">成交额</button><button data-mkt="fr" disabled title="暂无数据源" aria-disabled="true">资金费 · 暂无</button><button data-mkt="new" disabled title="暂无数据源" aria-disabled="true">新上币 · 暂无</button></div>
     <div class="tblwrap"><table class="tb tk"><thead><tr><th>币种</th><th style="text-align:right">最新价</th><th style="text-align:right">24h 涨跌</th><th style="text-align:right">24h 成交额</th><th style="text-align:right">操作</th></tr></thead>
-    <tbody>
-      <tr><td><div class="sym">AERO<s>AERO/USDT</s></div></td><td style="text-align:right" class="num">0.018420</td><td style="text-align:right" class="num down">−46.00%</td><td style="text-align:right" class="num">62.0 亿</td><td style="text-align:right"><a href="/sim.html" style="font-size:12.5px">下单 →</a></td></tr>
-      <tr><td><div class="sym">NXPC<s>NXPC/USDT</s></div></td><td style="text-align:right" class="num">0.8420</td><td style="text-align:right" class="num down">−33.10%</td><td style="text-align:right" class="num">18.4 亿</td><td style="text-align:right"><a href="/sim.html" style="font-size:12.5px">下单 →</a></td></tr>
-      <tr><td><div class="sym">KAVA<s>KAVA/USDT</s></div></td><td style="text-align:right" class="num">0.6170</td><td style="text-align:right" class="num down">−12.40%</td><td style="text-align:right" class="num">9.6 亿</td><td style="text-align:right"><a href="/sim.html" style="font-size:12.5px">下单 →</a></td></tr>
-      <tr><td><div class="sym">ILV<s>ILV/USDT</s></div></td><td style="text-align:right" class="num">28.410</td><td style="text-align:right" class="num" style="color:var(--up)">+18.88%</td><td style="text-align:right" class="num">7.2 亿</td><td style="text-align:right"><a href="/sim.html" style="font-size:12.5px">下单 →</a></td></tr>
-      <tr><td><div class="sym">APE<s>APE/USDT</s></div></td><td style="text-align:right" class="num">0.3940</td><td style="text-align:right" class="num down">−8.60%</td><td style="text-align:right" class="num">5.1 亿</td><td style="text-align:right"><a href="/sim.html" style="font-size:12.5px">下单 →</a></td></tr>
-      <tr><td><div class="sym">ENS<s>ENS/USDT</s></div></td><td style="text-align:right" class="num">18.620</td><td style="text-align:right" class="num" style="color:var(--up)">+9.70%</td><td style="text-align:right" class="num">3.4 亿</td><td style="text-align:right"><a href="/sim.html" style="font-size:12.5px">下单 →</a></td></tr>
-    </tbody></table></div>
+    <tbody id="mkt-rows"><tr><td colspan="5" style="text-align:center;color:var(--t4);padding:26px 14px">加载中…</td></tr></tbody></table></div>
     <div style="padding:11px 16px;font-size:11.5px;color:var(--t4);border-top:1px solid var(--line-split)">涨幅榜与跌幅榜按 24 小时涨跌幅排序；行情来自交易所公开接口，仅供学习研究，不构成投资建议。</div>
   </div>
   <div class="side-cards">
@@ -304,6 +297,7 @@ footer{padding:42px 0 36px;background:#fff;border-top:1px solid var(--line)}
 </div></footer>
 <script src="/static/assets/i18n-full.js?v=20261221n" defer data-fy-i18n></script>
 <script src="/js/home-progress.js?v=20261124a" defer></script>
+<script src="/js/home-market.js?v=20261124a" defer></script>
 <script>
 (function(){
   var btn = document.getElementById('langBtn'), pop = document.getElementById('langPop'), cur = document.getElementById('langCur');
