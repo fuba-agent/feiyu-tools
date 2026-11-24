@@ -82,14 +82,14 @@
           <p><b>有延迟。</b>接口本身是秒级，我这边每 2 分钟拉一次再落盘。所以页面上的数是「刚发生过」，不是「正在发生」。要看毫秒级盘口，去交易所。</p>
           <p><b>会被限流。</b>公开接口按权重计费，一分钟抓太多就直接拒绝；结算前后、插针那几分钟，数据可能慢几分钟，偶尔缺一条。缺了我宁可空着，也不编一个数补上去。</p>
           <p>不埋统计 SDK，不接广告联盟，不把页面数据卖给谁。服务器日志只留了访问量。</p>
-          <table class="h-tbl about-tbl">
+          <div class="tbl-x"><table class="h-tbl about-tbl">
             <thead><tr><th>数据</th><th>来源</th><th class="r">节奏 / 说明</th></tr></thead>
             <tbody>
               <tr><td>行情与 K 线</td><td>Bybit、Bitget、Binance 公开接口</td><td class="r">秒级接口，站点约 2 分钟落盘</td></tr>
               <tr><td>资金费率</td><td>六家所公开接口</td><td class="r">每 2 分钟对齐；结算周期不同</td></tr>
               <tr><td>逐笔强平</td><td>交易所公开推送 / 查询</td><td class="r">取不到就空着，不补数</td></tr>
             </tbody>
-          </table>
+          </table></div>
           <p class="about-tbl-note">表内是口径，不是实时行情；具体数字以看盘、费率、爆仓流页面当下显示为准。</p>
         </section>
 
