@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Free altcoin screener — funding rates &amp; 24h movers, no signup</title>
-<meta name="description" content="Free altcoin screener for perpetual futures: funding-rate extremes, 24h movers and low-liquidity filtering across 800+ USDT contracts. No signup, no API key, refreshes every 5 minutes.">
+<title>实时扫描 · 资金费率与 24 小时异动 · 免注册 | 飞鱼学院</title>
+<meta name="description" content="永续合约实时扫描：800+ USDT 合约里的资金费率极值与 24 小时异动，自动过滤低流动性。免注册、不要 API key，每 5 分钟刷新。">
 <link rel="canonical" href="https://feiyu.tailf83eec.ts.net/live.html">
 <link rel="alternate" hreflang="en" href="https://feiyu.tailf83eec.ts.net/live.html?lang=en">
 <link rel="alternate" hreflang="zh" href="https://feiyu.tailf83eec.ts.net/live.html?lang=zh">
@@ -19,13 +19,13 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Flying Fish Academy">
-<meta property="og:title" content="Live altcoin anomaly scan">
-<meta property="og:description" content="Funding extremes and 24h moves across 800+ USDT perpetuals. Free, no signup.">
+<meta property="og:title" content="实时异动扫描 · 飞鱼学院">
+<meta property="og:description" content="800+ USDT 永续里的资金费率极值与 24 小时异动。免费、免注册。">
 <meta property="og:image" content="https://feiyu.tailf83eec.ts.net/static/img/og-cover.png">
 <meta property="og:url" content="https://feiyu.tailf83eec.ts.net/live.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Live altcoin anomaly scan">
-<meta name="twitter:description" content="Funding extremes and 24h moves across 800+ USDT perpetuals. Free, no signup.">
+<meta name="twitter:title" content="实时异动扫描 · 飞鱼学院">
+<meta name="twitter:description" content="800+ USDT 永续里的资金费率极值与 24 小时异动。免费、免注册。">
 <meta name="twitter:image" content="https://feiyu.tailf83eec.ts.net/static/img/og-cover.png">
 
 <link rel="stylesheet" href="/static/assets/chat.css?v=20261215b">
@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="/static/assets/ocean/tokens.css?v=20261123a">
 <link rel="stylesheet" href="/static/assets/ocean/shell.css?v=20261123a">
 <link rel="stylesheet" href="/static/assets/ocean/app.css?v=20261123a">
-<link rel="stylesheet" href="/static/assets/ocean/pages/live.css?v=20261124a">
+<link rel="stylesheet" href="/static/assets/ocean/pages/live.css?v=20261124b">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -66,21 +66,21 @@
 </div></header>
 
 <main class="home-v2 data-v2 pg-live" id="main"><div class="d-wrap">
-  <nav class="d-crumb" aria-label="Breadcrumb"><a href="/">Home</a><i>/</i><a href="/watch.html">Trading research</a><i>/</i><span aria-current="page">Live screener</span></nav>
+  <nav class="d-crumb" aria-label="Breadcrumb" data-en-html='<a href="/">Home</a><i>/</i><a href="/watch.html">Trading research</a><i>/</i><span aria-current="page">Live screener</span>'><a href="/">首页</a><i>/</i><a href="/watch.html">交易研究</a><i>/</i><span aria-current="page">实时扫描</span></nav>
 
   <section class="lv-hero">
     <div class="lv-hero-copy">
-      <p class="lv-kicker"><span class="dot" aria-hidden="true"></span>Live scan · Bitget USDT perpetuals · no signup</p>
-      <h1 class="lv-h1">Scan the whole perp market in one screen.</h1>
-      <p class="lv-lede">Funding-rate extremes and unusual 24-hour moves across the Bitget USDT perpetual universe. Majors, tokenised stocks and contracts under $3M of 24h volume are filtered out. It runs in your browser against public endpoints — no account, no API key, nothing stored.</p>
+      <p class="lv-kicker" data-en-html='<span class="dot" aria-hidden="true"></span>Live scan · Bitget USDT perpetuals · no signup'><span class="dot" aria-hidden="true"></span>实时扫描 · Bitget USDT 永续 · 免注册</p>
+      <h1 class="lv-h1" data-en="Scan the whole perp market in one screen.">一屏扫完整个永续市场。</h1>
+      <p class="lv-lede" data-en="Funding-rate extremes and unusual 24-hour moves across the Bitget USDT perpetual universe. Majors, tokenised stocks and contracts under $3M of 24h volume are filtered out. It runs in your browser against public endpoints — no account, no API key, nothing stored.">整条 Bitget USDT 永续里的资金费率极值和 24 小时异动。主流币、代币化股票，以及 24 小时成交额低于 $3M 的合约都已排除。全部在你的浏览器里直连公开接口，不要账号、不要 API key，也不留存任何东西。</p>
       <div class="lv-cta">
-        <a class="btn btn-p" href="##list">See the scan</a>
-        <a class="btn btn-s" href="/watch-movers.html">Open movers board</a>
+        <a class="btn btn-p" href="##list" data-en="See the scan">看这份扫描</a>
+        <a class="btn btn-s" href="/watch-movers.html" data-en="Open movers board">打开异动榜</a>
       </div>
       <ul class="lv-facts">
-        <li><svg class="ic" aria-hidden="true"><use href="/static/assets/ocean/icons.svg#i-list-checks"></use></svg>10 rows, ranked</li>
-        <li><svg class="ic" aria-hidden="true"><use href="/static/assets/ocean/icons.svg#i-notebook"></use></svg>Refreshed every 5 min</li>
-        <li><svg class="ic" aria-hidden="true"><use href="/static/assets/ocean/icons.svg#i-arrow-up-right"></use></svg>Data, not trade calls</li>
+        <li><svg class="ic" aria-hidden="true"><use href="/static/assets/ocean/icons.svg#i-list-checks"></use></svg><span data-en="10 rows, ranked">10 行，已排序</span></li>
+        <li><svg class="ic" aria-hidden="true"><use href="/static/assets/ocean/icons.svg#i-notebook"></use></svg><span data-en="Refreshed every 5 min">每 5 分钟刷新</span></li>
+        <li><svg class="ic" aria-hidden="true"><use href="/static/assets/ocean/icons.svg#i-arrow-up-right"></use></svg><span data-en="Data, not trade calls">只给数据，不给交易建议</span></li>
       </ul>
     </div>
     <div class="lv-hero-art"><svg viewBox="0 0 340 220" role="img" aria-label="扫描雷达与行情柱">
@@ -103,10 +103,10 @@
   </section>
 
   <div class="d-kpis lv-kpis">
-    <div class="d-kpi"><div class="k">Contracts scanned</div><div class="v">800+</div><div class="s">Bitget USDT perps</div></div>
-    <div class="d-kpi"><div class="k">Rows shown</div><div class="v">10</div><div class="s">Ranked by anomaly score</div></div>
-    <div class="d-kpi"><div class="k">Refresh</div><div class="v">5 min</div><div class="s">In-tab timer + manual</div></div>
-    <div class="d-kpi"><div class="k">Signup required</div><div class="v">None</div><div class="s">Browser-only scan</div></div>
+    <div class="d-kpi"><div class="k" data-en="Contracts scanned">扫描合约数</div><div class="v">800+</div><div class="s" data-en="Bitget USDT perps">Bitget USDT 永续</div></div>
+    <div class="d-kpi"><div class="k" data-en="Rows shown">展示行数</div><div class="v">10</div><div class="s" data-en="Ranked by anomaly score">按异动分值排序</div></div>
+    <div class="d-kpi"><div class="k" data-en="Refresh">刷新</div><div class="v" data-en="5 min">5 分钟</div><div class="s" data-en="In-tab timer + manual">页内定时 + 手动</div></div>
+    <div class="d-kpi"><div class="k" data-en="Signup required">需要注册</div><div class="v" data-en="None">不需要</div><div class="s" data-en="Browser-only scan">纯浏览器扫描</div></div>
   </div>
 
   <div class="live-layout">
@@ -114,73 +114,91 @@
       <section class="scan-panel" aria-labelledby="scan-h">
         <div class="scan-top">
           <div>
-            <h2 id="scan-h">Anomalies right now</h2>
-            <div class="scan-sub" id="stamp" role="status">loading…</div>
+            <h2 id="scan-h" data-en="Anomalies right now">此刻的异动</h2>
+            <div class="scan-sub" id="stamp" role="status" data-en="loading…">加载中…</div>
           </div>
           <div class="scan-actions">
-            <button id="share" type="button">Share</button>
-            <button id="refresh" type="button">Refresh</button>
+            <button id="share" type="button" data-en="Share">分享</button>
+            <button id="refresh" type="button" data-en="Refresh">刷新</button>
           </div>
         </div>
         <div id="list" aria-live="polite"></div>
-        <p class="scan-foot">Top 10 by funding plus 24-hour move. The list shows what changed, not which way to trade; empty means the market is quiet, not that the scan failed.</p>
+        <p class="scan-foot" data-en="Top 10 by funding plus 24-hour move. The list shows what changed, not which way to trade; empty means the market is quiet, not that the scan failed.">按资金费率加 24 小时涨跌取前 10。列表说的是「发生了什么」，不是「该往哪边做」；空列表只代表市场安静，不代表扫描失败。</p>
       </section>
 
       <section class="live-block live-filters" aria-labelledby="filters-h">
-        <h2 id="filters-h">What gets screened</h2>
+        <h2 id="filters-h" data-en="What gets screened">筛什么、怎么筛</h2>
         <table class="live-table">
-          <thead><tr><th scope="col">Filter</th><th scope="col">Rule</th></tr></thead>
+          <thead><tr><th scope="col" data-en="Filter">筛选项</th><th scope="col" data-en="Rule">规则</th></tr></thead>
           <tbody>
-            <tr><td>Universe</td><td>Bitget USDT perpetual contracts</td></tr>
-            <tr><td>Excluded</td><td>Majors, tokenised stocks, and contracts with <span class="n">&lt; $3M</span> of 24h volume</td></tr>
-            <tr><td>Funding extremes</td><td><span class="n">|rate| ≥ 0.05%</span> per settlement interval; the note shows the annualised figure and which side pays</td></tr>
-            <tr><td>24h movers</td><td><span class="n">|change| ≥ 15%</span> over the last 24 hours</td></tr>
-            <tr><td>Ranking</td><td><span class="n">|funding| × 10,000 + |24h change|</span>, highest first, capped at 10 rows</td></tr>
-            <tr><td>Refresh</td><td>Every 5 minutes in this tab; <span class="n">Refresh</span> runs a new scan immediately</td></tr>
+            <tr><td data-en="Universe">范围</td><td data-en="Bitget USDT perpetual contracts">Bitget USDT 永续合约</td></tr>
+            <tr><td data-en="Excluded">排除</td><td data-en-html='Majors, tokenised stocks, and contracts with <span class="n">&lt; $3M</span> of 24h volume'>主流币、代币化股票，以及 24 小时成交额 <span class="n">&lt; $3M</span> 的合约</td></tr>
+            <tr><td data-en="Funding extremes">费率极值</td><td data-en-html='<span class="n">|rate| ≥ 0.05%</span> per settlement interval; the note shows the annualised figure and which side pays'><span class="n">|费率| ≥ 0.05%</span> 每个结算周期；备注里给年化，并说明是哪一边在付</td></tr>
+            <tr><td data-en="24h movers">24 小时异动</td><td data-en-html='<span class="n">|change| ≥ 15%</span> over the last 24 hours'><span class="n">|涨跌幅| ≥ 15%</span>（过去 24 小时）</td></tr>
+            <tr><td data-en="Ranking">排序</td><td data-en-html='<span class="n">|funding| × 10,000 + |24h change|</span>, highest first, capped at 10 rows'><span class="n">|资金费率| × 10,000 + |24h 涨跌幅|</span>，从高到低，最多 10 行</td></tr>
+            <tr><td data-en="Refresh">刷新</td><td data-en-html='Every 5 minutes in this tab; <span class="n">Refresh</span> runs a new scan immediately'>本标签页每 5 分钟一次；点 <span class="n">刷新</span> 立刻重扫</td></tr>
           </tbody>
         </table>
       </section>
 
       <section class="live-block live-faq" aria-labelledby="faq-h">
-        <h2 id="faq-h">Questions people ask</h2>
+        <h2 id="faq-h" data-en="Questions people ask">常见问题</h2>
         <div class="faq">
-          <p><b>What does this screen for?</b>Funding-rate extremes (crowded longs or shorts) and unusual 24-hour moves across the Bitget USDT perpetual universe. Contracts with less than $3M of 24h volume, majors and tokenised stocks are filtered out.</p>
-          <p><b>Is it really free?</b>Yes. It runs entirely in your browser against public exchange endpoints — no account, no API key, no server of ours in the middle.</p>
-          <p><b>Is this trading advice?</b>No. It is data: who is crowded, who is paying, what moved. Deciding what to do with it is your job.</p>
-          <p><b>How often does it update?</b>Every 5 minutes automatically, or immediately if you press Refresh.</p>
+          <p data-en-html='<b>What does this screen for?</b>Funding-rate extremes (crowded longs or shorts) and unusual 24-hour moves across the Bitget USDT perpetual universe. Contracts with less than $3M of 24h volume, majors and tokenised stocks are filtered out.'><b>这个页面在筛什么？</b>资金费率极值（多头或空头太挤）和 24 小时异动，范围是整条 Bitget USDT 永续。24 小时成交额低于 $3M 的合约、主流币和代币化股票已排除。</p>
+          <p data-en-html='<b>Is it really free?</b>Yes. It runs entirely in your browser against public exchange endpoints — no account, no API key, no server of ours in the middle.'><b>真的免费吗？</b>真的。全部在你的浏览器里直连交易所公开接口，不要账号、不要 API key，中间也没有我们的服务器。</p>
+          <p data-en-html='<b>Is this trading advice?</b>No. It is data: who is crowded, who is paying, what moved. Deciding what to do with it is your job.'><b>这是交易建议吗？</b>不是。它只是数据：谁挤、谁在付钱、什么在动。怎么用由你判断。</p>
+          <p data-en-html='<b>How often does it update?</b>Every 5 minutes automatically, or immediately if you press Refresh.'><b>多久更新一次？</b>每 5 分钟自动一次；点「刷新」立刻重扫。</p>
         </div>
       </section>
     </div>
 
     <aside class="live-aside">
       <section class="side-block">
-        <h2>Free, browser-only data</h2>
-        <p>This page reads two public Bitget endpoints directly from your browser:</p>
+        <h2 data-en="Free, browser-only data">免费、纯浏览器的数据</h2>
+        <p data-en="This page reads two public Bitget endpoints directly from your browser:">这个页面在你的浏览器里直接读 Bitget 的两个公开接口：</p>
         <p><code>api.bitget.com/api/v2/mix/market/contracts</code><br><code>api.bitget.com/api/v2/mix/market/tickers</code></p>
-        <p>No account, no API key, and no server of ours in the middle. If Bitget is unreachable, the list shows an empty state and the timestamp says the scan failed.</p>
+        <p data-en="No account, no API key, and no server of ours in the middle. If Bitget is unreachable, the list shows an empty state and the timestamp says the scan failed.">不要账号、不要 API key，中间也没有我们的服务器。Bitget 连不上时，列表给空态，时间戳会写明这次扫描失败。</p>
       </section>
       <section class="side-block live-cta">
-        <h2>Take it further</h2>
-        <p>The scan finds the anomaly. The board and the data packs tell you what to do next.</p>
-        <a class="btn btn-p" href="/watch.html">Watch the live board</a>
-        <a class="btn btn-s" href="/data.html">Get the data packs</a>
-        <p class="fine">Prefer Telegram? <a href="https://t.me/feiyu_radar_bot">@feiyu_radar_bot</a> sends three names every morning; send <code>/gift</code> for the free two-page cheat sheet.</p>
+        <h2 data-en="Take it further">接着往下走</h2>
+        <p data-en="The scan finds the anomaly. The board and the data packs tell you what to do next.">扫描负责找出异动，看板和数据库负责告诉你下一步看什么。</p>
+        <a class="btn btn-p" href="/watch.html" data-en="Watch the live board">看看盘实时看板</a>
+        <a class="btn btn-s" href="/data.html" data-en="Get the data packs">拿四份数据包</a>
+        <p class="fine" data-en-html='Prefer Telegram? <a href="https://t.me/feiyu_radar_bot">@feiyu_radar_bot</a> sends three names every morning; send <code>/gift</code> for the free two-page cheat sheet.'>喜欢用 Telegram？<a href="https://t.me/feiyu_radar_bot">@feiyu_radar_bot</a> 每天早上推三个名字；发 <code>/gift</code> 拿两页速查表。</p>
       </section>
       <section class="side-block">
-        <h2>Share this scan</h2>
-        <div id="sharebar"><span>Send it to:</span>
+        <h2 data-en="Share this scan">分享这份扫描</h2>
+        <div id="sharebar"><span data-en="Send it to:">分享到：</span>
           <a id="sx" href="##" rel="noopener">X</a>
           <a id="sr" href="##" rel="noopener">Reddit</a>
           <a id="sf" href="##" rel="noopener">Facebook</a>
           <a id="st" href="##" rel="noopener">Telegram</a>
         </div>
-        <p class="fine">Data only, no buy/sell signals. Crypto derivatives can lose you your entire capital.</p>
+        <p class="fine" data-en="Data only, no buy/sell signals. Crypto derivatives can lose you your entire capital.">只给数据，不给买卖信号。加密衍生品可能亏掉全部本金。</p>
       </section>
     </aside>
   </div>
 </div></main>
 
 <script>
+(function(){
+  var KZ="data-zh", KH="data-zh-html";
+  function isZh(){ var l=window.FY_LANG||document.documentElement.getAttribute("lang")||"zh"; return String(l).toLowerCase().indexOf("zh")===0; }
+  function apply(){
+    var zh=isZh(), i, el;
+    var plain=document.querySelectorAll("[data-en]");
+    for(i=0;i<plain.length;i++){ el=plain[i]; if(!el.hasAttribute(KZ)) el.setAttribute(KZ, el.textContent); el.textContent = zh ? el.getAttribute(KZ) : el.getAttribute("data-en"); }
+    var html=document.querySelectorAll("[data-en-html]");
+    for(i=0;i<html.length;i++){ el=html[i]; if(!el.hasAttribute(KH)) el.setAttribute(KH, el.innerHTML); el.innerHTML = zh ? el.getAttribute(KH) : el.getAttribute("data-en-html"); }
+  }
+  window.__lvApplyLang=apply;
+  document.addEventListener("fy:lang", apply);
+  apply();
+})();
+</script>
+<script>
+function isZhPage(){ var l=window.FY_LANG||document.documentElement.getAttribute("lang")||"zh"; return String(l).toLowerCase().indexOf("zh")===0; }
+function T(zh,en){ return isZhPage()?zh:en; }
 const MAJORS = new Set(["BTC","ETH","BNB","SOL","XRP","DOGE","ADA","TRX","AVAX","LINK","DOT","MATIC","TON","SHIB","LTC","BCH","UNI","XLM","ETC","APT","FIL","ATOM","ARB","OP","NEAR","INJ","SUI","SEI","PEPE","WIF"]);
 const BASE = "https://api.bitget.com/api/v2/mix/market";
 
@@ -209,9 +227,9 @@ async function scan() {
     const why = [];
     if (Math.abs(rate) >= 0.0005) {
       const ann = rate * (24 / m.iv) * 365 * 100;
-      why.push(`funding ${(rate * 100).toFixed(3)}%/${m.iv}h — ${rate > 0 ? "longs" : "shorts"} paying (${ann >= 0 ? "+" : ""}${ann.toFixed(0)}%/yr)`);
+      why.push(T("资金费率 ", "funding ") + (rate * 100).toFixed(3) + "%/" + m.iv + "h" + T(" — " + (rate > 0 ? "多头" : "空头") + "付 (", " — " + (rate > 0 ? "longs" : "shorts") + " paying (") + (ann >= 0 ? "+" : "") + ann.toFixed(0) + T("%/年)", "%/yr)"));
     }
-    if (Math.abs(chg) >= 15) why.push(`24h move ${chg >= 0 ? "+" : ""}${chg.toFixed(1)}%`);
+    if (Math.abs(chg) >= 15) why.push(T("24 小时 ", "24h move ") + (chg >= 0 ? "+" : "") + chg.toFixed(1) + "%");
     if (!why.length) continue;
     rows.push({ base, price, vol, chg, why, score: Math.abs(rate) * 10000 + Math.abs(chg) });
   }
@@ -230,7 +248,9 @@ async function render() {
   const stamp = document.getElementById("stamp");
   try {
     const rows = await scan();
-    stamp.textContent = "last updated " + new Date().toLocaleString("en-GB", { hour12: false }) + " · Bitget USDT perpetuals · majors and tokenised stocks excluded";
+    var d = new Date(), z = n => String(n).padStart(2, "0");
+    var when = d.getFullYear() + "-" + z(d.getMonth() + 1) + "-" + z(d.getDate()) + " " + z(d.getHours()) + ":" + z(d.getMinutes()) + ":" + z(d.getSeconds());
+    stamp.textContent = T("更新于 ", "last updated ") + when + T(" · Bitget USDT 永续 · 已排除主流币与代币化股票", " · Bitget USDT perpetuals · majors and tokenised stocks excluded");
     list.innerHTML = rows.length ? rows.map((r, i) => `
       <div class="row">
         <div class="rank">${i + 1}</div>
@@ -240,29 +260,30 @@ async function render() {
             <span class="vol">$${(r.vol / 1e6).toFixed(0)}M</span></div>
           ${r.why.map(w => `<div class="why">· ${w}</div>`).join("")}
         </div>
-      </div>`).join("") : '<div class="why">No anomalies right now. Quiet market.</div>';
+      </div>`).join("") : '<div class="why">' + T("此刻没有异动，市场很安静。", "No anomalies right now. Quiet market.") + '</div>';
   } catch (e) {
-    stamp.textContent = "could not load data — " + e.message;
-    list.innerHTML = '<div class="scan-empty">Could not load public market data. Press Refresh to try again.</div>';
+    stamp.textContent = T("数据没拉到 — ", "could not load data — ") + e.message;
+    list.innerHTML = '<div class="scan-empty">' + T("公开行情数据没拉到。点「刷新」再试一次。", "Could not load public market data. Press Refresh to try again.") + '</div>';
   }
 }
 document.getElementById("refresh").addEventListener("click", render);
 document.getElementById("share").addEventListener("click", () => {
   const url = location.href.split("#")[0];
-  const text = "Live altcoin anomaly scan — funding extremes and 24h moves, refreshed every 5 minutes.";
+  const text = T("实时异动扫描：资金费率极值与 24 小时涨跌，每 5 分钟刷新。", "Live altcoin anomaly scan — funding extremes and 24h moves, refreshed every 5 minutes.");
   const tg = "https://t.me/share/url?url=" + encodeURIComponent(url) + "&text=" + encodeURIComponent(text);
-  if (navigator.share) { navigator.share({ title: "Live altcoin anomaly scan", text, url }).catch(() => window.open(tg, "_blank")); }
+  if (navigator.share) { navigator.share({ title: T("实时异动扫描", "Live altcoin anomaly scan"), text, url }).catch(() => window.open(tg, "_blank")); }
   else window.open(tg, "_blank");
 });
 render();
 setInterval(render, 5 * 60 * 1000);
+document.addEventListener("fy:lang", render);
 
 (function () {
   const url = location.href.split("?")[0];
-  const text = "Free altcoin screener — funding extremes and 24h movers across 800+ USDT perpetuals, refreshed every 5 minutes.";
+  const text = T("免费异动扫描：800+ USDT 永续里的资金费率极值和 24 小时异动，每 5 分钟刷新。", "Free altcoin screener — funding extremes and 24h movers across 800+ USDT perpetuals, refreshed every 5 minutes.");
   const e = encodeURIComponent;
   document.getElementById("sx").href = "https://twitter.com/intent/tweet?text=" + e(text) + "&url=" + e(url);
-  document.getElementById("sr").href = "https://www.reddit.com/submit?url=" + e(url) + "&title=" + e("Free altcoin screener (funding rates + 24h movers)");
+  document.getElementById("sr").href = "https://www.reddit.com/submit?url=" + e(url) + "&title=" + e(T("免费异动扫描（资金费率 + 24 小时异动）", "Free altcoin screener (funding rates + 24h movers)"));
   document.getElementById("sf").href = "https://www.facebook.com/sharer/sharer.php?u=" + e(url);
   document.getElementById("st").href = "https://t.me/share/url?url=" + e(url) + "&text=" + e(text);
 })();
