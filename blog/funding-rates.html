@@ -73,6 +73,8 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
 .blog-article p,.blog-article li{color:#cfd6e0;line-height:1.7}
 .blog-article .meta{color:var(--mut);font-size:13px;margin-bottom:26px}
 .blog-article table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+    .blog-article .tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0}
+    .blog-article .tbl-scroll table{margin:0}
 .blog-article th,.blog-article td{border:1px solid var(--hair);padding:8px 10px;text-align:start;vertical-align:top}
 .blog-article th{background:var(--bg2);font-weight:600}
 .blog-article blockquote{border-left:3px solid var(--dn);margin:18px 0;padding:6px 0 6px 16px;color:#cfd6e0}
@@ -130,13 +132,13 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
     <p>Perpetual futures have no expiry date, so exchanges use a periodic payment between longs and shorts to keep the
        contract near spot. Positive funding means longs pay shorts. Negative means shorts pay longs.</p>
     <p>That single number answers a question price cannot: <b>which side is crowded?</b></p>
-    <table>
+    <div class="tbl-scroll"><table>
       <tr><th>Funding (per 8h)</th><th>Reading</th><th>What it tends to precede</th></tr>
       <tr><td>+0.05% or more</td><td>Longs crowded and paying</td><td>Stalling price gets sold; late longs become exit liquidity</td></tr>
       <tr><td>+0.01% to +0.05%</td><td>Mild long bias</td><td>Nothing on its own</td></tr>
       <tr><td>-0.01% to -0.05%</td><td>Mild short bias</td><td>Nothing on its own</td></tr>
       <tr><td>-0.05% or lower</td><td>Shorts crowded and paying</td><td>Bounces can squeeze violently; shorting here is late</td></tr>
-    </table>
+    </table></div>
     <p>Two practical details people miss. First, funding intervals differ — many majors settle every 8 hours, but some
        contracts settle every 1 or 4 hours, so <b>compare the daily cost, not the per-settlement number</b>. Second, a hot
        funding rate is a warning about positioning, not a signal to enter. If you short purely because funding is
@@ -145,13 +147,13 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
     <h2>2. Price + open interest: real money or closed positions</h2>
     <p>Open interest is the total number of open contracts. Price tells you the direction; OI tells you whether new
        positions were created or old ones were closed.</p>
-    <table>
+    <div class="tbl-scroll"><table>
       <tr><th>Price</th><th>Open interest</th><th>Reading</th></tr>
       <tr><td>Up</td><td>Up</td><td>New longs entering — the move has fuel, but chasing is late</td></tr>
       <tr><td>Up</td><td>Down</td><td>Short covering — mechanical, tends to fade</td></tr>
       <tr><td>Down</td><td>Up</td><td>New shorts entering — the move can extend</td></tr>
       <tr><td>Down</td><td>Down</td><td>Longs stopping out — selling may be near exhaustion</td></tr>
-    </table>
+    </table></div>
     <p>This is the difference between a move that keeps going and one that snaps back the moment the last short is
        covered. A 5-minute spike with flat OI is usually noise; the same spike with OI jumping is someone with size.</p>
 
