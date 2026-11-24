@@ -73,6 +73,8 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
 .blog-article p,.blog-article li{color:#cfd6e0;line-height:1.7}
 .blog-article .meta{color:var(--mut);font-size:13px;margin-bottom:26px}
 .blog-article table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+    .blog-article .tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0}
+    .blog-article .tbl-scroll table{margin:0}
 .blog-article th,.blog-article td{border:1px solid var(--hair);padding:8px 10px;text-align:start;vertical-align:top}
 .blog-article th{background:var(--bg2);font-weight:600}
 .blog-article td:first-child{white-space:nowrap}
@@ -147,14 +149,14 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
        basic table.</p>
 
     <h2>2. The week, as the scanner logged it</h2>
-    <table>
+    <div class="tbl-scroll"><table>
       <tr><th>Date</th><th>Crowded side</th><th>Funding</th><th>24h move</th><th>Reading</th></tr>
       <tr><td>11-09</td><td>PIEVERSE</td><td class="pos">+0.079% / 4h</td><td>+39.4%</td><td>Longs paying, longs getting paid — momentum, not squeeze</td></tr>
       <tr><td>11-10</td><td>INIT</td><td class="neg">-0.566% / 4h</td><td>+68.9%</td><td>Shorts crowded and bleeding — the queue starts draining</td></tr>
       <tr><td>11-11</td><td>ONE</td><td class="neg">-0.276% / 4h</td><td>+27.9%</td><td>Same structure, smaller size</td></tr>
       <tr><td>11-12</td><td>JCT</td><td class="pos">+0.056% / 4h</td><td>-47.0%</td><td>Opposite: longs crowded, then dumped</td></tr>
       <tr><td>11-13</td><td>BARD</td><td class="neg">-1.999% / 4h</td><td>+59.3%</td><td>Extreme: shorts paying ~4,400% a year to stay wrong</td></tr>
-    </table>
+    </table></div>
     <p>Read the first column closely. On the days the crowd was short and paying, price went <em>up</em>. On the day
        the crowd was long and paying (JCT, 11-12), price went <em>down 47%</em>. Funding did not predict the direction
        of the next candle — it described <b>which side had no room to be wrong</b>.</p>
@@ -163,12 +165,12 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
     <p>The obvious mistake is to read extreme negative funding as "shorts are trapped, buy." That is how you end up
        long the top of the squeeze instead of short the start of it.</p>
     <p>This is what happened to INIT after the first squeeze:</p>
-    <table>
+    <div class="tbl-scroll"><table>
       <tr><th>Window</th><th>Funding at the time</th><th>Move</th><th>What the crowd learned</th></tr>
       <tr><td>11-10</td><td class="neg">-0.566% / 4h</td><td>+68.9%</td><td>Shorts were right to be scared, not right about direction forever</td></tr>
       <tr><td>11-12</td><td>-0.053% / 1h</td><td>-44.0%</td><td>Funding had normalised — the queue was empty, price could fall again</td></tr>
       <tr><td>11-13</td><td>-0.133% / 1h</td><td>-15.8%</td><td>Still no squeeze fuel; just drift</td></tr>
-    </table>
+    </table></div>
     <blockquote>Extreme funding means "this side is about to be punished." It does not mean "the other side is about to
        win."</blockquote>
     <p>The tradable event is not the extreme reading itself. It is the <b>exhaustion</b> of the extreme: funding back
