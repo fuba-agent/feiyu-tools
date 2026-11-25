@@ -145,7 +145,7 @@
         <h2 id="faq-h" data-en="Questions people ask">常见问题</h2>
         <div class="faq">
           <p data-en-html='<b>What does this screen for?</b>Funding-rate extremes (crowded longs or shorts) and unusual 24-hour moves across the Bitget USDT perpetual universe. Contracts with less than $3M of 24h volume, majors and tokenised stocks are filtered out.'><b>这个页面在筛什么？</b>资金费率极值（多头或空头太挤）和 24 小时异动，范围是整条 Bitget USDT 永续。24 小时成交额低于 $3M 的合约、主流币和代币化股票已排除。</p>
-          <p data-en-html='<b>Is it really free?</b>Yes. It runs entirely in your browser against public exchange endpoints — no account, no API key, no server of ours in the middle.'><b>真的免费吗？</b>真的。全部在你的浏览器里直连交易所公开接口，不要账号、不要 API key，中间也没有我们的服务器。</p>
+          <p data-en-html='<b>Is it really free?</b>Yes. Data comes from public exchange endpoints through the academy's server-side cache — no account and no API key needed.'><b>真的免费吗？</b>真的。数据经学院服务端缓存 60 秒后读取交易所公开接口，不要账号、不要 API key。</p>
           <p data-en-html='<b>Is this trading advice?</b>No. It is data: who is crowded, who is paying, what moved. Deciding what to do with it is your job.'><b>这是交易建议吗？</b>不是。它只是数据：谁挤、谁在付钱、什么在动。怎么用由你判断。</p>
           <p data-en-html='<b>How often does it update?</b>Every 5 minutes automatically, or immediately if you press Refresh.'><b>多久更新一次？</b>每 5 分钟自动一次；点「刷新」立刻重扫。</p>
         </div>
@@ -154,10 +154,10 @@
 
     <aside class="live-aside">
       <section class="side-block">
-        <h2 data-en="Free, browser-only data">免费、纯浏览器的数据</h2>
-        <p data-en="This page reads two public Bitget endpoints directly from your browser:">这个页面在你的浏览器里直接读 Bitget 的两个公开接口：</p>
+        <h2 data-en="Free data, server-cached">免费 · 服务端缓存的数据</h2>
+        <p data-en="The page reads two public Bitget endpoints through the academy's server cache (60s):">这个页面经学院服务端缓存读 Bitget 的两个公开接口（60 秒缓存）：</p>
         <p><code>api.bitget.com/api/v2/mix/market/contracts</code><br><code>api.bitget.com/api/v2/mix/market/tickers</code></p>
-        <p data-en="No account, no API key, and no server of ours in the middle. If Bitget is unreachable, the list shows an empty state and the timestamp says the scan failed.">不要账号、不要 API key，中间也没有我们的服务器。Bitget 连不上时，列表给空态，时间戳会写明这次扫描失败。</p>
+        <p data-en="No account and no API key. If Bitget or the proxy is unreachable, the list shows an empty state and the timestamp says what went wrong.">不要账号、不要 API key。Bitget 或本站代理读不到时，列表给空态，时间戳写明失败原因。</p>
       </section>
       <section class="side-block live-cta">
         <h2 data-en="Take it further">接着往下走</h2>
@@ -181,17 +181,47 @@
 </div></main>
 
 <script>
+/* 2026-11-25：三态（与其余 22 页同口径）——zh 用原文、en 用 data-en、其他语种先查词典，
+   缺键回落 data-en 的英文，不再把 es/ar/ru… 强行盖成英文。H1 走中文 HTML 由引擎按片段翻。 */
 (function(){
   var KZ="data-zh", KH="data-zh-html";
   function isZh(){ var l=window.FY_LANG||document.documentElement.getAttribute("lang")||"zh"; return String(l).toLowerCase().indexOf("zh")===0; }
-  function apply(){
-    var zh=isZh(), i, el;
-    var plain=document.querySelectorAll("[data-en]");
-    for(i=0;i<plain.length;i++){ el=plain[i]; if(!el.hasAttribute(KZ)) el.setAttribute(KZ, el.textContent); el.textContent = zh ? el.getAttribute(KZ) : el.getAttribute("data-en"); }
-    var html=document.querySelectorAll("[data-en-html]");
-    for(i=0;i<html.length;i++){ el=html[i]; if(!el.hasAttribute(KH)) el.setAttribute(KH, el.innerHTML); el.innerHTML = zh ? el.getAttribute(KH) : el.getAttribute("data-en-html"); }
+  function isEn(){
+    var l;
+    try { l = window.FY_LANG || localStorage.getItem("fy_lang_v1"); } catch(e) {}
+    if (!l) l = document.documentElement.lang || "zh";
+    return /^en/i.test(String(l));
   }
-  window.__lvApplyLang=apply;
+  function localizeText(zt, et){
+    var t = null;
+    try { if (window.FY_T) t = window.FY_T(zt); } catch(e) {}
+    return (t && t !== zt) ? t : et;
+  }
+  function localizeV(isHtml, zt, et){
+    if (isHtml || zt == null) return et;
+    return localizeText(zt, et);
+  }
+  function apply(){
+    var zh = isZh(), i, el;
+    var plain = document.querySelectorAll("[data-en]");
+    for (i = 0; i < plain.length; i++) {
+      el = plain[i];
+      if (!el.hasAttribute(KZ)) el.setAttribute(KZ, el.textContent);
+      el.textContent = zh ? el.getAttribute(KZ) : (isEn() ? el.getAttribute("data-en") : localizeV(false, el.getAttribute(KZ), el.getAttribute("data-en")));
+    }
+    var html = document.querySelectorAll("[data-en-html]");
+    for (i = 0; i < html.length; i++) {
+      el = html[i];
+      if (!el.hasAttribute(KH)) el.setAttribute(KH, el.innerHTML);
+      el.innerHTML = zh ? el.getAttribute(KH) : (isEn() ? el.getAttribute("data-en-html") : (el.tagName === "H1" ? el.getAttribute(KH) : localizeV(true, el.getAttribute(KH), el.getAttribute("data-en-html"))));
+    }
+    /* 读屏标签：导航由 nav.js 后注入，引擎不追属性，这里按语种补一次 */
+    var navEl = document.querySelector(".fgn-nav");
+    if (navEl) navEl.setAttribute("aria-label", zh ? "主导航" : (isEn() ? "Main navigation" : localizeText("主导航", "Main navigation")));
+    var langBtn = document.getElementById("fgnLangBtn");
+    if (langBtn) langBtn.setAttribute("aria-label", zh ? "选择语言" : (isEn() ? "Choose language" : localizeText("选择语言", "Choose language")));
+  }
+  window.__lvApplyLang = apply;
   document.addEventListener("fy:lang", apply);
   apply();
 })();
@@ -200,7 +230,7 @@
 function isZhPage(){ var l=window.FY_LANG||document.documentElement.getAttribute("lang")||"zh"; return String(l).toLowerCase().indexOf("zh")===0; }
 function T(zh,en){ return isZhPage()?zh:en; }
 const MAJORS = new Set(["BTC","ETH","BNB","SOL","XRP","DOGE","ADA","TRX","AVAX","LINK","DOT","MATIC","TON","SHIB","LTC","BCH","UNI","XLM","ETC","APT","FIL","ATOM","ARB","OP","NEAR","INJ","SUI","SEI","PEPE","WIF"]);
-const BASE = "https://api.bitget.com/api/v2/mix/market";
+const ALT_SCAN = "/api/data/alt-scan";
 
 async function j(url) {
   const r = await fetch(url, { headers: { "Accept": "application/json" } });
@@ -209,20 +239,18 @@ async function j(url) {
 }
 
 async function scan() {
-  const [c, t] = await Promise.all([
-    j(BASE + "/contracts?productType=USDT-FUTURES"),
-    j(BASE + "/tickers?productType=USDT-FUTURES"),
-  ]);
-  const meta = new Map();
-  for (const x of c.data || []) meta.set(x.symbol, { rwa: String(x.isRwa || "").toUpperCase() === "YES", iv: Number(x.fundInterval || 8) });
+  /* 走本站代理：/api/data/alt-scan 由服务端抓 Bitget 并缓存 60s，浏览器不再直连交易所 */
+  const pack = await j(ALT_SCAN);
+  if (!pack || pack.ok !== true || !Array.isArray(pack.rows)) throw new Error(T("接口返回异常", "bad payload"));
   const rows = [];
-  for (const x of t.data || []) {
-    const sym = String(x.symbol || "");
+  for (const x of pack.rows) {
+    const sym = String(x.sym || "");
     if (!sym.endsWith("USDT")) continue;
-    const base = sym.slice(0, -4), m = meta.get(sym);
-    if (!m || m.rwa || MAJORS.has(base)) continue;
-    const price = Number(x.lastPr || 0), vol = Number(x.usdtVolume || 0);
-    const chg = Number(x.change24h || 0) * 100, rate = Number(x.fundingRate || 0);
+    const base = x.base || sym.slice(0, -4);
+    if (x.rwa || MAJORS.has(base)) continue;
+    const price = Number(x.price || 0), vol = Number(x.vol || 0);
+    const chg = Number(x.chg || 0), rate = Number(x.rate || 0);
+    const m = { iv: Number(x.iv) || 8 };
     if (price <= 0 || vol < 3e6) continue;
     const why = [];
     if (Math.abs(rate) >= 0.0005) {
@@ -312,6 +340,6 @@ document.addEventListener("fy:lang", render);
 </div></footer>
 <script src="/static/assets/site-nav.js?v=20261125c" defer></script>
 <script src="/static/assets/i18n-full.js?v=20261125m" defer data-fy-i18n></script>
-<script src="/static/assets/ocean/nav.js?v=20261125e" defer></script>
+<script src="/static/assets/ocean/nav.js?v=20261125f" defer></script>
 </body>
 </html>
