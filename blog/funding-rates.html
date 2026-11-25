@@ -1,97 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-<style id="fy-theme-critical">html[data-theme="light"],html[data-theme="light"] body{background:#FFFFFF!important;color:#10233C!important}html[data-theme="light"]{--bg:#F7F8FA;--bg2:#FFFFFF;--hair:rgba(17,21,26,.075);--hair2:rgba(17,21,26,.045);--txt:#11151A;--mut:#565D64;--mut2:#4B5158;--blue:#11151A;--warn:#D62F3D;--dn:#565D64}</style>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>How to read funding rates and open interest (without fooling yourself)</title>
 <meta name="description" content="A practical guide to funding rates, open interest and market beta for crypto perpetual futures traders.">
+<meta name="robots" content="index,follow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to read funding rates and open interest">
-<meta property="og:description" content="A practical guide to funding rates, open interest and market beta for crypto perpetual futures.">
+<meta property="og:site_name" content="Flying Fish Academy">
+<meta property="og:title" content="How to read funding rates and open interest (without fooling yourself)">
+<meta property="og:description" content="A practical guide to funding rates, open interest and market beta for crypto perpetual futures traders.">
 <meta property="og:image" content="https://feiyu.tailf83eec.ts.net/static/img/og-cover.png">
 <meta property="og:url" content="https://feiyu.tailf83eec.ts.net/blog/funding-rates.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="How to read funding rates and open interest">
-<meta name="twitter:description" content="A practical guide to funding rates, open interest and market beta for crypto perpetual futures.">
+<meta name="twitter:title" content="How to read funding rates and open interest (without fooling yourself)">
+<meta name="twitter:description" content="A practical guide to funding rates, open interest and market beta for crypto perpetual futures traders.">
 <meta name="twitter:image" content="https://feiyu.tailf83eec.ts.net/static/img/og-cover.png">
 <link rel="canonical" href="https://feiyu.tailf83eec.ts.net/blog/funding-rates.html">
-<title>How to read funding rates and open interest (without fooling yourself)</title>
-<link rel="stylesheet" href="/static/assets/chat.css?v=20261215b">
-<link id="fy-theme-light" rel="stylesheet" href="/static/assets/theme-light.css?v=20261128b" disabled>
-<script>(function(){try{var q=new URLSearchParams(location.search).get("t");var s=localStorage.getItem("fy_theme");var t=(q==="light"||q==="dark")?q:(s==="light"?"light":"dark");document.documentElement.setAttribute("data-theme",t);if(t==="light"){var l=document.getElementById("fy-theme-light");if(l)l.disabled=false;}}catch(e){}})();</script>
-<script src="/js/theme.js?v=20261128c" defer></script>
-<link rel="manifest" href="/manifest.webmanifest">
-<script src="/js/pwa.js?v=20261117a" defer></script>
-<style id="fy-shell">
-:root{--bg:#0B0D10;--bg2:#15171A;--hair:rgba(255,255,255,.075);--hair2:rgba(255,255,255,.045);--txt:#FFFFFF;--mut:#8C8F94;--mut2:#4B5158;--blue:#EDEEF0;--warn:#F04452;--dn:#2FC08A;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-img,svg{max-width:100%}
-.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
-.topbar{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--hair2)}
-.tb{display:flex;align-items:center;justify-content:space-between;height:58px}
-.brand{display:flex;align-items:baseline;gap:10px}
-.brand b{font-size:15px;letter-spacing:.02em}
-.brand span{font:400 9.5px/1 var(--mono);letter-spacing:.22em;color:#5E6166}
-.nav{display:flex;gap:26px;margin-left:auto;margin-right:34px}
-.nav a{font-size:13.5px;color:var(--mut);padding:12px 0;border-bottom:1.5px solid transparent;line-height:20px}
-.nav a:hover{color:#fff}
-.nav a.on{color:#fff;border-bottom-color:var(--blue)}
-.tb-r{display:flex;align-items:center;gap:18px;font-size:12px;color:#6F7276}
-.fy-svc{color:#6F7276}
-.fy-svc:hover{color:#fff}
-.fy-subnav:empty{min-height:0}
-footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top:8px}
-.fg{display:grid;grid-template-columns:1.4fr 1fr 1.3fr;gap:48px}
-.fg h5{font-size:13.5px;font-weight:600;margin:0 0 12px}
-.fg p,.fg a,.fg li{font-size:12.5px;line-height:1.9;color:#808388}
-.fg a:hover{color:#fff}
-.fg ul{list-style:none;display:flex;flex-wrap:wrap;gap:0 18px;margin:0;padding:0}
-.fb{display:flex;justify-content:space-between;gap:20px;margin-top:36px;padding-top:18px;border-top:1px solid var(--hair2);font:400 10.5px/1.9 var(--mono);color:#47494D;letter-spacing:.03em}
-@media (max-width:900px){
-  .wrap{padding:0 20px}
-  .nav{gap:16px;margin-right:0}
-  .fg{grid-template-columns:1fr;gap:28px}
-  .fb{flex-direction:column;gap:6px}
-}
-@media (max-width:600px){
-  .wrap{padding:0 16px}
-  footer{padding:32px 0 40px}
-}
-</style>
-<link rel="stylesheet" href="/static/assets/site-nav.css?v=20261224a">
-<style>html.fy-i18n-pending body{visibility:hidden!important}</style>
-<script>(function(){try{var l=localStorage.getItem('fy_lang_v1');if(l&&l!=='zh'){document.documentElement.classList.add('fy-i18n-pending');setTimeout(function(){document.documentElement.classList.remove('fy-i18n-pending')},1800)}}catch(e){}})();</script>
-<link rel="stylesheet" href="/static/assets/home-v2.css?v=20261119a">
-<link rel="stylesheet" href="/static/assets/data-v2.css?v=20261120a">
-<style>
-/* Blog article specific styles */
-.blog-article{max-width:720px;margin:0 auto;padding:36px 22px 80px}
-.blog-article h1{font-size:34px;line-height:1.2;margin:0 0 10px;letter-spacing:-.02em}
-.blog-article h2{font-size:21px;margin:34px 0 10px}
-.blog-article p,.blog-article li{color:#cfd6e0;line-height:1.7}
-.blog-article .meta{color:var(--mut);font-size:13px;margin-bottom:26px}
-.blog-article table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
-    .blog-article .tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0}
-    .blog-article .tbl-scroll table{margin:0}
-.blog-article th,.blog-article td{border:1px solid var(--hair);padding:8px 10px;text-align:start;vertical-align:top}
-.blog-article th{background:var(--bg2);font-weight:600}
-.blog-article blockquote{border-left:3px solid var(--dn);margin:18px 0;padding:6px 0 6px 16px;color:#cfd6e0}
-.blog-article .cta{margin-top:44px;background:var(--bg2);border:1px solid var(--hair);border-radius:14px;padding:20px}
-.blog-article .cta p{margin:6px 0 14px;color:var(--mut);font-size:14px}
-.blog-article .btn{display:inline-block;background:var(--dn);color:#06251a;font-weight:700;text-decoration:none;padding:10px 16px;border-radius:10px}
-.blog-article code{background:#161a20;padding:1px 5px;border-radius:4px;font-size:13px}
-@media (max-width:640px){
-  .blog-article{padding:24px 16px 60px}
-  .blog-article h1{font-size:26px}
-  .blog-article h2{font-size:19px}
-  .blog-article p,.blog-article li{font-size:16px;line-height:1.7}
-  .blog-article table{font-size:13px}
-  .blog-article th,.blog-article td{padding:6px 8px}
-}
-</style>
-<!-- hreflang: same page per locale -->
 <link rel="alternate" hreflang="en" href="https://feiyu.tailf83eec.ts.net/blog/funding-rates.html?lang=en">
 <link rel="alternate" hreflang="zh" href="https://feiyu.tailf83eec.ts.net/blog/funding-rates.html?lang=zh">
 <link rel="alternate" hreflang="ar" href="https://feiyu.tailf83eec.ts.net/blog/funding-rates.html?lang=ar">
@@ -102,8 +27,19 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
 <link rel="alternate" hreflang="id" href="https://feiyu.tailf83eec.ts.net/blog/funding-rates.html?lang=id">
 <link rel="alternate" hreflang="vi" href="https://feiyu.tailf83eec.ts.net/blog/funding-rates.html?lang=vi">
 <link rel="alternate" hreflang="x-default" href="https://feiyu.tailf83eec.ts.net/blog/funding-rates.html">
+<link rel="stylesheet" href="/static/assets/chat.css?v=20261215b">
+<link rel="manifest" href="/manifest.webmanifest">
+<script src="/js/pwa.js?v=20261117a" defer></script>
+<link rel="stylesheet" href="/static/assets/site-nav.css?v=20261224a">
+<style>html.fy-i18n-pending body{visibility:hidden!important}</style>
+<script>(function(){try{var l=localStorage.getItem('fy_lang_v1');if(l&&l!=='zh'){document.documentElement.classList.add('fy-i18n-pending');setTimeout(function(){document.documentElement.classList.remove('fy-i18n-pending')},1800)}}catch(e){}})();</script>
+<link rel="stylesheet" href="/static/assets/ocean/tokens.css?v=20261123a">
+<link rel="stylesheet" href="/static/assets/ocean/shell.css?v=20261123a">
+<link rel="stylesheet" href="/static/assets/ocean/app.css?v=20261123a">
+<link rel="stylesheet" href="/static/assets/ocean/pages/blog.css?v=20261125a">
 </head>
-<body id="top" data-fy-page="blog-article" data-en-eyebrow="Notes" data-en-h1="How to read funding rates and open interest" data-en-lede="Funding tells you which side is crowded. OI tells you if new money entered. Beta vs own weakness filters fake signals.">
+<body id="top" data-fy-page="blog-article" data-en-eyebrow="Notes" data-en-h1="How to read funding rates and open interest" data-en-lede="Funding tells you which side is crowded. OI tells you if new money entered. Beta vs own weakness filters fake signals." class="pg-blog">
+
 <header class="topbar fy-nav"><div class="wrap tb">
   <a class="brand" href="/"><b>飞鱼学院</b><span>FEIYU ACADEMY</span></a>
   <nav class="nav" aria-label="Primary">
@@ -111,16 +47,14 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
     <a href="/trade.html">实战</a>
     <a href="/robots.html">机器人</a>
     <a href="/packs.html">数据包</a>
-    <a href="/blog/index.html" class="on" aria-current="page">笔记</a><a href="/about.html">说明</a>
+    <a href="/analysis.html">分析</a><a href="/blog/index.html" class="on" aria-current="page">笔记</a><a href="/about.html">说明</a>
   </nav>
   <div class="tb-r"><span id="fy-lang-slot"></span><span id="fy-theme-slot"></span><a class="fy-svc fy-auth" href="/login.html">登录 / 注册</a></div>
 </div></header>
-<div class="fy-subnav" data-fy-slot></div>
 
-<main class="home-v2 data-v2 blog-article-page" id="main">
-<div class="d-wrap">
+<main class="pg-blog" id="main"><div class="d-wrap">
 
-  <nav class="d-crumb" aria-label="面包屑"><a href="/">首页</a><span aria-hidden="true">/</span><a href="/blog/index.html">笔记</a><span aria-hidden="true">/</span><span>资金费率与未平仓量</span></nav>
+  <nav class="d-crumb" aria-label="面包屑"><a href="/">首页</a><i aria-hidden="true">/</i><a href="/blog/index.html">笔记</a><i aria-hidden="true">/</i><span aria-current="page">资金费率与未平仓量</span></nav>
 
   <article class="blog-article">
     <div class="meta">Flying Fish Academy · 2026-11-09 · 6 min read</div>
@@ -178,8 +112,7 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:44px 0 56px;margin-top
     </div>
   </article>
 
-</div>
-</main>
+</div></main>
 
 <footer><div class="wrap">
   <div class="fg">
