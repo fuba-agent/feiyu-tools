@@ -72,7 +72,7 @@
     <div class="lv-hero-copy">
       <p class="lv-kicker" data-en-html='<span class="dot" aria-hidden="true"></span>Live scan · Bitget USDT perpetuals · no signup'><span class="dot" aria-hidden="true"></span>实时扫描 · Bitget USDT 永续 · 免注册</p>
       <h1 class="lv-h1" data-en="Scan the whole perp market in one screen.">一屏扫完整个永续市场。</h1>
-      <p class="lv-lede" data-en="Funding-rate extremes and unusual 24-hour moves across the Bitget USDT perpetual universe. Majors, tokenised stocks and contracts under $3M of 24h volume are filtered out. It runs in your browser against public endpoints — no account, no API key, nothing stored.">整条 Bitget USDT 永续里的资金费率极值和 24 小时异动。主流币、代币化股票，以及 24 小时成交额低于 $3M 的合约都已排除。全部在你的浏览器里直连公开接口，不要账号、不要 API key，也不留存任何东西。</p>
+      <p class="lv-lede" data-en="Funding-rate extremes and unusual 24-hour moves across the Bitget USDT perpetual universe. Majors, tokenised stocks and contracts under $3M of 24h volume are filtered out. It reads public endpoints through the academy's server-side cache (no direct exchange calls from the browser) — no account, no API key, nothing stored.">整条 Bitget USDT 永续里的资金费率极值和 24 小时异动。主流币、代币化股票，以及 24 小时成交额低于 $3M 的合约都已排除。经学院服务端缓存读公开接口（浏览器不直连交易所），不要账号、不要 API key，也不留存任何东西。</p>
       <div class="lv-cta">
         <a class="btn btn-p" href="##list" data-en="See the scan">看这份扫描</a>
         <a class="btn btn-s" href="/watch-movers.html" data-en="Open movers board">打开异动榜</a>
@@ -106,7 +106,7 @@
     <div class="d-kpi"><div class="k" data-en="Contracts scanned">扫描合约数</div><div class="v">800+</div><div class="s" data-en="Bitget USDT perps">Bitget USDT 永续</div></div>
     <div class="d-kpi"><div class="k" data-en="Rows shown">展示行数</div><div class="v">10</div><div class="s" data-en="Ranked by anomaly score">按异动分值排序</div></div>
     <div class="d-kpi"><div class="k" data-en="Refresh">刷新</div><div class="v" data-en="5 min">5 分钟</div><div class="s" data-en="In-tab timer + manual">页内定时 + 手动</div></div>
-    <div class="d-kpi"><div class="k" data-en="Signup required">需要注册</div><div class="v" data-en="None">不需要</div><div class="s" data-en="Browser-only scan">纯浏览器扫描</div></div>
+    <div class="d-kpi"><div class="k" data-en="Signup required">需要注册</div><div class="v" data-en="None">不需要</div><div class="s" data-en="Server-cached scan">服务端缓存扫描</div></div>
   </div>
 
   <div class="live-layout">
@@ -197,9 +197,31 @@
     try { if (window.FY_T) t = window.FY_T(zt); } catch(e) {}
     return (t && t !== zt) ? t : et;
   }
+  /* HTML 元素逐文本节点配对：结构对不上整体回英文；每个节点有母语键填母语、
+     缺键填 data-en-html 里同位置的英文。这样既不露中文，也不因为个别节点
+     缺键把整段压回英文。 */
+  function localizeHtml(zt, et){
+    var a = document.createElement("div"); a.innerHTML = String(zt);
+    var b = document.createElement("div"); b.innerHTML = String(et);
+    var na = [], nb = [], w, x;
+    w = document.createTreeWalker(a, NodeFilter.SHOW_TEXT, null);
+    while ((x = w.nextNode())) na.push(x);
+    w = document.createTreeWalker(b, NodeFilter.SHOW_TEXT, null);
+    while ((x = w.nextNode())) nb.push(x);
+    if (!na.length || na.length !== nb.length) return et;
+    for (var i = 0; i < na.length; i++) {
+      var zh = na[i].nodeValue, en = nb[i].nodeValue;
+      if (!zh || !zh.trim()) continue;
+      var t = null;
+      try { t = window.FY_T && window.FY_T(zh); } catch (e) {}
+      na[i].nodeValue = (t && t !== zh) ? t : en;
+    }
+    return a.innerHTML;
+  }
   function localizeV(isHtml, zt, et){
-    if (isHtml || zt == null) return et;
-    return localizeText(zt, et);
+    if (zt == null) return et;
+    if (!isHtml) return localizeText(zt, et);
+    return localizeHtml(zt, et);
   }
   function apply(){
     var zh = isZh(), i, el;
