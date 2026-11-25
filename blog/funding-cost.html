@@ -1,29 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="index,follow">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Funding is not free money: what a −1% print costs a short</title>
 <meta name="description" content="What extreme negative funding actually costs a short position, in dollars per day, using real prints from the scanner.">
+<meta name="robots" content="index,follow">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Flying Fish Academy">
 <meta property="og:title" content="Funding is not free money: what a −1% print costs a short">
-<meta property="og:description" content="Real prints from this morning's scan, converted into what they actually charge a position per day.">
+<meta property="og:description" content="What extreme negative funding actually costs a short position, in dollars per day, using real prints from the scanner.">
 <meta property="og:image" content="https://feiyu.tailf83eec.ts.net/static/img/og-cover.png">
 <meta property="og:url" content="https://feiyu.tailf83eec.ts.net/blog/funding-cost.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Funding is not free money: what a −1% print costs a short">
-<meta name="twitter:description" content="Real prints from this morning's scan, converted into what they actually charge a position per day.">
+<meta name="twitter:description" content="What extreme negative funding actually costs a short position, in dollars per day, using real prints from the scanner.">
 <meta name="twitter:image" content="https://feiyu.tailf83eec.ts.net/static/img/og-cover.png">
 <link rel="canonical" href="https://feiyu.tailf83eec.ts.net/blog/funding-cost.html">
-<title>Funding is not free money: what a −1% print costs a short</title>
-<link rel="stylesheet" href="/static/assets/chat.css?v=20261215b">
-<link rel="manifest" href="/manifest.webmanifest">
-<script src="/js/pwa.js?v=20261117a" defer></script>
-<link rel="stylesheet" href="/static/assets/site-nav.css?v=20261224a">
-<style>html.fy-i18n-pending body{visibility:hidden!important}</style>
-<script>(function(){try{var l=localStorage.getItem('fy_lang_v1');if(l&&l!=='zh'){document.documentElement.classList.add('fy-i18n-pending');setTimeout(function(){document.documentElement.classList.remove('fy-i18n-pending')},1800)}}catch(e){}})();</script>
-<!-- hreflang: same page per locale -->
 <link rel="alternate" hreflang="en" href="https://feiyu.tailf83eec.ts.net/blog/funding-cost.html?lang=en">
 <link rel="alternate" hreflang="zh" href="https://feiyu.tailf83eec.ts.net/blog/funding-cost.html?lang=zh">
 <link rel="alternate" hreflang="ar" href="https://feiyu.tailf83eec.ts.net/blog/funding-cost.html?lang=ar">
@@ -34,12 +27,19 @@
 <link rel="alternate" hreflang="id" href="https://feiyu.tailf83eec.ts.net/blog/funding-cost.html?lang=id">
 <link rel="alternate" hreflang="vi" href="https://feiyu.tailf83eec.ts.net/blog/funding-cost.html?lang=vi">
 <link rel="alternate" hreflang="x-default" href="https://feiyu.tailf83eec.ts.net/blog/funding-cost.html">
+<link rel="stylesheet" href="/static/assets/chat.css?v=20261215b">
+<link rel="manifest" href="/manifest.webmanifest">
+<script src="/js/pwa.js?v=20261117a" defer></script>
+<link rel="stylesheet" href="/static/assets/site-nav.css?v=20261224a">
+<style>html.fy-i18n-pending body{visibility:hidden!important}</style>
+<script>(function(){try{var l=localStorage.getItem('fy_lang_v1');if(l&&l!=='zh'){document.documentElement.classList.add('fy-i18n-pending');setTimeout(function(){document.documentElement.classList.remove('fy-i18n-pending')},1800)}}catch(e){}})();</script>
 <link rel="stylesheet" href="/static/assets/ocean/tokens.css?v=20261123a">
 <link rel="stylesheet" href="/static/assets/ocean/shell.css?v=20261123a">
 <link rel="stylesheet" href="/static/assets/ocean/app.css?v=20261123a">
 <link rel="stylesheet" href="/static/assets/ocean/pages/blog.css?v=20261125a">
 </head>
 <body id="top" data-fy-page="blog-article" data-en-eyebrow="Notes" data-en-h1="Funding is not free money" data-en-lede="Real scanner prints converted to daily cost per contract. Extreme funding is a price for waiting, not a direction." class="pg-blog">
+
 <header class="topbar fy-nav"><div class="wrap tb">
   <a class="brand" href="/"><b>飞鱼学院</b><span>FEIYU ACADEMY</span></a>
   <nav class="nav" aria-label="Primary">
@@ -52,10 +52,9 @@
   <div class="tb-r"><span id="fy-lang-slot"></span><span id="fy-theme-slot"></span><a class="fy-svc fy-auth" href="/login.html">登录 / 注册</a></div>
 </div></header>
 
-<main class="pg-blog" id="main">
-<div class="d-wrap">
+<main class="pg-blog" id="main"><div class="d-wrap">
 
-  <nav class="d-crumb" aria-label="面包屑"><a href="/">首页</a><i aria-hidden="true">/</i><a href="/blog/index.html">笔记</a><i aria-hidden="true">/</i><span>资金费率成本</span></nav>
+  <nav class="d-crumb" aria-label="面包屑"><a href="/">首页</a><i aria-hidden="true">/</i><a href="/blog/index.html">笔记</a><i aria-hidden="true">/</i><span aria-current="page">资金费率成本</span></nav>
 
   <article class="blog-article">
     <div class="meta">Flying Fish Academy · 2026-11-14 · 5 min read · every number below comes from the scanner's own log</div>
@@ -78,7 +77,7 @@
        or lost a cent on price.</p>
 
     <h2>2. This morning's board, in dollars</h2>
-    <div class="tbl-scroll"><table>
+    <table>
       <tr><th>Contract</th><th>Funding</th><th>Per day</th><th>Cost on $1k short</th><th>Move needed to break even</th></tr>
       <tr><td>BERA</td><td>−1.112% / 4h</td><td>6.67%</td><td>$66.72</td><td>−6.7% within 24h</td></tr>
       <tr><td>BARD</td><td>−0.794% / 4h</td><td>4.76%</td><td>$47.64</td><td>−4.8%</td></tr>
@@ -86,7 +85,7 @@
       <tr><td>INIT</td><td>−0.107% / 1h</td><td>2.57%</td><td>$25.68</td><td>−2.6%</td></tr>
       <tr><td>AKE</td><td>−0.135% / 4h</td><td>0.81%</td><td>$8.10</td><td>−0.8%</td></tr>
       <tr><td>ERA</td><td>−0.092% / 4h</td><td>0.55%</td><td>$5.52</td><td>−0.6%</td></tr>
-    </table></div>
+    </table>
     <p>The last column is the useful one. It is your <b>time budget</b>: how far the price has to fall
        inside 24 hours just to pay for the carry. On BERA you need a 6.7% drop in a day before the short
        is even flat. That is not a trade — that is a countdown.</p>
@@ -129,8 +128,7 @@
        different tomorrow.</p>
   </article>
 
-</div>
-</main>
+</div></main>
 
 <footer><div class="wrap">
   <div class="fg">
@@ -157,7 +155,7 @@
 
 <script src="/static/assets/site-nav.js?v=20261123f" defer></script>
 <script>window.FY_ENGINE_MIN='20261120j';</script>
-<script src="/static/assets/i18n-full.js?v=20261125g" defer data-fy-i18n></script>
+<script src="/static/assets/i18n-full.js?v=20261124e" defer data-fy-i18n></script>
 <script src="/static/assets/chat.js?v=20261224a" defer data-fy-chat></script>
 <script src="/static/assets/ocean/nav.js?v=20261124j" defer></script>
 </body>
